@@ -137,15 +137,32 @@ func game_play(r: Int, p: Int) -> Int{
             var option_1 = 1
             var option_2 = 2
             if user_choice == option_1 {
-                var path_index = p + 1 //User chose left subcategory
-                var round_num = r + 1
-                colorPath[p] = .green
-                return game_play(r: round_num, p: path_index)
-            } else{
-                var path_index = p + 2 //User chose right subcategory
-                var round_num = r + 1
-                colorPath[p] = .green
-                return game_play(r: round_num, p: path_index)
+                if r == 2{ //Round 2 option 1
+                    var path_index = p + 2
+                    var round_num = r + 1
+                    colorPath[p] = .green
+                    return game_play(r: round_num, p: path_index)
+                }
+                else { //Round 3 option 1
+                    var path_index = p + 3
+                    var round_num = r + 1
+                    colorPath[p] = .green
+                    return game_play(r: round_num, p: path_index)
+                }
+                
+            } else{ // Option 2
+                if r == 2{ //Round 2 option 2
+                    var path_index = p + 3
+                    var round_num = r + 1
+                    colorPath[p] = .green
+                    return game_play(r: round_num, p: path_index)
+                }
+                else { //Round 3 option 2
+                    var path_index = p + 4
+                    var round_num = r + 1
+                    colorPath[p] = .green
+                    return game_play(r: round_num, p: path_index)
+                }
             }
         }
         //Answer is wrong
