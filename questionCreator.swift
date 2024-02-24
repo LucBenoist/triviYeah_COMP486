@@ -129,7 +129,7 @@ func getQuestions(theme: String) -> [Int: [String]] {
     
 }
 
-let filePath = "questions.txt"
+let filePath = "questions_resource"
 func question_caller()  -> [Int: [String]] {
     // Fix this
     var theme = getTheme(day:"Wednesday")
