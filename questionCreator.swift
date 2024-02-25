@@ -42,58 +42,60 @@ var miscAnswers = [String]()
 // Read question text file
 // Create list of subcategory, question, and answer for every category
 func readFile(filePath: String) {
-    do {
-        let textFile = try String(contentsOfFile: filePath, encoding: .utf8)
-        let lines = textFile.components(separatedBy: "\n")
-        
-        for line in lines {
-            let components = line.components(separatedBy: "|").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            guard components.count == 4 else { continue }
+    if let filePath = Bundle.main.path(forResource: "questions_resource", ofType: "txt" ){
+        do {
+            let textFile = try String(contentsOfFile: filePath, encoding: .utf8)
+            let lines = textFile.components(separatedBy: "\n")
             
-            let category = components[0]
-            let subcategory = components[1]
-            let question = components[2]
-            let answer = components[3]
-            
-            switch category {
-            case "Movies":
-                moviesSub.append(subcategory)
-                moviesQuestions.append(question)
-                moviesAnswers.append(answer)
-            case "Music":
-                musicSub.append(subcategory)
-                musicQuestions.append(question)
-                musicAnswers.append(answer)
-            case "TV":
-                tvSub.append(subcategory)
-                tvQuestions.append(question)
-                tvAnswers.append(answer)
-            case "Sports":
-                sportsSub.append(subcategory)
-                sportsQuestions.append(question)
-                sportsAnswers.append(answer)
-            case "History":
-                historySub.append(subcategory)
-                historyQuestions.append(question)
-                historyAnswers.append(answer)
-            case "Science":
-                scienceSub.append(subcategory)
-                scienceQuestions.append(question)
-                scienceAnswers.append(answer)
-            case "HoS":
-                HoSsub.append(subcategory)
-                HoSQuestions.append(question)
-                HoSAnswers.append(answer)
-            case "Misc":
-                miscSub.append(subcategory)
-                miscQuestions.append(question)
-                miscAnswers.append(answer)
-            default:
-                break
+            for line in lines {
+                let components = line.components(separatedBy: "|").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                guard components.count == 4 else { continue }
+                
+                let category = components[0]
+                let subcategory = components[1]
+                let question = components[2]
+                let answer = components[3]
+                
+                switch category {
+                case "Movies":
+                    moviesSub.append(subcategory)
+                    moviesQuestions.append(question)
+                    moviesAnswers.append(answer)
+                case "Music":
+                    musicSub.append(subcategory)
+                    musicQuestions.append(question)
+                    musicAnswers.append(answer)
+                case "TV":
+                    tvSub.append(subcategory)
+                    tvQuestions.append(question)
+                    tvAnswers.append(answer)
+                case "Sports":
+                    sportsSub.append(subcategory)
+                    sportsQuestions.append(question)
+                    sportsAnswers.append(answer)
+                case "History":
+                    historySub.append(subcategory)
+                    historyQuestions.append(question)
+                    historyAnswers.append(answer)
+                case "Science":
+                    scienceSub.append(subcategory)
+                    scienceQuestions.append(question)
+                    scienceAnswers.append(answer)
+                case "HoS":
+                    HoSsub.append(subcategory)
+                    HoSQuestions.append(question)
+                    HoSAnswers.append(answer)
+                case "Misc":
+                    miscSub.append(subcategory)
+                    miscQuestions.append(question)
+                    miscAnswers.append(answer)
+                default:
+                    break
+                }
             }
+        } catch {
+            print("Error reading file: \(error)")
         }
-    } catch {
-        print("Error reading file: \(error)")
     }
 }
 

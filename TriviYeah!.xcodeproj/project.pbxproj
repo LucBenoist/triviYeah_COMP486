@@ -104,9 +104,9 @@
 		E8041EB92B76E272007D9750 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				13B912832B89901900F0CBF0 /* questions_resource */,
 				B015FD462B893B790031EA4E /* gamePlay.swift */,
 				B015FD442B893B690031EA4E /* questionCreator.swift */,
+				13B912832B89901900F0CBF0 /* questions_resource */,
 				E8041ED02B7AF462007D9750 /* ContentView.swift */,
 				E8041ED22B7AF591007D9750 /* QuestionView.swift */,
 				E8041ED62B7B0022007D9750 /* LinkView.swift */,
