@@ -44,9 +44,9 @@ func create_path() -> [Int: [String]] {
 //User progresses through game until answer all five questions correctly or gets one wrong
 func game_process(){
     path = create_path()
-    var round_number = 1
-    var path_number = 0
-    var result = game_play(r: round_number, p: path_number)
+    let round_number = 1
+    let path_number = 0
+    let result = game_play(r: round_number, p: path_number)
     if result == 1{
         //User won and got a TriviYeah
         //Congratulate and show them their path result
@@ -68,23 +68,23 @@ func game_play(r: Int, p: Int) -> Int{
     if r == 1{
         //Display first question: path[0]![0]
         // Provide text box for user to put their answer
-        var user_answer = readLine()
+        let user_answer = readLine()
         
         //answer is correct
         if user_answer == path[p]![1]{
             //Display UI telling user is correct
             //Then give them subcategory option 1 or subcategory option 2 to choose from option_1 = path[0+1]![2], option_2 = path[0+2]![2]
-            var user_choice = 2//Whichever is selected, this will not be 0, when fixed it will be based off user selection and UI
-            var option_1 = 1
-            var option_2 = 2
+            let user_choice = 2//Whichever is selected, this will not be 0, when fixed it will be based off user selection and UI
+            let option_1 = 1
+            //let option_2 = 2
             if user_choice == option_1 {
-                var path_index = p + 1 //User chose left subcategory
-                var round_num = 2
+                let path_index = p + 1 //User chose left subcategory
+                let round_num = 2
                 colorPath[p] = .green
                 return game_play(r: round_num, p: path_index)
             } else{
-                var path_index = p + 2 //User chose right subcategory
-                var round_num = 2
+                let path_index = p + 2 //User chose right subcategory
+                let round_num = 2
                 colorPath[p] = .green
                 return game_play(r: round_num, p: path_index)
             }
@@ -100,7 +100,7 @@ func game_play(r: Int, p: Int) -> Int{
     else if r == 5{
         //Display final question: path[10]![0]
         // Provide text box for user to put their answer
-        var user_answer = readLine()
+        let user_answer = readLine()
         if user_answer == path[10]![1]{
             colorPath[10] = .green
             return 1
@@ -114,7 +114,7 @@ func game_play(r: Int, p: Int) -> Int{
     else if r == 4{
         //Display Round 4 question, path[p]![0]
         // Provide text box for user to put their answer
-        var user_answer = readLine()
+        let user_answer = readLine()
         if user_answer == path[p]![1]{
             colorPath[p] = .green
             return game_play(r: 5, p: 10)
@@ -127,39 +127,39 @@ func game_play(r: Int, p: Int) -> Int{
     else{
         //Display question: path[p]![0]
         // Provide text box for user to put their answer
-        var user_answer = readLine()
+        let user_answer = readLine()
         
         //answer is correct
         if user_answer == path[p]![1]{
             //Display UI telling user is correct
             //Then give them subcategory option 1 or subcategory option 2 to choose from option_1 = path[0+1]![2], option_2 = path[0+2]![2]
-            var user_choice = 1//Whichever is selected, this will not be 0, when fixed it will be based off user selection and UI
-            var option_1 = 1
-            var option_2 = 2
+            let user_choice = 1//Whichever is selected, this will not be 0, when fixed it will be based off user selection and UI
+            let option_1 = 1
+            //let option_2 = 2
             if user_choice == option_1 {
                 if r == 2{ //Round 2 option 1
-                    var path_index = p + 2
-                    var round_num = r + 1
+                    let path_index = p + 2
+                    let round_num = r + 1
                     colorPath[p] = .green
                     return game_play(r: round_num, p: path_index)
                 }
                 else { //Round 3 option 1
-                    var path_index = p + 3
-                    var round_num = r + 1
+                    let path_index = p + 3
+                    let round_num = r + 1
                     colorPath[p] = .green
                     return game_play(r: round_num, p: path_index)
                 }
                 
             } else{ // Option 2
                 if r == 2{ //Round 2 option 2
-                    var path_index = p + 3
-                    var round_num = r + 1
+                    let path_index = p + 3
+                    let round_num = r + 1
                     colorPath[p] = .green
                     return game_play(r: round_num, p: path_index)
                 }
                 else { //Round 3 option 2
-                    var path_index = p + 4
-                    var round_num = r + 1
+                    let path_index = p + 4
+                    let round_num = r + 1
                     colorPath[p] = .green
                     return game_play(r: round_num, p: path_index)
                 }
