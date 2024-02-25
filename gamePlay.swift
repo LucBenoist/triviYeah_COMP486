@@ -10,11 +10,10 @@ import UIKit
 
 
 // Get Day of Week
-// Testing so right now it is Wednesday
-var theme = getTheme(day:"Wednesday")
-
-//Get questions
+// Testing so right now it is Saturday
+/*var theme = getTheme(day:"Saturday")
 var questions_dict = question_caller()
+
 
 //Replica Path used for assigning color
 var colorPath: [Int: UIColor] = [0: .gray,
@@ -30,19 +29,19 @@ var colorPath: [Int: UIColor] = [0: .gray,
                                 10: .gray]
 
 // Create Path
-var path = [Int: [String]]()
+var daily_path = [Int: [String]]()
 func create_path() -> [Int: [String]] {
     for i in 0...10 {
         if let value = questions_dict[i] {
-            path[i] = value
+            daily_path[i] = value
         }
     }
     questions_dict.removeAll()
-    return path
-}
+    return daily_path
+} */
 
 //User progresses through game until answer all five questions correctly or gets one wrong
-func game_process(){
+/*func game_process(){
     path = create_path()
     let round_number = 1
     let path_number = 0
@@ -171,4 +170,4 @@ func game_play(r: Int, p: Int) -> Int{
             return 0
         }
     }
-}
+} */
