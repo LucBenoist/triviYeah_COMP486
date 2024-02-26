@@ -140,23 +140,62 @@ var path = create_path()
 
 
 struct QuestionView: View{
-    @State private var selectedAnswer: Answer?
+    @State private var answer = ""
+    @State private var isCorrect = false
     var body: some View {
         VStack {
             Text("Round One")
                 .font(.title)
                 .padding()
             
-            Text("Question: \(path[0]![0])")
+            Text("Question: \(path[0]![0])") //Change so it iterates over all the questions instead of hard code
                 .padding()
+            
+            TextField("Enter your answer", text: $answer)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            Button("Submit") {
+                //Change logic so the right answer is checked and its not hard coded
+                if answer.lowercased() == "\(path[0]![1])"{
+                    isCorrect = true}
+                else{
+                    isCorrect = false}
+                
+                }
+            .padding()
+            .disabled(answer.isEmpty)
+            
+            if isCorrect {
+                //Tells user they are correct and moves to the sub cat selection screen
+                Text("Correct!")
+                    .foregroundColor(.green)
+                NavigationLink{
+                    LinkView()
+                } label: {
+                    PrimeButton_(text: "Continue")
+                }
+                
+                
+            }
+            else{
+                //Finishes the game and shows tree progress
+                Text("Incorrect!")
+                    .foregroundColor(.red)
+                NavigationLink{
+                    LinkView()
+                } label: {
+                    PrimeButton_(text: "Continue")
+                }
+                }
+            }
+            }
             
             
             
         }
 
     
-    }
-}
 
 struct QuestionView_Previews: PreviewProvider{
     static var previews: some View{
