@@ -42,7 +42,7 @@ var miscAnswers = [String]()
 // Read question text file
 // Create list of subcategory, question, and answer for every category
 func readFile(filePath: String) {
-    if let filePath = Bundle.main.path(forResource: "questions_resource", ofType: "txt" ){
+    if let filePath = Bundle.main.path(forResource: "questions_resource", ofType: "" ){
         do {
             let textFile = try String(contentsOfFile: filePath, encoding: .utf8)
             let lines = textFile.components(separatedBy: "\n")
@@ -163,6 +163,7 @@ func getQuestions(theme: String) -> [Int: [String]] {
             miscSub.removeFirst()
             i += 1
         }
+        //This is bug need to fix next demo
     case "History/Science":
         while i < 11 {
             if i == 0 || i == 4 || i == 10 {
