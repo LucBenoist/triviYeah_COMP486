@@ -26,6 +26,8 @@
 		E8A3F0502B72DE7E00ACA7C7 /* IOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F04F2B72DE7E00ACA7C7 /* IOSTests.swift */; };
 		E8A3F05A2B72DE7E00ACA7C7 /* IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F0592B72DE7E00ACA7C7 /* IOSUITests.swift */; };
 		E8A3F05C2B72DE7E00ACA7C7 /* IOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F05B2B72DE7E00ACA7C7 /* IOSUITestsLaunchTests.swift */; };
+		E8B55AA02B8D90F0000FA0DD /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B55A9F2B8D90F0000FA0DD /* CategoryView.swift */; };
+		E8B55AA22B8DA365000FA0DD /* Category2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B55AA12B8DA365000FA0DD /* Category2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		E8A3F0552B72DE7E00ACA7C7 /* TriviYeah!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TriviYeah!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A3F0592B72DE7E00ACA7C7 /* IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSUITests.swift; sourceTree = "<group>"; };
 		E8A3F05B2B72DE7E00ACA7C7 /* IOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E8B55A9F2B8D90F0000FA0DD /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		E8B55AA12B8DA365000FA0DD /* Category2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 				E8041ED62B7B0022007D9750 /* LinkView.swift */,
 				B015FD502B8C1D0B0031EA4E /* GameOverView.swift */,
 				B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */,
+				E8B55A9F2B8D90F0000FA0DD /* CategoryView.swift */,
+				E8B55AA12B8DA365000FA0DD /* Category2.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -326,6 +332,8 @@
 				E8041EC32B76F2E6007D9750 /* AnswerModel.swift in Sources */,
 				E8041EC52B76F368007D9750 /* AnswerRow .swift in Sources */,
 				E8041EB82B76DFC6007D9750 /* PrimeButton .swift in Sources */,
+				E8B55AA02B8D90F0000FA0DD /* CategoryView.swift in Sources */,
+				E8B55AA22B8DA365000FA0DD /* Category2.swift in Sources */,
 				B015FD532B8C1E880031EA4E /* LinkViewToTree.swift in Sources */,
 				E8041EBD2B76EAC5007D9750 /* ProgressBar.swift in Sources */,
 				E8041ED72B7B0022007D9750 /* LinkView.swift in Sources */,

@@ -137,18 +137,22 @@ var path = create_path()
 
 
 
-
+let randomRow = Int.random(in:0..<path.count)
+let randomQuestion = path[randomRow]![0]
+var count: Int = 0
 
 struct QuestionView: View{
     @State private var answer = ""
     @State private var isCorrect = false
     var body: some View {
         VStack {
-            Text("Round One")
+            
+            Text("Round: \(count + 1)")
                 .font(.title)
                 .padding()
             
-            Text("Question: \(path[0]![0])") //Change so it iterates over all the questions instead of hard code
+            
+            Text("Question: \(randomQuestion)") //Change so it iterates over all the questions instead of hard code
                 .padding()
             
             TextField("Enter your answer", text: $answer)
@@ -157,7 +161,7 @@ struct QuestionView: View{
             
             Button("Submit") {
                 //Change logic so the right answer is checked and its not hard coded
-                if answer.lowercased() == "\(path[0]![1])"{
+                if answer == "\(path[randomRow]![1])"{
                     isCorrect = true}
                 else{
                     isCorrect = false}
@@ -170,22 +174,18 @@ struct QuestionView: View{
                 //Tells user they are correct and moves to the sub cat selection screen
                 Text("Correct!")
                     .foregroundColor(.green)
-                NavigationLink{
-                    LinkView()
-                } label: {
+                NavigationLink(destination: CategoryView()){
                     PrimeButton_(text: "Continue")
                 }
-                
                 
             }
             else{
                 //Finishes the game and shows tree progress
                 Text("Incorrect!")
                     .foregroundColor(.red)
-                NavigationLink{
-                    LinkView()
-                } label: {
+                NavigationLink(destination: GameOverView()){
                     PrimeButton_(text: "Continue")
+                    
                 }
                 }
             }
@@ -201,4 +201,7 @@ struct QuestionView_Previews: PreviewProvider{
     static var previews: some View{
         QuestionView()
     }
+    
+    
+    
 }
