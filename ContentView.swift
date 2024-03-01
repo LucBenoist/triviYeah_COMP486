@@ -9,10 +9,11 @@
 import SwiftUI
 var theme = getTheme(day:"Saturday")
 var questions_dict = question_caller()
+var path_rectangle = Rectangle()
 
 
 //Replica Path used for assigning color
-var colorPath: [Int: UIColor] = [0: .gray,
+var colorPath: [Int: Color] = [0: .gray,
                                  1: .gray,
                                  2: .gray,
                                  3: .gray,
@@ -103,8 +104,10 @@ struct QuestionView: View{
                 Button("Submit") {
                     //Change logic so the right answer is checked and its not hard coded
                     if answer == "\(path[0]![1])"{
+                        colorPath[path_node] = .green
                         isCorrect = true}
                     else{
+                        colorPath[path_node] = .red
                         isCorrect = false}
                     
                     }
@@ -126,8 +129,10 @@ struct QuestionView: View{
                         Button("Submit") {
                             //Change logic so the right answer is checked and its not hard coded
                             if answer == "\(path[path_node]![1])"{
+                                colorPath[path_node] = .green
                                 isCorrect = true}
                             else{
+                                colorPath[path_node] = .red
                                 isCorrect = false}
                             
                         }
@@ -150,8 +155,12 @@ struct QuestionView: View{
                 Button("Submit") {
                     //Change logic so the right answer is checked and its not hard coded
                     if answer == "\(path[10]![1])"{
+                        path_node = 10
+                        colorPath[path_node] = .green
                         isCorrect = true}
                     else{
+                        path_node = 10
+                        colorPath[path_node] = .red
                         isCorrect = false}
                     
                 }
@@ -367,6 +376,42 @@ struct GameOverView: View{
                     .fontWeight(.heavy)
                     .foregroundColor(Color.red)
             }
+                // Row 1 (Round 1)
+                path_rectangle
+                    .frame(width: 50.0, height: 50.0)
+                    .foregroundColor(colorPath[0])
+                // Row 2 (Round 2)
+                HStack{
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[1])
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[2])
+                }
+                // Row 3 (Round 3)
+                HStack{
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[3])
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[4])
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[5])
+                    
+                }
+                // Row 4 (Round 4)
+                HStack{
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[6])
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[7])
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[8])
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[9])
+                }
+                // Row 5 (Round 5)
+                path_rectangle .frame(width: 50.0, height: 50.0)
+                    .foregroundColor(colorPath[10])
+                
             }
             //Figure out a way to  present tree results
             //Ideas(dumb) have an image of the tree for every possible combinations of right and wrong squares and insert the image based on player preformance
