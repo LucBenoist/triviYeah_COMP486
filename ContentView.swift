@@ -41,13 +41,16 @@ func create_path() -> [Int: [String]] {
 //creates path with question_dict that has the 11 questions, answers, subcats ready for the day
 var path = create_path()
 
+// Establish Startting at Path 0 and Round 1
 var path_node: Int = 0
 var round_num: Int = 1
+
+// Home Screen
 struct ContentView: View{
     var body: some View {
             NavigationView {
                 ZStack{
-                    Color("Navy")
+                    Color("Navy") // Back
                         .ignoresSafeArea()
                     VStack{
                         HStack{
@@ -60,12 +63,13 @@ struct ContentView: View{
                         }
                         NavigationLink{
                             LinkView()
+                                .navigationBarBackButtonHidden(true)
                         } label: {
                             PrimeButton_(text: "GO!")
                         }
                     }
                 }
-            }
+            }.navigationBarBackButtonHidden(true)
         
     }
 }
