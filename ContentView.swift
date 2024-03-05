@@ -13,17 +13,17 @@ var path_rectangle = Rectangle()
 
 
 //Replica Path used for assigning color
-var colorPath: [Int: Color] = [0: Color("Gray"),
-                                 1: Color("Gray"),
-                                 2: Color("Gray"),
-                                 3: Color("Gray"),
-                                 4: Color("Gray"),
-                                 5: Color("Gray"),
-                                 6: Color("Gray"),
-                                 7: Color("Gray"),
-                                 8: Color("Gray"),
-                                 9: Color("Gray"),
-                                10: Color("Gray")]
+var colorPath: [Int: Color] = [0: Color("Path Gray"),
+                                 1: Color("Path Gray"),
+                                 2: Color("Path Gray"),
+                                 3: Color("Path Gray"),
+                                 4: Color("Path Gray"),
+                                 5: Color("Path Gray"),
+                                 6: Color("Path Gray"),
+                                 7: Color("Path Gray"),
+                                 8: Color("Path Gray"),
+                                 9: Color("Path Gray"),
+                                10: Color("Path Gray")]
 
 // Create Path process
 var daily_path = [Int: [String]]()
@@ -61,199 +61,174 @@ struct ContentView: View{
                                 .multilineTextAlignment(.center)
                             
                         }
-                        NavigationLink{
-                            LinkView()
-                                .navigationBarBackButtonHidden(true)
-                        } label: {
+                        NavigationLink{ // Start Daily Trivia Game
+                            QuestionView()} label: {
                             PrimeButton_(text: "GO!")
                         }
                     }
                 }
             }.navigationBarBackButtonHidden(true)
-        
     }
 }
 
-//LinkView
-struct LinkView: View {
-    var body: some View {
-        QuestionView()
-    }
-}
-
-//Question Scene
-//Round Play
+//Question Scene and Round Play
 struct QuestionView: View{
     @State private var answer = ""
     @State private var isCorrect: Bool?
     var body: some View {
-        ZStack{
-            Color("Navy")
-                .ignoresSafeArea()
-            VStack {
-                
-                
-                if round_num == 1{
-                    Text("Round: \(round_num)")
-                        .font(.title)
+        NavigationView{
+            ZStack{
+                Color("Navy")
+                    .ignoresSafeArea()
+                VStack {
+                    // Round 1
+                    if round_num == 1{
+                        Text("Round: \(round_num)")
+                            .font(.title)
+                            .padding()
+                            .foregroundStyle(Color("Lime"))
+                        Text((path[0]![0])) //Q0
+                            .foregroundStyle(Color("Lime"))
+                            .padding()
+                        TextField("Enter your answer...", text: $answer) // Text Box for user answer
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
+                        
+                        // Upon Submitting, check if user answer is correct
+                        Button("Submit") {
+                            if answer == "\(path[0]![1])"{
+                                colorPath[path_node] = Color("PathG") // Update color at path node to green
+                                isCorrect = true}
+                            // Got it wrong
+                            else{
+                                colorPath[path_node] = Color("PathR") // Update color at path node to red
+                                isCorrect = false}
+                        }
                         .padding()
-                        .foregroundStyle(Color("Lime"))
-                    Text((path[0]![0]))
-                        .foregroundStyle(Color("Lime"))
-                        .padding()
-                    TextField("Enter your answer...", text: $answer)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                    
-                    Button("Submit") {
-                        //Change logic so the right answer is checked and its not hard coded
-                        if answer == "\(path[0]![1])"{
-                            colorPath[path_node] = Color("PathG")
-                            isCorrect = true}
-                        else{
-                            colorPath[path_node] = Color("PathR")
-                            isCorrect = false}
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        .disabled(answer.isEmpty) // look into
                         
                     }
-                    .padding()
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    .disabled(answer.isEmpty)
-                    
-                }
-                else if round_num != 5 {
-                    Text("Round: \(round_num)")
-                        .font(.title)
-                        .padding()
-                        .foregroundStyle(Color("Lime"))
-                    Text((path[path_node]![0]))
-                        .padding()
-                        .foregroundStyle(Color("Lime"))
-                    TextField("Enter your answer...", text: $answer)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                    
-                    Button("Submit") {
-                        //Change logic so the right answer is checked and its not hard coded
-                        if answer == "\(path[path_node]![1])"{
-                            colorPath[path_node] = Color("PathG")
-                            isCorrect = true}
-                        else{
-                            colorPath[path_node] = Color("PathR")
-                            isCorrect = false}
+                    // As long as not starting or final round
+                    else if round_num != 5 {
+                        Text("Round: \(round_num)")
+                            .font(.title)
+                            .padding()
+                            .foregroundStyle(Color("Lime"))
+                        Text((path[path_node]![0])) //Question stored at path node
+                            .padding()
+                            .foregroundStyle(Color("Lime"))
+                        TextField("Enter your answer...", text: $answer)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
                         
-                    }
-                    .padding()
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/) //look into
-                    .disabled(answer.isEmpty)
-                    
-                }
-                else{
-                    Text("FINAL ROUND")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundStyle(Color("Lime"))
-                    Text((path[10]![0]))
-                        .padding()
-                        .foregroundStyle(Color("Lime"))
-                    TextField("Enter your answer...", text: $answer)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                    
-                    Button("Submit") {
-                        //Change logic so the right answer is checked and its not hard coded
-                        if answer == "\(path[10]![1])"{
-                            path_node = 10
-                            colorPath[path_node] = Color("PathG")
-                            isCorrect = true}
-                        else{
-                            path_node = 10
-                            colorPath[path_node] = Color("PathR")
-                            isCorrect = false}
-                        
-                    }
-                    .padding()
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    .disabled(answer.isEmpty)
-                    
-                }
-                
-                
-                
-                
-                
-                if round_num != 4 && round_num != 5{
-                    if isCorrect == true {
-                        //Tells user they are correct and moves to the sub cat selection screen
-                        Text("Correct!")
-                            .foregroundColor(.green)
-                        NavigationLink(destination: CategoryView()){
+                        // Checking user's answer
+                        Button("Submit") {
+                            if answer == "\(path[path_node]![1])"{
+                                colorPath[path_node] = Color("PathG")
+                                isCorrect = true}
+                            else{
+                                colorPath[path_node] = Color("PathR")
+                                isCorrect = false}
                             
-                            PrimeButton_(text: "Continue")
-                        }.navigationBarBackButtonHidden(true)
-                            .onAppear {
-                                round_num += 1
+                        }
+                        .padding()
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/) //look into
+                        .disabled(answer.isEmpty)
+                        
+                    }
+                    else{ // Final Round Branch
+                        Text("FINAL ROUND")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundStyle(Color("Lime"))
+                        Text((path[10]![0])) // Final question
+                            .padding()
+                            .foregroundStyle(Color("Lime"))
+                        TextField("Enter your answer...", text: $answer)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
+                        
+                        // Checking final answer
+                        Button("Submit") {
+                            if answer == "\(path[10]![1])"{
+                                path_node = 10
+                                colorPath[path_node] = Color("PathG")
+                                isCorrect = true}
+                            else{
+                                path_node = 10
+                                colorPath[path_node] = Color("PathR")
+                                isCorrect = false}
+                            
+                        }
+                        .padding()
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        .disabled(answer.isEmpty)
+                        
+                    }
+                    
+    // This portion of code calls next View Structs depending on if answer was correct or wrong
+                    // All rounds except 4 and 5 go to the choice of a subcategory
+                    if round_num != 4 && round_num != 5{
+                        if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
+                            Text("Correct!")
+                                .foregroundColor(.green)
+                            NavigationLink(destination: CategoryView()){
+                                
+                                PrimeButton_(text: "Continue")
+                            }.onAppear {
+                                    round_num += 1
+                                }
+                        }
+                        else if isCorrect == false{
+                            // Their game is over and are taken to GameOverView
+                            Text("Incorrect!")
+                                .foregroundColor(.red)
+                            NavigationLink(destination: GameOverView()){
+                                PrimeButton_(text: "Continue")
                             }
-                        
+                        }
                     }
-                    else if isCorrect == false{
-                        //Finishes the game and shows tree progress
-                        Text("Incorrect!")
-                            .foregroundColor(.red)
-                        NavigationLink(destination: GameOverView()){
-                            PrimeButton_(text: "Continue")
+                    else if round_num == 4{ // If correct at Round 4, go to final round
+                        if isCorrect == true {
+                            Text("Correct!")
+                                .foregroundColor(.green)
+                            NavigationLink(destination: QuestionView()){
+                                PrimeButton_(text: "Let's Go to the Final Round")
+                            }.onAppear {
+                                    round_num += 1
+                                }
                             
-                        }.navigationBarBackButtonHidden(true)
-                    }
-                }
-                else if round_num == 4{
-                    if isCorrect == true {
-                        //Tells user they are correct and moves to the sub cat selection screen
-                        Text("Correct!")
-                            .foregroundColor(.green)
-                        NavigationLink(destination: QuestionView()){
-                            
-                            PrimeButton_(text: "Continue")
-                        }.navigationBarBackButtonHidden(true)
-                            .onAppear {
-                                round_num += 1
+                        }
+                        else if isCorrect == false { // Incorrect, gameplay is over
+                            Text("Incorrect!")
+                                .foregroundColor(.red)
+                            NavigationLink(destination: GameOverView()){
+                                PrimeButton_(text: "Continue")
                             }
-                        
-                    }
-                    else if isCorrect == false {
-                        //Finishes the game and shows tree progress
-                        Text("Incorrect!")
-                            .foregroundColor(.red)
-                        NavigationLink(destination: GameOverView()){
-                            PrimeButton_(text: "Continue")
-                            
-                        }.navigationBarBackButtonHidden(true)
-                    }
-                } else{
-                    if isCorrect == true {
-                        //Tells user they are correct and moves to the sub cat selection screen
-                        Text("Correct!")
-                            .foregroundColor(.green)
-                        NavigationLink(destination: GameOverView()){
-                            
-                            PrimeButton_(text: "Continue")
-                        }.navigationBarBackButtonHidden(true)
-                            .onAppear {
-                                round_num += 1
+                        }
+                    
+                    } else{ //Final Round
+                        if isCorrect == true { // Got TriviYeah: A Perfect Game)
+                            Text("Correct!")
+                                .foregroundStyle(Color("Lime"))
+                            NavigationLink(destination: GameOverView()){
+                                PrimeButton_(text: "Continue")
+                            }.onAppear {
+                                    round_num += 1
+                                }
+                        }
+                        else if isCorrect == false {
+                            Text("Incorrect!")
+                                .foregroundColor(.red)
+                            NavigationLink(destination: GameOverView()){
+                                PrimeButton_(text: "Continue")
                             }
-                        
-                    }
-                    else if isCorrect == false {
-                        //Finishes the game and shows tree progress
-                        Text("Incorrect!")
-                            .foregroundColor(.red)
-                        NavigationLink(destination: GameOverView()){
-                            PrimeButton_(text: "Continue")
-                            
-                        }.navigationBarBackButtonHidden(true)
+                        }
                     }
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
         
@@ -358,7 +333,7 @@ struct CategoryView: View{
                         }
                     }
                 }
-            }.navigationBarHidden(true)
+            }.navigationBarBackButtonHidden(true)
         
     }
 }
@@ -370,68 +345,67 @@ struct CategoryView: View{
 //Game Over scene
 struct GameOverView: View{
     var body: some View {
-        ZStack{
-            Color("Navy")
-                .ignoresSafeArea()
-        VStack{
-            Text("Game Over!")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(Color.purple)
-            
-            if round_num == 6{
-                Text("Congratulations, You got a TriviYeah!")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .foregroundColor(Color("PathG"))
+        NavigationView{
+            ZStack{
+                Color("Navy")
+                    .ignoresSafeArea()
+                VStack{
+                    Text("Game Over!")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .foregroundColor(Color.purple)
+                    
+                    if round_num == 6{
+                        Text("Congratulations, You got a TriviYeah!")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color("PathG"))
+                    }
+                    else{
+                        Text("Maybe next time Sport!")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color("PathR"))
+                    }
+                    // Row 1 (Round 1)
+                    path_rectangle
+                        .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[0])
+                    // Row 2 (Round 2)
+                    HStack{
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[1])
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[2])
+                    }
+                    // Row 3 (Round 3)
+                    HStack{
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[3])
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[4])
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[5])
+                        
+                    }
+                    // Row 4 (Round 4)
+                    HStack{
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[6])
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[7])
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[8])
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(colorPath[9])
+                    }
+                    // Row 5 (Round 5)
+                    path_rectangle .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(colorPath[10])
+                    
+                }
             }
-            else{
-                Text("Maybe next time Sport!")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .foregroundColor(Color("PathR"))
-            }
-            // Row 1 (Round 1)
-            path_rectangle
-                .frame(width: 50.0, height: 50.0)
-                .foregroundColor(colorPath[0])
-            // Row 2 (Round 2)
-            HStack{
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[1])
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[2])
-            }
-            // Row 3 (Round 3)
-            HStack{
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[3])
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[4])
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[5])
-                
-            }
-            // Row 4 (Round 4)
-            HStack{
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[6])
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[7])
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[8])
-                path_rectangle .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(colorPath[9])
-            }
-            // Row 5 (Round 5)
-            path_rectangle .frame(width: 50.0, height: 50.0)
-                .foregroundColor(colorPath[10])
-            
-        }
-    }
-            //Figure out a way to  present tree results
-            //Ideas(dumb) have an image of the tree for every possible combinations of right and wrong squares and insert the image based on player preformance
-            //Have a changeable "game object"?? that changes as the user plays
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
