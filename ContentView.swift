@@ -44,6 +44,7 @@ var path = create_path()
 // Establish Startting at Path 0 and Round 1
 var path_node: Int = 0
 var round_num: Int = 1
+var final_answer = ""
 
 // Home Screen
 struct ContentView: View{
@@ -82,6 +83,7 @@ struct QuestionView: View{
                     .ignoresSafeArea()
                 VStack {
                     // Round 1
+                    // Round 1
                     if round_num == 1{
                         Text("Round: \(round_num)")
                             .font(.title)
@@ -108,7 +110,28 @@ struct QuestionView: View{
                         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                         .disabled(answer.isEmpty) // look into
                         
+                        
+                        if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
+                            Text("Correct!")
+                                .foregroundColor(.green)
+                            NavigationLink(destination: CategoryView()){
+                                
+                                PrimeButton_(text: "Continue")
+                            }.onAppear {
+                                    round_num += 1
+                                }
+                        }
+                        else if isCorrect == false{
+                            // Their game is over and are taken to GameOverView
+                            Text("Incorrect!")
+                                .foregroundColor(.red)
+                            NavigationLink(destination: GameOverView()){
+                                PrimeButton_(text: "Continue")
+                            }
+                        }
+                        
                     }
+                    // As long as not starting or final round
                     // As long as not starting or final round
                     else if round_num != 5 {
                         Text("Round: \(round_num)")
@@ -136,49 +159,17 @@ struct QuestionView: View{
                         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/) //look into
                         .disabled(answer.isEmpty)
                         
-                    }
-                    else{ // Final Round Branch
-                        Text("FINAL ROUND")
-                            .font(.largeTitle)
-                            .fontWeight(.heavy)
-                            .foregroundStyle(Color("Lime"))
-                        Text((path[10]![0])) // Final question
-                            .padding()
-                            .foregroundStyle(Color("Lime"))
-                        TextField("Enter your answer...", text: $answer)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
                         
-                        // Checking final answer
-                        Button("Submit") {
-                            if answer == "\(path[10]![1])"{
-                                path_node = 10
-                                colorPath[path_node] = Color("PathG")
-                                isCorrect = true}
-                            else{
-                                path_node = 10
-                                colorPath[path_node] = Color("PathR")
-                                isCorrect = false}
-                            
-                        }
-                        .padding()
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                        .disabled(answer.isEmpty)
-                        
-                    }
-                    
-    // This portion of code calls next View Structs depending on if answer was correct or wrong
-                    // All rounds except 4 and 5 go to the choice of a subcategory
-                    if round_num != 4 && round_num != 5{
-                        if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
+                        if round_num != 4{ // Not Round 4, then if correct answer go to CategoryView
+                            if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
                             Text("Correct!")
                                 .foregroundColor(.green)
                             NavigationLink(destination: CategoryView()){
                                 
                                 PrimeButton_(text: "Continue")
                             }.onAppear {
-                                    round_num += 1
-                                }
+                                round_num += 1
+                            }
                         }
                         else if isCorrect == false{
                             // Their game is over and are taken to GameOverView
@@ -189,44 +180,53 @@ struct QuestionView: View{
                             }
                         }
                     }
-                    else if round_num == 4{ // If correct at Round 4, go to final round
-                        if isCorrect == true {
-                            Text("Correct!")
-                                .foregroundColor(.green)
-                            NavigationLink(destination: QuestionView()){
-                                PrimeButton_(text: "Let's Go to the Final Round")
-                            }.onAppear {
-                                    round_num += 1
+                        else{ // If correct at Round 4, go to final round
+                            if isCorrect == true {
+                                Text("Correct!")
+                                    .foregroundColor(.green)
+                                NavigationLink(destination: QuestionView()){
+                                    PrimeButton_(text: "Let's Go to the Final Round")
+                                }.onAppear {
+                                        round_num += 1
+                                    }
+                                
+                            }
+                            else if isCorrect == false { // Incorrect, gameplay is over
+                                Text("Incorrect!")
+                                    .foregroundColor(.red)
+                                NavigationLink(destination: GameOverView()){
+                                    PrimeButton_(text: "Continue")
                                 }
+                            }
+                        
+                        }
+                        //Jon Rahm
+                    }
+                    else{ // Final Round Branch
+                        Text("FINAL ROUND")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundStyle(Color("Lime"))
+                        Text((path[10]![0])) // Final question
+                            .padding()
+                            .foregroundStyle(Color("Lime"))
+                        TextField("Enter your answer...", text:$answer)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
+                            .onChange(of:answer) {
+                                    final_answer = answer
+                                }
+                        
+                        // Checking final answer
+                       // Button("Results") {
+                        NavigationLink(destination: GameOverView()){
+                            PrimeButton_(text: "Results")
+                        }
+                            .padding()
+                            .foregroundColor(.blue)
                             
                         }
-                        else if isCorrect == false { // Incorrect, gameplay is over
-                            Text("Incorrect!")
-                                .foregroundColor(.red)
-                            NavigationLink(destination: GameOverView()){
-                                PrimeButton_(text: "Continue")
-                            }
-                        }
-                    
-                    } else{ //Final Round
-                        if isCorrect == true { // Got TriviYeah: A Perfect Game)
-                            Text("Correct!")
-                                .foregroundStyle(Color("Lime"))
-                            NavigationLink(destination: GameOverView()){
-                                PrimeButton_(text: "Continue")
-                            }.onAppear {
-                                    round_num += 1
-                                }
-                        }
-                        else if isCorrect == false {
-                            Text("Incorrect!")
-                                .foregroundColor(.red)
-                            NavigationLink(destination: GameOverView()){
-                                PrimeButton_(text: "Continue")
-                            }
-                        }
                     }
-                }
             }
         }.navigationBarBackButtonHidden(true)
     }
@@ -355,7 +355,7 @@ struct GameOverView: View{
                         .fontWeight(.heavy)
                         .foregroundColor(Color.purple)
                     
-                    if round_num == 6{
+                    if final_answer == path[10]![1] {
                         Text("Congratulations, You got a TriviYeah!")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
@@ -400,8 +400,19 @@ struct GameOverView: View{
                             .foregroundColor(colorPath[9])
                     }
                     // Row 5 (Round 5)
-                    path_rectangle .frame(width: 50.0, height: 50.0)
-                        .foregroundColor(colorPath[10])
+                    if final_answer == path[10]![1]{
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(Color("PathG"))
+                    }
+                    
+                    else if final_answer != path[10]![1] && round_num == 5{
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(Color("PathR"))
+                    }
+                    else{
+                        path_rectangle .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(Color(.gray))
+                    }
                     
                 }
             }
