@@ -2,9 +2,7 @@
 //  ContentView.swift
 //  TriviYeah!
 //
-//  Created by Luc Benoist on 2/12/24.
-// Charlie TESTING
-// HUGO Testing
+
 
 import SwiftUI
 var theme = getTheme(day:"Saturday")
@@ -155,6 +153,8 @@ struct QuestionView: View{
                                 isCorrect = false}
                             
                         }
+                        
+                        
                         .padding()
                         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/) //look into
                         .disabled(answer.isEmpty)
