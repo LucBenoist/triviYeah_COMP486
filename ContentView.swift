@@ -50,16 +50,16 @@ struct ContentView: View {
             ZStack {
                 Color("Navy")
                     .ignoresSafeArea()
-                VStack {
+                VStack(spacing: 20) { // Adjust the spacing here
                     Text("TriviYeah!")
-                        .font(.largeTitle)
+                        .font(Font.custom("Arial Rounded MT Bold", size: 60)) // Custom font and increased size
                         .fontWeight(.heavy)
-                        .foregroundStyle(Color.letterGreen)
+                        .foregroundColor(.letterGreen)
                         .multilineTextAlignment(.center)
                     Text("The Daily Trivia Game")
                         .font(.subheadline)
                         .fontWeight(.medium)
-                        .foregroundStyle(Color.letterGreen)
+                        .foregroundColor(.letterGreen)
                         .multilineTextAlignment(.center)
                     NavigationLink {
                         // Start Daily Trivia Game
