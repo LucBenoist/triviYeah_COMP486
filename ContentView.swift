@@ -266,7 +266,7 @@ struct CategoryView: View{
                         Text("Pick Next Round's Category!")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
-                            .foregroundColor(Color.purple)
+                            .foregroundColor(Color.skyYellow)
                         
                         HStack{
                             
