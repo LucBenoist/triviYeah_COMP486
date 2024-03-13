@@ -45,7 +45,7 @@ var path_node: Int = 0
 var round_num: Int = 1
 var final_answer = ""
 
-var isButtonClicked = false // Track if the button is clicked
+//var isButtonClicked = false // Track if the button is clicked
 
 struct ContentView: View {
     var body: some View {
@@ -98,6 +98,7 @@ struct ContentView: View {
 struct QuestionView: View{
     @State private var answer = ""
     @State private var isCorrect: Bool?
+    @State private var isButtonClicked: Bool?
     var body: some View {
         NavigationView{
             ZStack{
@@ -107,7 +108,7 @@ struct QuestionView: View{
                     // Round 1
                     // Round 1
                     if round_num == 1{
-                        Text("Round: \(round_num)")
+                        Text("Round \(round_num)")
                             .font(.title)
                             .padding()
                             .foregroundStyle(Color.skyYellow)
@@ -118,7 +119,7 @@ struct QuestionView: View{
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
                         
-                        if !isButtonClicked {
+                        if isButtonClicked != true {
                             // Show the "Submit" button only if it's not clicked
                             Button("Submit") {
                                 // Your submit logic here
@@ -134,12 +135,7 @@ struct QuestionView: View{
                             .padding()
                             .foregroundColor(.blue)
                             .disabled(answer.isEmpty)
-                        } else {
-        
                         }
-
-            
-                        
                         
                         if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
                             Text("Correct!")
@@ -164,9 +160,8 @@ struct QuestionView: View{
                         
                     }
                     // As long as not starting or final round
-                    // As long as not starting or final round
                     else if round_num != 5 {
-                        Text("Round: \(round_num)")
+                        Text("Round \(round_num)")
                             .font(.title)
                             .padding()
                             .foregroundStyle(Color.skyYellow)
@@ -176,14 +171,30 @@ struct QuestionView: View{
                         TextField("Enter your answer...", text: $answer)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
+
+                        // Is this needed?
+                        //.padding()
+                        //.foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/) //look into
+                        //.disabled(answer.isEmpty)
                         
-                        
-                        
-                        .padding()
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/) //look into
-                        .disabled(answer.isEmpty)
-                        
-                        
+                        if isButtonClicked != true {
+                            // Show the "Submit" button only if it's not clicked
+                            Button("Submit") {
+                                // Your submit logic here
+                                isButtonClicked = true // Set the flag to true when clicked
+                                if answer == "\(path[path_node]![1])" {
+                                    colorPath[path_node] = Color("PathG")
+                                    isCorrect = true
+                                } else {
+                                    colorPath[path_node] = Color("PathR")
+                                    isCorrect = false
+                                }
+                            }
+                            .padding()
+                            .foregroundColor(.blue)
+                            .disabled(answer.isEmpty)
+                        }
+                
                         if round_num != 4{ // Not Round 4, then if correct answer go to CategoryView
                             if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
                                 Text("Correct!")

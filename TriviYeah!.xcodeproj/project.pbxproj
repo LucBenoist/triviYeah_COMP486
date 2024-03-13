@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		13B912842B89901900F0CBF0 /* questions_resource in Resources */ = {isa = PBXBuildFile; fileRef = 13B912832B89901900F0CBF0 /* questions_resource */; };
-		800421772BA1D58100ADFA69 /* Notable-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 800421762BA1D58100ADFA69 /* Notable-Regular.ttf */; };
 		B015FD452B893B690031EA4E /* questionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015FD442B893B690031EA4E /* questionCreator.swift */; };
 		B015FD472B893B790031EA4E /* gamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015FD462B893B790031EA4E /* gamePlay.swift */; };
 		B015FD532B8C1E880031EA4E /* LinkViewToTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		13B912832B89901900F0CBF0 /* questions_resource */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions_resource; sourceTree = SOURCE_ROOT; };
-		800421762BA1D58100ADFA69 /* Notable-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Notable-Regular.ttf"; path = "../../Notable-Regular.ttf"; sourceTree = "<group>"; };
 		B015FD442B893B690031EA4E /* questionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questionCreator.swift; sourceTree = SOURCE_ROOT; };
 		B015FD462B893B790031EA4E /* gamePlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gamePlay.swift; sourceTree = SOURCE_ROOT; };
 		B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewToTree.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				B015FD442B893B690031EA4E /* questionCreator.swift */,
 				13B912832B89901900F0CBF0 /* questions_resource */,
 				E8041ED02B7AF462007D9750 /* ContentView.swift */,
-				800421762BA1D58100ADFA69 /* Notable-Regular.ttf */,
 				B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */,
 			);
 			name = Views;
@@ -286,7 +283,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8A3F0462B72DE7E00ACA7C7 /* Preview Assets.xcassets in Resources */,
-				800421772BA1D58100ADFA69 /* Notable-Regular.ttf in Resources */,
 				E8A3F0432B72DE7E00ACA7C7 /* Assets.xcassets in Resources */,
 				13B912842B89901900F0CBF0 /* questions_resource in Resources */,
 			);
