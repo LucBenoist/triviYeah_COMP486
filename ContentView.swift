@@ -52,12 +52,12 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 VStack(spacing: 20) { // Add spacing between elements
                     Text("TriviYeah!")
-                        .font(Font.custom("Arial Rounded MT Bold", size: 60))
+                        .font(Font.custom("Arial Rounded MT Bold", size: 70))
                         .fontWeight(.heavy)
                         .foregroundColor(.letterGreen)
-                        .padding(.top, 20) // Add padding to the top
+                        .padding(.top, 50) // Add padding to the top
                     Text("The Daily Trivia Game")
-                        .font(.subheadline)
+                        .font(Font.custom("Arial Rounded MT Bold", size: 20))
                         .fontWeight(.medium)
                         .foregroundColor(.letterGreen)
                         .multilineTextAlignment(.center)
