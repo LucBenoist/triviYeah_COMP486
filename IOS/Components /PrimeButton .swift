@@ -15,7 +15,7 @@ struct PrimeButton_: View {
         Text(text)
             .font(Font.custom("Arial Rounded MT Bold", size: 25)) // Using custom font
             .foregroundColor(.skyTeal)
-            .frame(width: 120, height: 28) // Set width and height
+            .frame(width: 175, height: 28) // Set width and height
             .padding()
             .background(background)
             .cornerRadius(0) // Remove corner radius

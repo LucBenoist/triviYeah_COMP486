@@ -107,9 +107,9 @@ struct QuestionView: View{
                         Text("Round: \(round_num)")
                             .font(.title)
                             .padding()
-                            .foregroundStyle(Color("skyYellow"))
+                            .foregroundStyle(Color.skyYellow)
                         Text((path[0]![0])) //Q0
-                            .foregroundStyle(Color("skyYellow"))
+                            .foregroundStyle(Color.skyYellow)
                             .padding()
                         TextField("Enter your answer...", text: $answer) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -156,10 +156,10 @@ struct QuestionView: View{
                         Text("Round: \(round_num)")
                             .font(.title)
                             .padding()
-                            .foregroundStyle(Color("Lime"))
+                            .foregroundStyle(Color.skyYellow)
                         Text((path[path_node]![0])) //Question stored at path node
                             .padding()
-                            .foregroundStyle(Color("Lime"))
+                            .foregroundStyle(Color.skyYellow)
                         TextField("Enter your answer...", text: $answer)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
@@ -206,7 +206,7 @@ struct QuestionView: View{
                                 Text("Correct!")
                                     .foregroundColor(.green)
                                 NavigationLink(destination: QuestionView()){
-                                    PrimeButton_(text: "Let's Go to the Final Round")
+                                    PrimeButton_(text: "Final Round!")
                                 }.onAppear {
                                         round_num += 1
                                     }
@@ -227,10 +227,10 @@ struct QuestionView: View{
                         Text("FINAL ROUND")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
-                            .foregroundStyle(Color("Lime"))
+                            .foregroundStyle(Color.skyYellow)
                         Text((path[10]![0])) // Final question
                             .padding()
-                            .foregroundStyle(Color("Lime"))
+                            .foregroundStyle(Color.skyYellow)
                         TextField("Enter your answer...", text:$answer)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
