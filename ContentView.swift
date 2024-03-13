@@ -107,9 +107,9 @@ struct QuestionView: View{
                         Text("Round: \(round_num)")
                             .font(.title)
                             .padding()
-                            .foregroundStyle(Color("Lime"))
+                            .foregroundStyle(Color("skyYellow"))
                         Text((path[0]![0])) //Q0
-                            .foregroundStyle(Color("Lime"))
+                            .foregroundStyle(Color("skyYellow"))
                             .padding()
                         TextField("Enter your answer...", text: $answer) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
