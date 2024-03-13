@@ -18,6 +18,7 @@ struct PrimeButton_: View {
             .background(background)
             .foregroundColor(.letterGreen)
             .shadow(radius: 5) // Adjust shadow radius
+            .frame(width: 100, height: 40) // Set width and height
     }
 }
 
