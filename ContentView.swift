@@ -52,7 +52,7 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 VStack(spacing: 12) { // Add spacing between elements
                     Text("TriviYeah!")
-                        .font(Font.custom("Blockhead", size: 70))
+                        .font(Font.custom("Notable-Regular", size: 70))
                         .fontWeight(.heavy)
                         .foregroundColor(.letterGreen)
                         .padding(.top, 50) // Add padding to the top
