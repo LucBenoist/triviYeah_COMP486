@@ -54,12 +54,12 @@ struct ContentView: View {
                     Text("TriviYeah!")
                         .font(Font.custom("Notable-Regular", size: 70))
                         .fontWeight(.heavy)
-                        .foregroundColor(.letterGreen)
+                        .foregroundColor(.skyTeal)
                         .padding(.top, 50) // Add padding to the top
                     Text("The Daily Trivia Game")
                         .font(Font.custom("Arial Rounded MT Bold", size: 20))
                         .fontWeight(.medium)
-                        .foregroundColor(.letterGreen)
+                        .foregroundColor(.skyTeal)
                         .multilineTextAlignment(.center)
                     Spacer() // Add space between "The Daily Trivia Game" and the button
                     NavigationLink {
