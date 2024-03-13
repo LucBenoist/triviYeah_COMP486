@@ -58,6 +58,11 @@ struct ContentView: View{
                                 .fontWeight(.heavy)
                                 .foregroundStyle(Color.letterGreen)
                                 .multilineTextAlignment(.center)
+                            Text("The Daily Trivia Game")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .foregroundStyle(Color.letterGreen)
+                                .multilineTextAlignment(.center)
                             
                         }
                         NavigationLink{ // Start Daily Trivia Game
