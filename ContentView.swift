@@ -50,7 +50,7 @@ struct ContentView: View {
             ZStack {
                 Color("Navy")
                     .ignoresSafeArea()
-                VStack(spacing: 20) { // Add spacing between elements
+                VStack(spacing: 12) { // Add spacing between elements
                     Text("TriviYeah!")
                         .font(Font.custom("Arial Rounded MT Bold", size: 70))
                         .fontWeight(.heavy)
@@ -68,7 +68,7 @@ struct ContentView: View {
                     } label: {
                         PrimeButton_(text: "Play")
                     }
-                    .padding(.bottom, 20) // Add padding to the bottom of the button
+                    .padding(.bottom, 70) // Add padding to the bottom of the button
                 }
                 .padding(.horizontal, 20) // Add horizontal padding
             }
