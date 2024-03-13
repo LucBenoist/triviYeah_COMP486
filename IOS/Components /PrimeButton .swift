@@ -13,9 +13,9 @@ struct PrimeButton_: View {
 
     var body: some View {
         Text(text)
-            .font(Font.custom("Arial Rounded MT Bold", size: 30)) // Using custom font
+            .font(Font.custom("Arial Rounded MT Bold", size: 25)) // Using custom font
             .foregroundColor(.skyTeal)
-            .frame(width: 80, height: 28) // Set width and height
+            .frame(width: 120, height: 28) // Set width and height
             .padding()
             .background(background)
             .cornerRadius(0) // Remove corner radius
