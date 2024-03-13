@@ -50,32 +50,42 @@ struct ContentView: View {
             ZStack {
                 Color("Navy")
                     .ignoresSafeArea()
-                VStack(spacing: 12) { // Add spacing between elements
+                
+                // Sky teal outline
+                Rectangle()
+                    .stroke(Color.skyTeal, lineWidth: 4)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack(spacing: 12) {
                     Text("TriviYeah!")
                         .font(Font.custom("Notable-Regular", size: 70))
                         .fontWeight(.heavy)
                         .foregroundColor(.skyTeal)
-                        .padding(.top, 50) // Add padding to the top
+                        .padding(.top, 50)
+                    
                     Text("The Daily Trivia Game")
                         .font(Font.custom("Arial Rounded MT Bold", size: 20))
                         .fontWeight(.medium)
                         .foregroundColor(.skyTeal)
                         .multilineTextAlignment(.center)
-                    Spacer() // Add space between "The Daily Trivia Game" and the button
+                    
+                    Spacer()
+                    
                     NavigationLink {
-                        // Start Daily Trivia Game
                         QuestionView()
                     } label: {
                         PrimeButton_(text: "Play")
                     }
-                    .padding(.bottom, 70) // Add padding to the bottom of the button
+                    .padding(.bottom, 70)
                 }
-                .padding(.horizontal, 20) // Add horizontal padding
+                .padding(.horizontal, 20)
             }
         }
         .navigationBarBackButtonHidden(true)
     }
 }
+
 
 
 
