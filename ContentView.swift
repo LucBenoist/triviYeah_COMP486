@@ -56,7 +56,7 @@ struct ContentView: View{
                             Text("TriviYeah!")
                                 .font(.largeTitle)
                                 .fontWeight(.heavy)
-                                .foregroundStyle(Color.purple)
+                                .foregroundStyle(Color.letterGreen)
                                 .multilineTextAlignment(.center)
                             
                         }
