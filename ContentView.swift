@@ -51,13 +51,12 @@ struct ContentView: View {
                 Color("Navy")
                     .ignoresSafeArea()
                 VStack {
-                    Spacer() // Pushes TriviYeah to the top
                     Text("TriviYeah!")
                         .font(Font.custom("Arial Rounded MT Bold", size: 60)) // Custom font and increased size
                         .fontWeight(.heavy)
                         .foregroundColor(.letterGreen)
                         .multilineTextAlignment(.center)
-                        .alignmentGuide(.top) { _ in 0 } // Aligns to the top
+                    Spacer() // Pushes everything else to the bottom
                     Text("The Daily Trivia Game")
                         .font(.subheadline)
                         .fontWeight(.medium)
@@ -75,6 +74,7 @@ struct ContentView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
 
 
 
