@@ -10,15 +10,16 @@ import SwiftUI
 struct PrimeButton_: View {
     var text: String
     var background: Color = Color(.hotPink)
-    
+
     var body: some View {
         Text(text)
             .font(Font.custom("Arial Rounded MT Bold", size: 20)) // Using custom font
-            .padding(10) // Adjust padding
-            .background(background)
             .foregroundColor(.letterGreen)
+            .frame(width: 80, height: 40) // Set width and height
+            .padding()
+            .background(background)
+            .cornerRadius(0) // Remove corner radius
             .shadow(radius: 5) // Adjust shadow radius
-            .frame(width: 100, height: 40) // Set width and height
     }
 }
 
