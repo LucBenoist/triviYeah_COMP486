@@ -45,33 +45,32 @@ var round_num: Int = 1
 var final_answer = ""
 
 // Home Screen
-struct ContentView: View{
+struct ContentView: View {
     var body: some View {
-            NavigationView {
-                ZStack{
-                    Color("Navy") // Back
-                        .ignoresSafeArea()
-                    VStack{
-                        HStack{
-                            Text("TriviYeah!")
-                                .font(.largeTitle)
-                                .fontWeight(.heavy)
-                                .foregroundStyle(Color.letterGreen)
-                                .multilineTextAlignment(.center)
-                            Text("The Daily Trivia Game")
-                                .font(.subheadline)
-                                .fontWeight(.medium)
-                                .foregroundStyle(Color.letterGreen)
-                                .multilineTextAlignment(.center)
-                            
-                        }
-                        NavigationLink{ // Start Daily Trivia Game
-                            QuestionView()} label: {
-                            PrimeButton_(text: "GO!")
-                        }
+        NavigationView {
+            ZStack {
+                Color("Navy") // Back
+                    .ignoresSafeArea()
+                VStack {
+                    Text("TriviYeah!")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .foregroundStyle(Color.letterGreen)
+                        .multilineTextAlignment(.center)
+                    Text("The Daily Trivia Game")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundStyle(Color.letterGreen)
+                        .multilineTextAlignment(.center)
+                    NavigationLink {
+                        // Start Daily Trivia Game
+                        QuestionView()
+                    } label: {
+                        PrimeButton_(text: "GO!")
                     }
                 }
-            }.navigationBarBackButtonHidden(true)
+            }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
