@@ -44,12 +44,11 @@ var path_node: Int = 0
 var round_num: Int = 1
 var final_answer = ""
 
-// Home Screen
 struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Navy") // Back
+                Color("Navy")
                     .ignoresSafeArea()
                 VStack {
                     Text("TriviYeah!")
@@ -66,11 +65,16 @@ struct ContentView: View {
                         // Start Daily Trivia Game
                         QuestionView()
                     } label: {
-                        PrimeButton_(text: "GO!")
+                        PrimeButton_(text: "Play")
+                            .frame(width: 100, height: 100) // Make the button square
+                            .background(Color.pink) // Set the background color to pink
+                            .foregroundStyle(Color.letterGreen) // Set the text color to green
                     }
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
             }
-        }.navigationBarBackButtonHidden(true)
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
