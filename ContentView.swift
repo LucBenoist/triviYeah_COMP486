@@ -50,12 +50,14 @@ struct ContentView: View {
             ZStack {
                 Color("Navy")
                     .ignoresSafeArea()
-                VStack(spacing: 60) { // Adjust the spacing here
+                VStack {
+                    Spacer() // Pushes TriviYeah to the top
                     Text("TriviYeah!")
                         .font(Font.custom("Arial Rounded MT Bold", size: 60)) // Custom font and increased size
                         .fontWeight(.heavy)
                         .foregroundColor(.letterGreen)
                         .multilineTextAlignment(.center)
+                        .alignmentGuide(.top) { _ in 0 } // Aligns to the top
                     Text("The Daily Trivia Game")
                         .font(.subheadline)
                         .fontWeight(.medium)
@@ -66,13 +68,14 @@ struct ContentView: View {
                         QuestionView()
                     } label: {
                         PrimeButton_(text: "Play")
-                    } // <- Add this closing brace here
+                    }
                 }
             }
         }
         .navigationBarBackButtonHidden(true)
     }
 }
+
 
 
 //Question Scene and Round Play
