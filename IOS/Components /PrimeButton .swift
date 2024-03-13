@@ -13,12 +13,12 @@ struct PrimeButton_: View {
     
     var body: some View {
         Text(text)
-            .foregroundColor(.letterGreen)
-            .padding()
-            .padding(.horizontal)
+            .font(Font.custom("Arial Rounded MT Bold", size: 20)) // Using custom font
+            .padding(10) // Adjust padding
             .background(background)
-            .cornerRadius(30)
-            .shadow(radius: 10)
+            .foregroundColor(.letterGreen)
+            .cornerRadius(20) // Adjust corner radius
+            .shadow(radius: 5) // Adjust shadow radius
     }
 }
 
