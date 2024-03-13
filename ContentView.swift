@@ -10,6 +10,7 @@ var questions_dict = question_caller()
 var path_rectangle = Rectangle()
 
 
+
 //Replica Path used for assigning color
 var colorPath: [Int: Color] = [0: Color("Path Gray"),
                                  1: Color("Path Gray"),
@@ -43,6 +44,8 @@ var path = create_path()
 var path_node: Int = 0
 var round_num: Int = 1
 var final_answer = ""
+
+var isButtonClicked = false // Track if the button is clicked
 
 struct ContentView: View {
     var body: some View {
@@ -115,30 +118,40 @@ struct QuestionView: View{
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
                         
-                        // Upon Submitting, check if user answer is correct
-                        Button("Submit") {
-                            if answer == "\(path[0]![1])"{
-                                colorPath[path_node] = Color("PathG") // Update color at path node to green
-                                isCorrect = true}
-                            // Got it wrong
-                            else{
-                                colorPath[path_node] = Color("PathR") // Update color at path node to red
-                                isCorrect = false}
+                        if !isButtonClicked {
+                            // Show the "Submit" button only if it's not clicked
+                            Button("Submit") {
+                                // Your submit logic here
+                                isButtonClicked = true // Set the flag to true when clicked
+                                if answer == "\(path[path_node]![1])" {
+                                    colorPath[path_node] = Color("PathG")
+                                    isCorrect = true
+                                } else {
+                                    colorPath[path_node] = Color("PathR")
+                                    isCorrect = false
+                                }
+                            }
+                            .padding()
+                            .foregroundColor(.blue)
+                            .disabled(answer.isEmpty)
+                        } else {
+        
                         }
-                        .padding()
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                        .disabled(answer.isEmpty) // look into
+
+            
                         
                         
                         if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
                             Text("Correct!")
                                 .foregroundColor(.green)
-                            NavigationLink(destination: CategoryView()){
-                                
+                            NavigationLink(destination: CategoryView()) {
                                 PrimeButton_(text: "Continue")
+                            }
+                            .onTapGesture {
+                                isButtonClicked = false // Reset the button clicked state
                             }.onAppear {
-                                    round_num += 1
-                                }
+                                round_num += 1
+                            }
                         }
                         else if isCorrect == false{
                             // Their game is over and are taken to GameOverView
@@ -164,16 +177,6 @@ struct QuestionView: View{
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
                         
-                        // Checking user's answer
-                        Button("Submit") {
-                            if answer == "\(path[path_node]![1])"{
-                                colorPath[path_node] = Color("PathG")
-                                isCorrect = true}
-                            else{
-                                colorPath[path_node] = Color("PathR")
-                                isCorrect = false}
-                            
-                        }
                         
                         
                         .padding()
@@ -183,33 +186,42 @@ struct QuestionView: View{
                         
                         if round_num != 4{ // Not Round 4, then if correct answer go to CategoryView
                             if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
-                            Text("Correct!")
-                                .foregroundColor(.green)
-                            NavigationLink(destination: CategoryView()){
-                                
-                                PrimeButton_(text: "Continue")
-                            }.onAppear {
-                                round_num += 1
+                                Text("Correct!")
+                                    .foregroundColor(.green)
+                                NavigationLink(destination: CategoryView()) {
+                                    PrimeButton_(text: "Continue")
+                                }
+                                .onTapGesture {
+                                    isButtonClicked = false // Reset the button clicked state
+                                }.onAppear {
+                                    round_num += 1
+                                }
+                            }
+                            else if isCorrect == false{
+                                // Their game is over and are taken to GameOverView
+                                Text("Incorrect!")
+                                    .foregroundColor(.red)
+                                NavigationLink(destination: GameOverView()){
+                                    PrimeButton_(text: "Continue")
+                                }
                             }
                         }
-                        else if isCorrect == false{
-                            // Their game is over and are taken to GameOverView
-                            Text("Incorrect!")
-                                .foregroundColor(.red)
-                            NavigationLink(destination: GameOverView()){
-                                PrimeButton_(text: "Continue")
-                            }
-                        }
-                    }
                         else{ // If correct at Round 4, go to final round
                             if isCorrect == true {
                                 Text("Correct!")
                                     .foregroundColor(.green)
-                                NavigationLink(destination: QuestionView()){
+                                NavigationLink(destination: QuestionView()) {
+
                                     PrimeButton_(text: "Final Round!")
+                                }
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    path_node = 1
+                                })
+                                .onTapGesture {
+                                    isButtonClicked = false // Reset the button clicked state
                                 }.onAppear {
-                                        round_num += 1
-                                    }
+                                    round_num += 1
+                                }
                                 
                             }
                             else if isCorrect == false { // Incorrect, gameplay is over
@@ -219,7 +231,7 @@ struct QuestionView: View{
                                     PrimeButton_(text: "Continue")
                                 }
                             }
-                        
+                            
                         }
                         //Jon Rahm
                     }
@@ -235,19 +247,20 @@ struct QuestionView: View{
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
                             .onChange(of:answer) {
-                                    final_answer = answer
-                                }
+                                final_answer = answer
+                            }
                         
                         // Checking final answer
-                       // Button("Results") {
+                        // Button("Results") {
                         NavigationLink(destination: GameOverView()){
                             PrimeButton_(text: "Results")
                         }
-                            .padding()
-                            .foregroundColor(.blue)
-                            
-                        }
+                        .padding()
+                        .foregroundColor(.blue)
+                        
                     }
+
+                }
             }
         }.navigationBarBackButtonHidden(true)
     }
@@ -272,6 +285,7 @@ struct CategoryView: View{
                         HStack{
                             
                             if round_num == 2{
+                            
                                 NavigationLink(destination: QuestionView()) {
                                     PrimeButton_(text: path[1]![2])
                                     
