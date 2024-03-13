@@ -66,13 +66,14 @@ struct ContentView: View {
                         QuestionView()
                     } label: {
                         PrimeButton_(text: "Play")
-
+                    } // <- Add this closing brace here
                 }
             }
         }
         .navigationBarBackButtonHidden(true)
     }
 }
+
 
 //Question Scene and Round Play
 struct QuestionView: View{
