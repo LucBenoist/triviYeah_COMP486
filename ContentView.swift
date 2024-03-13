@@ -268,6 +268,7 @@ struct CategoryView: View{
                             .fontWeight(.heavy)
                             .foregroundColor(Color.skyYellow)
                         
+                        
                         HStack{
                             
                             if round_num == 2{
