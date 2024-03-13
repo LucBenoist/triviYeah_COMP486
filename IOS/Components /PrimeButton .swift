@@ -9,11 +9,11 @@ import SwiftUI
 
 struct PrimeButton_: View {
     var text: String
-    var background: Color = Color(.purple)
+    var background: Color = Color(.hotPink)
     
     var body: some View {
         Text(text)
-            .foregroundColor(.white)
+            .foregroundColor(.letterGreen)
             .padding()
             .padding(.horizontal)
             .background(background)

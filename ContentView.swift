@@ -66,11 +66,7 @@ struct ContentView: View {
                         QuestionView()
                     } label: {
                         PrimeButton_(text: "Play")
-                            .frame(width: 80, height: 40) // Make the button square
-                            .background(Color.hotPink) // Set the background color to pink
-                            .foregroundStyle(Color.letterGreen) // Set the text color
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+
                 }
             }
         }
