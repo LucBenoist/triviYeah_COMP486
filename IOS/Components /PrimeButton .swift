@@ -17,7 +17,6 @@ struct PrimeButton_: View {
             .padding(10) // Adjust padding
             .background(background)
             .foregroundColor(.letterGreen)
-            .cornerRadius(20) // Adjust corner radius
             .shadow(radius: 5) // Adjust shadow radius
     }
 }
