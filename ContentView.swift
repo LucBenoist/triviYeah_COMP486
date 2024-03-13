@@ -50,7 +50,7 @@ struct ContentView: View {
             ZStack {
                 Color("Navy")
                     .ignoresSafeArea()
-                VStack(spacing: 20) { // Adjust the spacing here
+                VStack(spacing: 60) { // Adjust the spacing here
                     Text("TriviYeah!")
                         .font(Font.custom("Arial Rounded MT Bold", size: 60)) // Custom font and increased size
                         .fontWeight(.heavy)
