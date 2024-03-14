@@ -54,7 +54,7 @@ struct ContentView: View {
                 Color("Navy")
                     .ignoresSafeArea()
                 
-                // Sky teal outline
+                // Teal outline
                 Rectangle()
                     .stroke(Color.skyTeal, lineWidth: 4)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -62,10 +62,11 @@ struct ContentView: View {
                 
                 VStack(spacing: 12) {
                     Text("TriviYeah!")
-                        .font(Font.custom("Notable-Regular", size: 70))
-                        .fontWeight(.heavy)
-                        .foregroundColor(.skyTeal)
-                        .padding(.top, 50)
+                         .font(.system(size: 70))
+                         .fontWeight(.heavy)
+                         .foregroundColor(.skyTeal)
+                         .padding(.top, 50)
+                 
                     
                     Text("The Daily Trivia Game")
                         .font(Font.custom("Arial Rounded MT Bold", size: 20))
