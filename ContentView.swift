@@ -110,8 +110,9 @@ struct QuestionView: View{
                     // Round 1
                     if round_num == 1{
                         Text("Round \(round_num)")
-                            .font(.title)
                             .padding()
+                            .font(.system(size: 50))
+                            .fontWeight(.heavy)
                             .foregroundStyle(Color.skyYellow)
                         Text((path[0]![0])) //Q0
                             .foregroundStyle(Color.skyYellow)
@@ -163,7 +164,8 @@ struct QuestionView: View{
                     // As long as not starting or final round
                     else if round_num != 5 {
                         Text("Round \(round_num)")
-                            .font(.title)
+                            .font(.system(size: 50))
+                            .fontWeight(.heavy)
                             .padding()
                             .foregroundStyle(Color.skyYellow)
                         Text((path[path_node]![0])) //Question stored at path node
@@ -249,7 +251,7 @@ struct QuestionView: View{
                     }
                     else{ // Final Round Branch
                         Text("FINAL ROUND")
-                            .font(.largeTitle)
+                            .font(.system(size: 50))
                             .fontWeight(.heavy)
                             .foregroundStyle(Color.skyYellow)
                         Text((path[10]![0])) // Final question
@@ -292,6 +294,7 @@ struct CategoryView: View{
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .foregroundColor(Color.skyYellow)
+                            .multilineTextAlignment(.center)
                         
                         
                         HStack{
@@ -399,15 +402,16 @@ struct GameOverView: View{
                     .ignoresSafeArea()
                 VStack{
                     Text("Game Over!")
-                        .font(.largeTitle)
+                        .font(.system(size: 50))
                         .fontWeight(.heavy)
                         .foregroundColor(Color.purple)
                     
                     if final_answer == path[10]![1] {
-                        Text("Congratulations, You got a TriviYeah!")
+                        Text("Congratulations, \nYou got a TriviYeah!")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .foregroundColor(Color("PathG"))
+                            .multilineTextAlignment(.center)
                     }
                     else{
                         Text("Maybe next time Sport!")
