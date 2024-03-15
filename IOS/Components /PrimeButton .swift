@@ -9,16 +9,17 @@ import SwiftUI
 
 struct PrimeButton_: View {
     var text: String
-    var background: Color = Color(.purple)
-    
+    var background: Color = Color(.hotPink)
+
     var body: some View {
         Text(text)
-            .foregroundColor(.white)
+            .font(Font.custom("Arial Rounded MT Bold", size: 25)) // Using custom font
+            .foregroundColor(.skyTeal)
+            .frame(width: 175, height: 28) // Set width and height
             .padding()
-            .padding(.horizontal)
             .background(background)
-            .cornerRadius(30)
-            .shadow(radius: 10)
+            .cornerRadius(0) // Remove corner radius
+            .shadow(radius: 5) // Adjust shadow radius
     }
 }
 
