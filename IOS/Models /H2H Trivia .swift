@@ -1,0 +1,8 @@
+//
+//  H2H Trivia .swift
+//  TriviYeah!
+//
+//  Created by Hugo Baroody on 3/15/24.
+//
+
+import Foundation
