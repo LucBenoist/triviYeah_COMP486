@@ -56,11 +56,11 @@ struct ContentView: View {
                 
                 // Teal outline
                 Rectangle()
-                    .stroke(Color.skyTeal, lineWidth: 4)
+                    .stroke(Color.hotPink, lineWidth: 4)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.all)
                 
-                VStack(spacing: 12) {
+                VStack{
                     Text("TriviYeah!")
                          .font(.system(size: 70))
                          .fontWeight(.heavy)
@@ -71,17 +71,16 @@ struct ContentView: View {
                     Text("The Daily Trivia Game")
                         .font(Font.custom("Arial Rounded MT Bold", size: 20))
                         .fontWeight(.medium)
-                        .foregroundColor(.skyTeal)
+                        .foregroundColor(.lime)
                         .multilineTextAlignment(.center)
-                    
-                    Spacer()
                     
                     NavigationLink {
                         QuestionView()
                     } label: {
                         PrimeButton_(text: "Play")
                     }
-                    .padding(.bottom, 70)
+                    .padding()
+                    .padding()
                 }
                 .padding(.horizontal, 20)
             }
@@ -100,6 +99,16 @@ struct QuestionView: View{
     @State private var answer = ""
     @State private var isCorrect: Bool?
     @State private var isButtonClicked: Bool?
+    @State private var showSuggestions = false
+    @State private var selectedSuggestion: String?
+    
+    var filteredSuggestions: [String] {
+            if answer.isEmpty {
+                return []
+            } else {
+                return guesses.filter { $0.localizedCaseInsensitiveContains(answer) }
+            }
+        }
     var body: some View {
         NavigationView{
             ZStack{
@@ -113,13 +122,28 @@ struct QuestionView: View{
                             .padding()
                             .font(.system(size: 50))
                             .fontWeight(.heavy)
-                            .foregroundStyle(Color.skyYellow)
+                            .foregroundStyle(Color.skyTeal)
                         Text((path[0]![0])) //Q0
-                            .foregroundStyle(Color.skyYellow)
+                            .foregroundStyle(Color.lime)
                             .padding()
-                        TextField("Enter your answer...", text: $answer) // Text Box for user answer
+                        TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
+                                            self.showSuggestions = isEditing
+                                        }) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
+                        if showSuggestions && !filteredSuggestions.isEmpty {
+                            List(filteredSuggestions, id: \.self) { suggestion in
+                                Button(action: {
+                                    self.selectedSuggestion = suggestion
+                                    self.answer = suggestion
+                                    self.showSuggestions = false
+                                }) {
+                                    Text(suggestion)
+                                }
+                            }
+                            .listStyle(PlainListStyle())
+                            .frame(maxHeight: 200)
+                        }
                         
                         if isButtonClicked != true {
                             // Show the "Submit" button only if it's not clicked
@@ -167,13 +191,28 @@ struct QuestionView: View{
                             .font(.system(size: 50))
                             .fontWeight(.heavy)
                             .padding()
-                            .foregroundStyle(Color.skyYellow)
+                            .foregroundStyle(Color.skyTeal)
                         Text((path[path_node]![0])) //Question stored at path node
                             .padding()
-                            .foregroundStyle(Color.skyYellow)
-                        TextField("Enter your answer...", text: $answer)
+                            .foregroundStyle(Color.lime)
+                        TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
+                                            self.showSuggestions = isEditing
+                                        }) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
+                        if showSuggestions && !filteredSuggestions.isEmpty {
+                            List(filteredSuggestions, id: \.self) { suggestion in
+                                Button(action: {
+                                    self.selectedSuggestion = suggestion
+                                    self.answer = suggestion
+                                    self.showSuggestions = false
+                                }) {
+                                    Text(suggestion)
+                                }
+                            }
+                            .listStyle(PlainListStyle())
+                            .frame(maxHeight: 200)
+                        }
 
                         // Is this needed?
                         //.padding()
@@ -253,16 +292,33 @@ struct QuestionView: View{
                         Text("FINAL ROUND")
                             .font(.system(size: 50))
                             .fontWeight(.heavy)
-                            .foregroundStyle(Color.skyYellow)
+                            .foregroundStyle(Color.skyTeal)
                         Text((path[10]![0])) // Final question
                             .padding()
-                            .foregroundStyle(Color.skyYellow)
-                        TextField("Enter your answer...", text:$answer)
+                            .foregroundStyle(Color.lime)
+                        TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
+                                            self.showSuggestions = isEditing
+                                        }) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
                             .onChange(of:answer) {
                                 final_answer = answer
                             }
+                        if showSuggestions && !filteredSuggestions.isEmpty {
+                            List(filteredSuggestions, id: \.self) { suggestion in
+                                Button(action: {
+                                    self.selectedSuggestion = suggestion
+                                    self.answer = suggestion
+                                    self.showSuggestions = false
+                                }) {
+                                    Text(suggestion)
+                                }
+                            }
+                            .listStyle(PlainListStyle())
+                            .frame(maxHeight: 200)
+                        }
+                        
+                            
                         
                         // Checking final answer
                         // Button("Results") {
@@ -293,7 +349,7 @@ struct CategoryView: View{
                         Text("Pick Next Round's Category!")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
-                            .foregroundColor(Color.skyYellow)
+                            .foregroundColor(Color.skyTeal)
                             .multilineTextAlignment(.center)
                         
                         
@@ -404,7 +460,7 @@ struct GameOverView: View{
                     Text("Game Over!")
                         .font(.system(size: 50))
                         .fontWeight(.heavy)
-                        .foregroundColor(Color.purple)
+                        .foregroundColor(Color.skyTeal)
                     
                     if final_answer == path[10]![1] {
                         Text("Congratulations, \nYou got a TriviYeah!")
