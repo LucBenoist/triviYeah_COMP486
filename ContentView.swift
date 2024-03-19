@@ -521,8 +521,8 @@ struct GameOverView: View{
                         path_rectangle .frame(width: 50.0, height: 50.0)
                             .foregroundColor(Color(.gray))
                     }
-                    
-                }
+                    ShareLink(item: "text")
+                } // here
             }
         }.navigationBarBackButtonHidden(true)
     }
