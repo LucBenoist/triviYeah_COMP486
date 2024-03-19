@@ -23,6 +23,8 @@
 		E8A3F0502B72DE7E00ACA7C7 /* IOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F04F2B72DE7E00ACA7C7 /* IOSTests.swift */; };
 		E8A3F05A2B72DE7E00ACA7C7 /* IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F0592B72DE7E00ACA7C7 /* IOSUITests.swift */; };
 		E8A3F05C2B72DE7E00ACA7C7 /* IOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F05B2B72DE7E00ACA7C7 /* IOSUITestsLaunchTests.swift */; };
+		E8B77B582BAA16C300CDFDFE /* H2H Trivia Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B77B572BAA16C300CDFDFE /* H2H Trivia Manager.swift */; };
+		E8B77B5A2BAA16EA00CDFDFE /* H2H Trivia .swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B77B592BAA16EA00CDFDFE /* H2H Trivia .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		E8A3F0552B72DE7E00ACA7C7 /* TriviYeah!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TriviYeah!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A3F0592B72DE7E00ACA7C7 /* IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSUITests.swift; sourceTree = "<group>"; };
 		E8A3F05B2B72DE7E00ACA7C7 /* IOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E8B77B572BAA16C300CDFDFE /* H2H Trivia Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "H2H Trivia Manager.swift"; sourceTree = "<group>"; };
+		E8B77B592BAA16EA00CDFDFE /* H2H Trivia .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "H2H Trivia .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				E8041EC22B76F2E6007D9750 /* AnswerModel.swift */,
+				E8B77B572BAA16C300CDFDFE /* H2H Trivia Manager.swift */,
+				E8B77B592BAA16EA00CDFDFE /* H2H Trivia .swift */,
 			);
 			path = "Models ";
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8A3F0412B72DE7D00ACA7C7 /* Item.swift in Sources */,
+				E8B77B5A2BAA16EA00CDFDFE /* H2H Trivia .swift in Sources */,
 				B015FD472B893B790031EA4E /* gamePlay.swift in Sources */,
 				E8041ED12B7AF462007D9750 /* ContentView.swift in Sources */,
 				B015FD452B893B690031EA4E /* questionCreator.swift in Sources */,
@@ -326,6 +333,7 @@
 				E8041EB82B76DFC6007D9750 /* PrimeButton .swift in Sources */,
 				B015FD532B8C1E880031EA4E /* LinkViewToTree.swift in Sources */,
 				E8041EBD2B76EAC5007D9750 /* ProgressBar.swift in Sources */,
+				E8B77B582BAA16C300CDFDFE /* H2H Trivia Manager.swift in Sources */,
 				E8A3F03D2B72DE7D00ACA7C7 /* IOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

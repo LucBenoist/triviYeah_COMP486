@@ -48,6 +48,7 @@ var final_answer = ""
 //var isButtonClicked = false // Track if the button is clicked
 
 struct ContentView: View {
+    @StateObject var triviaManager = TriviaManager()
     var body: some View {
         NavigationView {
             ZStack {
@@ -77,17 +78,24 @@ struct ContentView: View {
                     NavigationLink {
                         QuestionView()
                     } label: {
-                        PrimeButton_(text: "Play")
+                        PrimeButton_(text: "Daily Game")
                     }
                     .padding()
                     .padding()
+                    
+                    NavigationLink{
+                        HeadToHeadView()
+                    }label:{
+                        PrimeButton_(text:"Head 2 Head")}
+                    .padding(.bottom,60)
+                    }
                 }
                 .padding(.horizontal, 20)
             }
         }
-        .navigationBarBackButtonHidden(true)
+        //.navigationBarBackButtonHidden(true)
     }
-}
+
 
 
 
@@ -528,7 +536,7 @@ struct GameOverView: View{
     }
 }
 struct HeadToHeadView: View{
-    //@StateObject var triviaManager = TriviaManager()
+    @StateObject var triviaManager = TriviaManager()
     
     var body: some View {
         NavigationView{

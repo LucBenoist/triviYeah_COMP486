@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AnswerRow_: View {
+    @EnvironmentObject var triviaManager: TriviaManager
     var answer: Answer
     @State private var isSelected = false
     
@@ -26,7 +27,7 @@ struct AnswerRow_: View {
                 Spacer()
                 
                 Image(systemName: answer.isCorrect ? "checkmark.seal.fill" : "x.circle.fill")
-                    .foregroundColor(answer.isCorrect ? green : red) 
+                    .foregroundColor(answer.isCorrect ? green : red)
             }
         }
         .padding()
@@ -36,12 +37,15 @@ struct AnswerRow_: View {
         .cornerRadius(10)
         .shadow(color: .black, radius: 5, x: 0.5, y: 0.5)
         .onTapGesture {
-            isSelected = true
+            if !triviaManager.answerSelected{
+                isSelected = true
+                triviaManager.selectAnswer(answer: answer)
+            }
         }
         
     }
 }
 
 #Preview {
-    AnswerRow_(answer: Answer(text: "Martin Lorenzton", isCorrect: false))
+    AnswerRow_(answer: Answer(text: "Single", isCorrect: false))
 }
