@@ -528,7 +528,7 @@ struct GameOverView: View{
     }
 }
 struct HeadToHeadView: View{
-    @StateObject var triviaManager = TriviaManager()
+    //@StateObject var triviaManager = TriviaManager()
     
     var body: some View {
         NavigationView{
