@@ -39,6 +39,9 @@ var scienceAnswers = [String]()
 var HoSAnswers = [String]()
 var miscAnswers = [String]()
 
+// List of all answers for now
+var guesses = [String]()
+
 // Read question text file
 // Create list of subcategory, question, and answer for every category
 func readFile(filePath: String) {
@@ -61,34 +64,42 @@ func readFile(filePath: String) {
                     moviesSub.append(subcategory)
                     moviesQuestions.append(question)
                     moviesAnswers.append(answer)
+                    guesses.append(answer)
                 case "Music":
                     musicSub.append(subcategory)
                     musicQuestions.append(question)
                     musicAnswers.append(answer)
+                    guesses.append(answer)
                 case "TV":
                     tvSub.append(subcategory)
                     tvQuestions.append(question)
                     tvAnswers.append(answer)
+                    guesses.append(answer)
                 case "Sports":
                     sportsSub.append(subcategory)
                     sportsQuestions.append(question)
                     sportsAnswers.append(answer)
+                    guesses.append(answer)
                 case "History":
                     historySub.append(subcategory)
                     historyQuestions.append(question)
                     historyAnswers.append(answer)
+                    guesses.append(answer)
                 case "Science":
                     scienceSub.append(subcategory)
                     scienceQuestions.append(question)
                     scienceAnswers.append(answer)
+                    guesses.append(answer)
                 case "HoS":
                     HoSsub.append(subcategory)
                     HoSQuestions.append(question)
                     HoSAnswers.append(answer)
+                    guesses.append(answer)
                 case "Misc":
                     miscSub.append(subcategory)
                     miscQuestions.append(question)
                     miscAnswers.append(answer)
+                    guesses.append(answer)
                 default:
                     break
                 }
