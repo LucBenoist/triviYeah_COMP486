@@ -34,7 +34,7 @@ struct InfiniteTriviaView: View {
         VStack(spacing: 20){
             Text("Welcome To Infinite TriviYeah!").foregroundColor(.purple).font(.system(size: 30))
             Text("How many can you get??").foregroundColor(.purple)
-        Text("Your Streak: \(Streak_count)").foregroundColor(.green)
+            Text("Your Streak: \(Streak_count)").foregroundColor(.green)
     }
         
         VStack(spacing: 30){
@@ -42,54 +42,51 @@ struct InfiniteTriviaView: View {
                 Fetches()
                 isCorrect = nil
                 useHint = false
-                
             }
             
             if let question_index = question_index{
                 Text(questions[question_index].question)
-                    
             }
             
             TextField("Answer Here", text: $userAnswer).padding()
             Button("Check Answer"){
                 Checks()
-                
             }
+            
             if let isCorrect = isCorrect{
                 if isCorrect {
                     Text("CORRECT").foregroundColor(.green)
                         .padding()
-                    
                 }
+                
                 else {
-                    
                     Text("INCORRECT").foregroundColor(.red)
-                        .padding()
+                    .padding()
                 }
+                
                 Button(action: {
                     ChecksHint()
-                    
                     }) {
-                        if useHint{
-                                Text(questions[question_index!].correct_answer)
-                                    }
-                                Text("Click for Answer!").foregroundColor(.purple)
+                    if useHint{
+                        Text(questions[question_index!].correct_answer)
+                    }
+                        Text("Click for Answer!").foregroundColor(.purple)
                     }
             }
-        }.padding()
-        
+        }
+        .padding()
     }
     
     func Fetches(){
         Task{
-                do {
-                    let fetch_questions = try await fetchRandoQuestions()
-                    questions = fetch_questions
-                    
-                    question_index = Int.random(in: 0..<questions.count)
-                }catch {
-                    print(error)
+            do {
+                let fetch_questions = try await fetchRandoQuestions()
+                questions = fetch_questions
+                question_index = Int.random(in: 0..<questions.count)
                 }
+            catch {
+                print(error)
+            }
         }
     }
     
@@ -108,6 +105,7 @@ struct InfiniteTriviaView: View {
         if isCorrect == false{
             useHint = true
         }
+        
         else{
             useHint = false
             
@@ -117,15 +115,12 @@ struct InfiniteTriviaView: View {
     func fetchRandoQuestions() async throws-> [Question] {
         let url = URL(string: "https://opentdb.com/api.php?amount=50&difficulty=easy&type=multiple")!
         let(data, _) = try await URLSession.shared.data(from: url)
-        
         let decoded = try JSONDecoder().decode(Response.self, from: data)
-        
         return decoded.results
     }
-    
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    .modelContainer(for: Item.self, inMemory: true)
 }
