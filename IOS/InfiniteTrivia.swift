@@ -36,6 +36,7 @@ struct InfiniteTriviaView: View {
             Text("How many can you get??").foregroundColor(.purple)
         Text("Your Streak: \(Streak_count)").foregroundColor(.green)
     }
+        
         VStack(spacing: 30){
             Button("Click for Question!"){
                 Fetches()
@@ -73,16 +74,9 @@ struct InfiniteTriviaView: View {
                                 Text(questions[question_index!].correct_answer)
                                     }
                                 Text("Click for Answer!").foregroundColor(.purple)
-                        
                     }
-                
-                    
-                    
-                
             }
-            
         }.padding()
-            
         
     }
     
@@ -93,12 +87,9 @@ struct InfiniteTriviaView: View {
                     questions = fetch_questions
                     
                     question_index = Int.random(in: 0..<questions.count)
-                    
                 }catch {
                     print(error)
                 }
-                
-            
         }
     }
     
