@@ -55,7 +55,7 @@ struct ContentView: View {
                 Color("Navy")
                     .ignoresSafeArea()
                 
-                // Teal outline
+                // outline
                 Rectangle()
                     .stroke(Color.hotPink, lineWidth: 4)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
