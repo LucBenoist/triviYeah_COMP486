@@ -130,6 +130,12 @@ struct QuestionView: View{
             ZStack{
                 Color("Navy")
                     .ignoresSafeArea()
+                
+                Rectangle()
+                    .stroke(Color.hotPink, lineWidth: 4)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                
                 VStack {
                     // Round 1
                     // Round 1
@@ -361,6 +367,12 @@ struct CategoryView: View{
                 ZStack{
                     Color("Navy")
                         .ignoresSafeArea()
+                    
+                    Rectangle()
+                        .stroke(Color.hotPink, lineWidth: 4)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .edgesIgnoringSafeArea(.all)
+                    
                     VStack{
                         Text("Pick Next Round's Category!")
                             .font(.largeTitle)
@@ -472,6 +484,11 @@ struct GameOverView: View{
             ZStack{
                 Color("Navy")
                     .ignoresSafeArea()
+                Rectangle()
+                    .stroke(Color.hotPink, lineWidth: 4)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                
                 VStack{
                     Text("Game Over!")
                         .font(.system(size: 50))
@@ -551,6 +568,12 @@ struct HeadToHeadView: View{
             ZStack{
                 Color("Navy")
                     .ignoresSafeArea()
+                
+                Rectangle()
+                    .stroke(Color.hotPink, lineWidth: 4)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                
                 VStack(spacing: 5) {
                     HStack {
                        Text("Head to Head")
