@@ -87,13 +87,15 @@ struct ContentView: View {
                         HeadToHeadView()
                     }label:{
                         PrimeButton_(text:"Head 2 Head")}
-                    .padding(.bottom,60)
+                    .padding()
+                    .padding()
                     
                     NavigationLink{
                         InfiniteTriviaView()
                     }label:{
                         PrimeButton_(text:"Infinite Trivia")}
-                    .padding(.bottom,60)
+                    .padding()
+                    .padding()
                     }
                 }
                
