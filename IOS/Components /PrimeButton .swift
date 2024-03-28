@@ -14,13 +14,13 @@ struct PrimeButton_: View {
 
     var body: some View {
         Text(text)
-            .font(Font.custom("Arial Rounded MT Bold", size: 22)) // Using custom font
+            .font(Font.custom("Arial Rounded MT Bold", size: 22))
             .foregroundColor(.navy)
-            .frame(width: 145, height: 27) // Set width and height
+            .frame(width: 145, height: 27)
             .padding()
             .background(background)
-            .cornerRadius(0) // Remove corner radius
-            .shadow(radius: 5) // Adjust shadow radius
+            .cornerRadius(0)
+            .shadow(radius: 5)
             .buttonStyle(.bordered)
             .controlSize(.regular)
             .border(Color(.hotPink))

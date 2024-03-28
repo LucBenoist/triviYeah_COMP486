@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-
 struct Response: Decodable{
     let response_code: Int
     let results: [Question]
@@ -22,6 +21,24 @@ struct Question: Decodable{
     let incorrect_answers: [String]
 }
 
+struct CustomButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(Font.custom("Arial Rounded MT Bold", size: 12))
+            .foregroundColor(.navy)
+            .padding()
+            .frame(width: 145, height: 27)
+            .background(configuration.isPressed ? Color(.hotPink) : Color(.skyTeal))
+            .cornerRadius(0)
+            .shadow(radius: 5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 0)
+                    .stroke(Color(.hotPink), lineWidth: 2)
+            )
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0) // Scale effect on press
+    }
+}
+
 struct InfiniteTriviaView: View {
     @State private var questions: [Question] = []
     @State private var question_index: Int?
@@ -29,6 +46,7 @@ struct InfiniteTriviaView: View {
     @State private var isCorrect: Bool? = nil
     @State private var useHint: Bool = false
     @State private var streakCount: Int = 0
+    
     
     var body: some View {
         NavigationView {
@@ -43,40 +61,70 @@ struct InfiniteTriviaView: View {
                 
                 
                 VStack{
-                    Text("Welcome To Infinite TriviYeah!").
-                        .font(.system(size: 70))
+                    Text("Welcome To Infinite TriviYeah!")
+                        .font(.system(size: 40))
                         .fontWeight(.heavy)
                         .foregroundColor(.skyTeal)
-                        .padding(.top, 50)
+                        .padding(.top, 0)
                     
                     
-                    Text("How many can you get??").foregroundColor(.purple)
-                    Text("Your Streak: \(streakCount)").foregroundColor(.green)
+                    Text("How many can you get??")
+                        .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                        .fontWeight(.medium)
+                        .foregroundColor(.lime)
+                        .multilineTextAlignment(.center)
+                    Text("Your Streak: \(streakCount)")
+                        .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                        .fontWeight(.medium)
+                        .foregroundColor(.lime)
+                        .multilineTextAlignment(.center)
                 }
                 
                 VStack(spacing: 30){
-                    Button("Click for Question!"){
+                    Button(action: {
                         Fetches()
                         isCorrect = nil
                         useHint = false
+                    }) {
+                        Text("Click for Question!")
                     }
-                    
+                    .buttonStyle(CustomButtonStyle())
+                                 
+                                 
                     if let questionIndex = question_index{
                         Text(questions[questionIndex].question)
+                            .foregroundColor(.white)
                     }
                     
-                    TextField("Answer Here", text: $userAnswer).padding()
-                    Button("Check Answer"){
-                        Checks()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.white)
+                            .frame(height: 25)
+                        TextField("Answer Here", text: $userAnswer)
+                            .padding()
                     }
+                    
+                    Button(action: {
+                        Checks()
+                    }) {
+                        Text("Check Answer")
+                    }
+                    .buttonStyle(CustomButtonStyle())
                     
                     if let isCorrect = isCorrect{
                         if isCorrect {
-                            Text("CORRECT").foregroundColor(.green)
+                            Text("CORRECT")
+                                .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                .fontWeight(.medium)
+                                .foregroundColor(.accentColor)
+                                .multilineTextAlignment(.center)
                                 .padding()
                         }
                         else {
-                            Text("INCORRECT").foregroundColor(.red)
+                            Text("INCORRECT").font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                .fontWeight(.medium)
+                                .foregroundColor(.accentColor)
+                                .multilineTextAlignment(.center)
                                 .padding()
                         }
                         
@@ -85,9 +133,16 @@ struct InfiniteTriviaView: View {
                         }) {
                             if useHint{
                                 Text(questions[question_index!].correct_answer)
+                                    .foregroundColor(.white)
                             }
-                            Text("Click for Answer!").foregroundColor(.purple)
+                            Text("Click for Answer!")
+                                .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                .fontWeight(.medium)
+                                .foregroundColor(.skyPurple)
+                                .multilineTextAlignment(.center)
+                                .padding()
                         }
+                        .buttonStyle(CustomButtonStyle())
                     }
                 }
                 .padding()
