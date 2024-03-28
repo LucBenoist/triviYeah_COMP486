@@ -138,7 +138,6 @@ struct QuestionView: View{
                 
                 VStack {
                     // Round 1
-                    // Round 1
                     if round_num == 1{
                         Text("Round \(round_num)")
                             .padding()

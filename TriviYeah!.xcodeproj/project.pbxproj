@@ -95,13 +95,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8092B40F2BA3569E00E158E0 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
 		E8041EB62B76DF7B007D9750 /* Components  */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +151,6 @@
 		E8A3F03B2B72DE7D00ACA7C7 /* IOS */ = {
 			isa = PBXGroup;
 			children = (
-				8092B40F2BA3569E00E158E0 /* Font */,
 				E8041EBF2B76F2A5007D9750 /* Models  */,
 				E8041EB92B76E272007D9750 /* Views */,
 				E8041EB62B76DF7B007D9750 /* Components  */,

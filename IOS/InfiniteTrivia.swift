@@ -28,62 +28,80 @@ struct InfiniteTriviaView: View {
     @State private var userAnswer: String = ""
     @State private var isCorrect: Bool? = nil
     @State private var useHint: Bool = false
-    @State private var Streak_count: Int = 0
+    @State private var streakCount: Int = 0
     
     var body: some View {
-        VStack(spacing: 20){
-            Text("Welcome To Infinite TriviYeah!").foregroundColor(.purple).font(.system(size: 30))
-            Text("How many can you get??").foregroundColor(.purple)
-            Text("Your Streak: \(Streak_count)").foregroundColor(.green)
-    }
-        
-        VStack(spacing: 30){
-            Button("Click for Question!"){
-                Fetches()
-                isCorrect = nil
-                useHint = false
-            }
-            
-            if let question_index = question_index{
-                Text(questions[question_index].question)
-            }
-            
-            TextField("Answer Here", text: $userAnswer).padding()
-            Button("Check Answer"){
-                Checks()
-            }
-            
-            if let isCorrect = isCorrect{
-                if isCorrect {
-                    Text("CORRECT").foregroundColor(.green)
-                        .padding()
+        NavigationView {
+            ZStack {
+                Color("Navy")
+                    .ignoresSafeArea()
+                
+                Rectangle()
+                    .stroke(Color.hotPink, lineWidth: 4)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                
+                
+                VStack{
+                    Text("Welcome To Infinite TriviYeah!").
+                        .font(.system(size: 70))
+                        .fontWeight(.heavy)
+                        .foregroundColor(.skyTeal)
+                        .padding(.top, 50)
+                    
+                    
+                    Text("How many can you get??").foregroundColor(.purple)
+                    Text("Your Streak: \(streakCount)").foregroundColor(.green)
                 }
                 
-                else {
-                    Text("INCORRECT").foregroundColor(.red)
-                    .padding()
+                VStack(spacing: 30){
+                    Button("Click for Question!"){
+                        Fetches()
+                        isCorrect = nil
+                        useHint = false
+                    }
+                    
+                    if let questionIndex = question_index{
+                        Text(questions[questionIndex].question)
+                    }
+                    
+                    TextField("Answer Here", text: $userAnswer).padding()
+                    Button("Check Answer"){
+                        Checks()
+                    }
+                    
+                    if let isCorrect = isCorrect{
+                        if isCorrect {
+                            Text("CORRECT").foregroundColor(.green)
+                                .padding()
+                        }
+                        else {
+                            Text("INCORRECT").foregroundColor(.red)
+                                .padding()
+                        }
+                        
+                        Button(action: {
+                            ChecksHint()
+                        }) {
+                            if useHint{
+                                Text(questions[question_index!].correct_answer)
+                            }
+                            Text("Click for Answer!").foregroundColor(.purple)
+                        }
+                    }
                 }
-                
-                Button(action: {
-                    ChecksHint()
-                    }) {
-                    if useHint{
-                        Text(questions[question_index!].correct_answer)
-                    }
-                        Text("Click for Answer!").foregroundColor(.purple)
-                    }
+                .padding()
             }
         }
-        .padding()
     }
     
     func Fetches(){
-        Task{
+        Task {
             do {
                 let fetch_questions = try await fetchRandoQuestions()
                 questions = fetch_questions
                 question_index = Int.random(in: 0..<questions.count)
-                }
+            }
             catch {
                 print(error)
             }
@@ -91,13 +109,15 @@ struct InfiniteTriviaView: View {
     }
     
     func Checks(){
-        if userAnswer == questions[question_index!].correct_answer{
-            isCorrect = true
-            Streak_count+=1
-        }
-        else {
-            isCorrect = false
-            Streak_count = 0
+        if let index = question_index {
+            if userAnswer == questions[index].correct_answer {
+                isCorrect = true
+                streakCount += 1
+            }
+            else {
+                isCorrect = false
+                streakCount = 0
+            }
         }
     }
     
@@ -105,10 +125,8 @@ struct InfiniteTriviaView: View {
         if isCorrect == false{
             useHint = true
         }
-        
         else{
             useHint = false
-            
         }
     }
     
