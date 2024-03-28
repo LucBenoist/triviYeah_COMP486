@@ -46,13 +46,18 @@ var path = create_path()
 var path_node: Int = 0
 var round_num: Int = 1
 var final_answer = ""
+var row_1 = "⬜️"
+var row_2 = "⬜️⬜️"
+var row_3 = "⬜️⬜️⬜️"
+var row_4 = "⬜️⬜️⬜️⬜️"
+var row_5 = "⬜️"
 var pattern = """
 \(theme) \(day)
-        ⬜️
-     ⬜️⬜️
-  ⬜️⬜️⬜️
-⬜️⬜️⬜️⬜️
-        ⬜️
+        \(row_1)
+     \(row_2)
+  \(row_3)
+\(row_4)
+        \(row_5)
 n/5: Message!
 """
 
@@ -181,9 +186,11 @@ struct QuestionView: View{
                                 isButtonClicked = true // Set the flag to true when clicked
                                 if answer == "\(path[path_node]![1])" {
                                     colorPath[path_node] = Color("PathG")
+                                    row_1 = "🟩"
                                     isCorrect = true
                                 } else {
                                     colorPath[path_node] = Color("PathR")
+                                    row_1 = "🟥"
                                     isCorrect = false
                                 }
                             }
@@ -551,11 +558,17 @@ struct GameOverView: View{
                     if final_answer == path[10]![1]{
                         path_rectangle .frame(width: 50.0, height: 50.0)
                             .foregroundColor(Color("PathG"))
+                            .onAppear {
+                                row_5 = "🟩"
+                            }
                     }
                     
                     else if final_answer != path[10]![1] && round_num == 5{
                         path_rectangle .frame(width: 50.0, height: 50.0)
                             .foregroundColor(Color("PathR"))
+                            .onAppear {
+                                row_5 = "🟥"
+                            }
                     }
                     else{
                         path_rectangle .frame(width: 50.0, height: 50.0)
