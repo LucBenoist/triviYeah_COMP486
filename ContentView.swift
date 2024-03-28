@@ -66,7 +66,7 @@ struct ContentView: View {
                          .font(.system(size: 70))
                          .fontWeight(.heavy)
                          .foregroundColor(.skyTeal)
-                         .padding(.top, 50)
+                         .padding(.top, 150)
                  
                     
                     Text("The Daily Trivia Game")
@@ -81,20 +81,17 @@ struct ContentView: View {
                         PrimeButton_(text: "Daily Game")
                     }
                     .padding()
-                    .padding()
                     
                     NavigationLink{
                         HeadToHeadView()
                     }label:{
                         PrimeButton_(text:"Head 2 Head")}
                     .padding()
-                    .padding()
                     
                     NavigationLink{
                         InfiniteTriviaView()
                     }label:{
                         PrimeButton_(text:"Infinite Trivia")}
-                    .padding()
                     .padding()
                     }
                 }
