@@ -44,6 +44,15 @@ var path = create_path()
 var path_node: Int = 0
 var round_num: Int = 1
 var final_answer = ""
+var pattern = """
+Theme Day
+        ⬜️
+     ⬜️⬜️
+  ⬜️⬜️⬜️
+⬜️⬜️⬜️⬜️
+        ⬜️
+n/5: Message!
+"""
 
 //var isButtonClicked = false // Track if the button is clicked
 
@@ -550,7 +559,7 @@ struct GameOverView: View{
                         path_rectangle .frame(width: 50.0, height: 50.0)
                             .foregroundColor(Color(.gray))
                     }
-                    ShareLink(item: "text")
+                    ShareLink(item: pattern)
                 } // here
             }
         }.navigationBarBackButtonHidden(true)
