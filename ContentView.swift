@@ -5,7 +5,9 @@
 
 
 import SwiftUI
-var theme = getTheme(day:"Saturday")
+var day = "Saturday"
+var theme = getTheme(day: day)
+
 var questions_dict = question_caller()
 var path_rectangle = Rectangle()
 
@@ -45,7 +47,7 @@ var path_node: Int = 0
 var round_num: Int = 1
 var final_answer = ""
 var pattern = """
-Theme Day
+\(theme) \(day)
         ⬜️
      ⬜️⬜️
   ⬜️⬜️⬜️
@@ -105,7 +107,7 @@ struct ContentView: View {
                     }
                 }
                
-            }
+            }.navigationBarBackButtonHidden(true)
         }
         //.navigationBarBackButtonHidden(true)
     }
@@ -560,7 +562,14 @@ struct GameOverView: View{
                             .foregroundColor(Color(.gray))
                     }
                     ShareLink(item: pattern)
-                } // here
+                        .foregroundStyle(Color(.systemBlue))
+                        .padding()
+                    
+                    NavigationLink(destination: ContentView()) {
+                        PrimeButton_(text: "Home Screen")
+                        
+                    }.navigationBarBackButtonHidden(true)
+                }
             }
         }.navigationBarBackButtonHidden(true)
     }
