@@ -66,6 +66,7 @@ struct InfiniteTriviaView: View {
                         .fontWeight(.heavy)
                         .foregroundColor(.skyTeal)
                         .multilineTextAlignment(.center)
+                        .padding(.bottom, 525)
                 }
                 
                 
