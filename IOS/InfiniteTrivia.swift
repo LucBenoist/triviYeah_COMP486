@@ -65,9 +65,11 @@ struct InfiniteTriviaView: View {
                         .font(.system(size: 40))
                         .fontWeight(.heavy)
                         .foregroundColor(.skyTeal)
-                        .padding(.top, 0)
-                    
-                    
+                        .multilineTextAlignment(.center)
+                }
+                
+                
+                VStack{
                     Text("How many can you get??")
                         .font(Font.custom("Arial Rounded MT Bold", size: 11))
                         .fontWeight(.medium)
