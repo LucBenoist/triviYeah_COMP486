@@ -5,7 +5,7 @@
 
 
 import SwiftUI
-var day = "Saturday"
+var day = "Thursday"
 var theme = getTheme(day: day)
 
 var questions_dict = question_caller()
@@ -577,7 +577,7 @@ struct GameOverView: View{
   \(colorPath[3]!.symbol)\(colorPath[4]!.symbol)\(colorPath[5]!.symbol)
 \(colorPath[6]!.symbol)\(colorPath[7]!.symbol)\(colorPath[8]!.symbol)\(colorPath[9]!.symbol)
         \(colorPath[10]!.symbol)
-n/5: Message!
+\(round_num)/5: Message!
 """)
                         .foregroundStyle(Color(.systemBlue))
                         .padding()
