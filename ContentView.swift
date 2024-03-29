@@ -11,20 +11,25 @@ var theme = getTheme(day: day)
 var questions_dict = question_caller()
 var path_rectangle = Rectangle()
 
-
+struct PathData {
+    var color: Color
+    var symbol: String
+}
 
 //Replica Path used for assigning color
-var colorPath: [Int: Color] = [0: Color("Path Gray"),
-                                 1: Color("Path Gray"),
-                                 2: Color("Path Gray"),
-                                 3: Color("Path Gray"),
-                                 4: Color("Path Gray"),
-                                 5: Color("Path Gray"),
-                                 6: Color("Path Gray"),
-                                 7: Color("Path Gray"),
-                                 8: Color("Path Gray"),
-                                 9: Color("Path Gray"),
-                                10: Color("Path Gray")]
+var colorPath: [Int: PathData] = [
+    0: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    1: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    2: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    3: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    4: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    5: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    6: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    7: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    8: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    9: PathData(color: Color("Path Gray"), symbol: "⬜️"),
+    10: PathData(color: Color("Path Gray"), symbol: "⬜️")
+]
 
 // Create Path process
 var daily_path = [Int: [String]]()
@@ -118,11 +123,6 @@ struct ContentView: View {
     }
 
 
-
-
-
-
-
 //Question Scene and Round Play
 struct QuestionView: View{
     @State private var answer = ""
@@ -185,12 +185,12 @@ struct QuestionView: View{
                                 // Your submit logic here
                                 isButtonClicked = true // Set the flag to true when clicked
                                 if answer == "\(path[path_node]![1])" {
-                                    colorPath[path_node] = Color("PathG")
-                                    row_1 = "🟩"
+                                    colorPath[path_node]?.color  = Color("PathG")
+                                    colorPath[path_node]?.symbol = "🟩"
                                     isCorrect = true
                                 } else {
-                                    colorPath[path_node] = Color("PathR")
-                                    row_1 = "🟥"
+                                    colorPath[path_node]?.color  = Color("PathR")
+                                    colorPath[path_node]?.symbol = "🟥"
                                     isCorrect = false
                                 }
                             }
@@ -261,10 +261,13 @@ struct QuestionView: View{
                                 // Your submit logic here
                                 isButtonClicked = true // Set the flag to true when clicked
                                 if answer == "\(path[path_node]![1])" {
-                                    colorPath[path_node] = Color("PathG")
+                                    colorPath[path_node]?.color = Color("PathG")
+                                    colorPath[path_node]?.symbol = "🟩"
+                                    
                                     isCorrect = true
                                 } else {
-                                    colorPath[path_node] = Color("PathR")
+                                    colorPath[path_node]?.color  = Color("PathR")
+                                    colorPath[path_node]?.symbol = "🟥"
                                     isCorrect = false
                                 }
                             }
@@ -339,6 +342,11 @@ struct QuestionView: View{
                             .padding()
                             .onChange(of:answer) {
                                 final_answer = answer
+                                if final_answer == path[10]![1]{
+                                    colorPath[10]?.symbol = "🟩"
+                                } else{
+                                    colorPath[10]?.symbol = "🟥"
+                                }
                             }
                         if showSuggestions && !filteredSuggestions.isEmpty {
                             List(filteredSuggestions, id: \.self) { suggestion in
@@ -354,10 +362,6 @@ struct QuestionView: View{
                             .frame(maxHeight: 200)
                         }
                         
-                            
-                        
-                        // Checking final answer
-                        // Button("Results") {
                         NavigationLink(destination: GameOverView()){
                             PrimeButton_(text: "Results")
                         }
@@ -486,10 +490,7 @@ struct CategoryView: View{
         
     }
 }
-
-
-
-
+    
 
 //Game Over scene
 struct GameOverView: View{
@@ -525,56 +526,59 @@ struct GameOverView: View{
                     // Row 1 (Round 1)
                     path_rectangle
                         .frame(width: 50.0, height: 50.0)
-                        .foregroundColor(colorPath[0])
+                        .foregroundColor(colorPath[0]?.color )
                     // Row 2 (Round 2)
                     HStack{
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[1])
+                            .foregroundColor(colorPath[1]?.color )
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[2])
+                            .foregroundColor(colorPath[2]?.color )
                     }
                     // Row 3 (Round 3)
                     HStack{
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[3])
+                            .foregroundColor(colorPath[3]?.color )
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[4])
+                            .foregroundColor(colorPath[4]?.color )
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[5])
+                            .foregroundColor(colorPath[5]?.color )
                         
                     }
                     // Row 4 (Round 4)
                     HStack{
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[6])
+                            .foregroundColor(colorPath[6]?.color )
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[7])
+                            .foregroundColor(colorPath[7]?.color )
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[8])
+                            .foregroundColor(colorPath[8]?.color )
                         path_rectangle .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(colorPath[9])
+                            .foregroundColor(colorPath[9]?.color )
                     }
                     // Row 5 (Round 5)
                     if final_answer == path[10]![1]{
                         path_rectangle .frame(width: 50.0, height: 50.0)
                             .foregroundColor(Color("PathG"))
-                            .onAppear {
-                                row_5 = "🟩"
-                            }
                     }
                     
                     else if final_answer != path[10]![1] && round_num == 5{
                         path_rectangle .frame(width: 50.0, height: 50.0)
                             .foregroundColor(Color("PathR"))
-                            .onAppear {
-                                row_5 = "🟥"
-                            }
+                            
                     }
                     else{
                         path_rectangle .frame(width: 50.0, height: 50.0)
                             .foregroundColor(Color(.gray))
                     }
-                    ShareLink(item: pattern)
+                    ShareLink(item: """
+\(theme) \(day)
+        \(colorPath[0]!.symbol)
+     \(colorPath[1]!.symbol)\(colorPath[2]!.symbol)
+  \(colorPath[3]!.symbol)\(colorPath[4]!.symbol)\(colorPath[5]!.symbol)
+\(colorPath[6]!.symbol)\(colorPath[7]!.symbol)\(colorPath[8]!.symbol)\(colorPath[9]!.symbol)
+        \(colorPath[10]!.symbol)
+n/5: Message!
+""")
                         .foregroundStyle(Color(.systemBlue))
                         .padding()
                     
