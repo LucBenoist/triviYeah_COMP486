@@ -63,7 +63,7 @@ var pattern = """
   \(row_3)
 \(row_4)
         \(row_5)
-n/5: Message!
+\(round_num)/5: Message!
 """
 
 //var isButtonClicked = false // Track if the button is clicked
@@ -159,7 +159,7 @@ struct DailyGameView: View{
                 }label:{
                     PrimeButton_(text:"Daily Themes")}
                 .padding()
-            }.accentColor(.orange)//.navigationBarBackButtonHidden(true)
+            }//.navigationBarBackButtonHidden(true)
             
         }
         
@@ -179,6 +179,12 @@ struct MiniGameView: View{
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
+                Text("MINI GAMES!")
+                     .font(.system(size: 60))
+                     .fontWeight(.heavy)
+                     .foregroundColor(.skyTeal)
+                     .padding(.top, 150)
+                
                 NavigationLink{
                     HeadToHeadView()
                 }label:{
@@ -190,7 +196,7 @@ struct MiniGameView: View{
                 }label:{
                     PrimeButton_(text:"Infinite Trivia")}
                 .padding()
-            }.navigationBarBackButtonHidden(true)
+            }
         }
         
     }
