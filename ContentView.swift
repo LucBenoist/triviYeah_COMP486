@@ -675,7 +675,7 @@ struct GameOverView: View{
   \(colorPath[3]!.symbol)\(colorPath[4]!.symbol)\(colorPath[5]!.symbol)
 \(colorPath[6]!.symbol)\(colorPath[7]!.symbol)\(colorPath[8]!.symbol)\(colorPath[9]!.symbol)
         \(colorPath[10]!.symbol)
-Reached Round \(round_num-1) of 5: \(message)
+\(round_num-1)/5: \(message)
 """)
                         .foregroundStyle(Color(.systemBlue))
                         .padding()
