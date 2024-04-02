@@ -106,7 +106,7 @@ struct ContentView: View {
                     NavigationLink{
                         MiniGameView()
                     }label:{
-                        PrimeButton_(text:"Mini Games")}
+                        PrimeButton_(text:"Minigames")}
                     .padding()
                     .navigationBarBackButtonHidden(true)
                     }
@@ -159,7 +159,16 @@ struct DailyGameView: View{
                 }label:{
                     PrimeButton_(text:"Daily Themes")}
                 .padding()
-            }//.navigationBarBackButtonHidden(true)
+                
+                NavigationLink{
+                    ContentView()
+                }label:{
+                    PrimeButton_(text:"Back")}
+                .padding()
+                
+            }.navigationBarBackButtonHidden(true)
+            
+            
             
         }
         
@@ -179,11 +188,17 @@ struct MiniGameView: View{
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
-                Text("MINI GAMES!")
-                     .font(.system(size: 60))
+                Text("TriviYeah!")
+                     .font(.system(size: 70))
                      .fontWeight(.heavy)
                      .foregroundColor(.skyTeal)
                      .padding(.top, 150)
+                
+                Text("Trivia Minigames")
+                    .font(Font.custom("Arial Rounded MT Bold", size: 20))
+                    .fontWeight(.medium)
+                    .foregroundColor(.lime)
+                    .multilineTextAlignment(.center)
                 
                 NavigationLink{
                     HeadToHeadView()
@@ -196,6 +211,7 @@ struct MiniGameView: View{
                 }label:{
                     PrimeButton_(text:"Infinite Trivia")}
                 .padding()
+                
             }
         }
         
