@@ -16,7 +16,7 @@ struct Question: Decodable{
     let type: String
     let difficulty: String
     let category: String
-    let question: String
+    var question: String
     let correct_answer: String
     let incorrect_answers: [String]
 }
@@ -192,7 +192,21 @@ struct InfiniteTriviaView: View {
         let url = URL(string: "https://opentdb.com/api.php?amount=50&difficulty=easy&type=multiple")!
         let(data, _) = try await URLSession.shared.data(from: url)
         let decoded = try JSONDecoder().decode(Response.self, from: data)
-        return decoded.results
+        
+        var decodedQuestions = decoded.results
+        for index in 0..<decodedQuestions.count {
+            decodedQuestions[index].question = decodeHTMLEncodedString(decodedQuestions[index].question)
+            }
+        return decodedQuestions
+        
+    }
+    
+    func decodeHTMLEncodedString(_ htmlEncodedString: String) -> String {
+        guard let data = htmlEncodedString.data(using: .utf8) else {
+            return htmlEncodedString // Return original string if conversion fails
+        }
+        let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        return attributedString?.string ?? htmlEncodedString // Return decoded string or original string if decoding fails
     }
 }
 
