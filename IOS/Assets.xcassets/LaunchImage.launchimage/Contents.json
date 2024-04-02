@@ -2,7 +2,6 @@
   "images" : [
     {
       "extent" : "full-screen",
-      "filename" : "Image 2-7-24 at 2.12 PM-2.jpg",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -19,6 +18,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "3.jpeg",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
