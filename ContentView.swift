@@ -204,7 +204,7 @@ struct MiniGameView: View{
                 NavigationLink{
                     HeadToHeadView()
                 }label:{
-                    PrimeButton_(text:"Head 2 Head")}
+                    PrimeButton_(text:"Multi Mode")}
                 .padding()
                 
                 NavigationLink{
@@ -705,7 +705,7 @@ struct HeadToHeadView: View{
                 
                 VStack(spacing: 5) {
                     HStack {
-                        Text("Head to Head")
+                        Text("Multi Mode")
                             .font(.system(size: 60))
                             .fontWeight(.heavy)
                             .foregroundColor(.skyTeal)
@@ -735,14 +735,68 @@ struct HeadToHeadView: View{
                     }
                     .disabled(!triviaManager.answerSelected)
                     
+                    NavigationLink{
+                        HHOver()
+                    }label:{
+                        PrimeButton_(text: "End Game")
+                    }
+                    .padding()
+                    
                     
                     
                 }
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationBarBackButtonHidden(true)
+                
             }
         }
+    }
+}
+struct HHOver: View {
+    @StateObject var triviaManager = TriviaManager()
+    var body: some View {
+        NavigationView{
+            ZStack{
+                Color("Navy")
+                    .ignoresSafeArea()
+                
+                Rectangle()
+                    .stroke(Color.hotPink, lineWidth: 4)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack(spacing: 5) {
+                    HStack {
+                        Text("Game Over")
+                            .font(.system(size: 60))
+                            .fontWeight(.heavy)
+                            .foregroundColor(.skyTeal)
+                            .padding(.top, 5)
+                        Spacer()
+                        
+                    }
+                    
+                    VStack(){
+                        
+                        
+                        
+                        
+                        NavigationLink{
+                            ContentView()
+                        }label:{
+                            PrimeButton_(text:"Main Menu")}
+                        .padding()
+                        .disabled(triviaManager.reachedEnd)
+                        
+                        
+                        
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                }
+            }.navigationBarBackButtonHidden(true)
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
