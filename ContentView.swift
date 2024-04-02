@@ -114,6 +114,14 @@ struct ContentView: View {
                     }label:{
                         PrimeButton_(text:"Infinite Trivia")}
                     .padding()
+                    
+                    NavigationLink{
+                        ThemesView()
+                    }label:{
+                        PrimeButton_(text:"Daily Themes")}
+                    .padding()
+                    
+                    
                     }
                 }
                
