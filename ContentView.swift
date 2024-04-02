@@ -442,6 +442,7 @@ struct QuestionView: View{
                                 if final_answer == path[10]![1]{
                                     colorPath[10]?.symbol = "🟩"
                                     message = "I got a TriviYeah!"
+                                    round_num = 6
                                 } else{
                                     colorPath[10]?.symbol = "🟥"
                                 }
