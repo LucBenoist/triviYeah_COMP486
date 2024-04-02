@@ -56,6 +56,7 @@ var row_2 = "⬜️⬜️"
 var row_3 = "⬜️⬜️⬜️"
 var row_4 = "⬜️⬜️⬜️⬜️"
 var row_5 = "⬜️"
+var message = "Try to beat my score!"
 var pattern = """
 \(theme) \(day)
         \(row_1)
@@ -63,7 +64,7 @@ var pattern = """
   \(row_3)
 \(row_4)
         \(row_5)
-\(round_num)/5: Message!
+\(round_num)/5: \(message)
 """
 
 //var isButtonClicked = false // Track if the button is clicked
@@ -148,17 +149,19 @@ struct DailyGameView: View{
                     PrimeButton_(text:"Start")}
                 .padding()
                 
-                NavigationLink{
-                    InstructionsView()
-                }label:{
-                    PrimeButton_(text:"Instructions")}
-                .padding()
-                
-                NavigationLink{
-                    ThemesView()
-                }label:{
-                    PrimeButton_(text:"Daily Themes")}
-                .padding()
+                HStack{
+                    NavigationLink{
+                        InstructionsView()
+                    }label:{
+                        PrimeButton_(text:"Instructions")}
+                    .padding()
+                    
+                    NavigationLink{
+                        ThemesView()
+                    }label:{
+                        PrimeButton_(text:"Daily Themes")}
+                    .padding()
+                }
                 
                 NavigationLink{
                     ContentView()
@@ -440,6 +443,7 @@ struct QuestionView: View{
                                 final_answer = answer
                                 if final_answer == path[10]![1]{
                                     colorPath[10]?.symbol = "🟩"
+                                    message = "I got a TriviYeah!"
                                 } else{
                                     colorPath[10]?.symbol = "🟥"
                                 }
@@ -673,7 +677,7 @@ struct GameOverView: View{
   \(colorPath[3]!.symbol)\(colorPath[4]!.symbol)\(colorPath[5]!.symbol)
 \(colorPath[6]!.symbol)\(colorPath[7]!.symbol)\(colorPath[8]!.symbol)\(colorPath[9]!.symbol)
         \(colorPath[10]!.symbol)
-\(round_num)/5: Message!
+\(round_num)/5: \(message)
 """)
                         .foregroundStyle(Color(.systemBlue))
                         .padding()
