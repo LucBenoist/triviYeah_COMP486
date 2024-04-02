@@ -97,31 +97,18 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                     
                     NavigationLink {
-                        QuestionView()
+                        DailyGameView()
                     } label: {
                         PrimeButton_(text: "Daily Game")
                     }
                     .padding()
                     
                     NavigationLink{
-                        HeadToHeadView()
+                        MiniGameView()
                     }label:{
-                        PrimeButton_(text:"Head 2 Head")}
+                        PrimeButton_(text:"Mini Games")}
                     .padding()
-                    
-                    NavigationLink{
-                        InfiniteTriviaView()
-                    }label:{
-                        PrimeButton_(text:"Infinite Trivia")}
-                    .padding()
-                    
-                    NavigationLink{
-                        CategoryView()
-                    }label:{
-                        PrimeButton_(text:"Daily Themes")}
-                    .padding()
-                    
-                    
+                    .navigationBarBackButtonHidden(true)
                     }
                 }
                
@@ -129,6 +116,85 @@ struct ContentView: View {
         }
         //.navigationBarBackButtonHidden(true)
     }
+
+struct DailyGameView: View{
+    var body: some View {
+        ZStack {
+            Color("Navy")
+                .ignoresSafeArea()
+            
+            Rectangle()
+                .stroke(Color.hotPink, lineWidth: 4)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack{
+                Text("TriviYeah!")
+                     .font(.system(size: 70))
+                     .fontWeight(.heavy)
+                     .foregroundColor(.skyTeal)
+                     .padding(.top, 150)
+             
+                
+                Text("The Daily Trivia Game")
+                    .font(Font.custom("Arial Rounded MT Bold", size: 20))
+                    .fontWeight(.medium)
+                    .foregroundColor(.lime)
+                    .multilineTextAlignment(.center)
+                
+                NavigationLink{
+                    QuestionView()
+                }label:{
+                    PrimeButton_(text:"Start")}
+                .padding()
+                
+                NavigationLink{
+                    InstructionsView()
+                }label:{
+                    PrimeButton_(text:"Instructions")}
+                .padding()
+                
+                NavigationLink{
+                    ThemesView()
+                }label:{
+                    PrimeButton_(text:"Daily Themes")}
+                .padding()
+            }.accentColor(.orange)//.navigationBarBackButtonHidden(true)
+            
+        }
+        
+    }
+}
+
+
+struct MiniGameView: View{
+    var body: some View {
+        ZStack {
+            Color("Navy")
+                .ignoresSafeArea()
+            
+            Rectangle()
+                .stroke(Color.hotPink, lineWidth: 4)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack{
+                NavigationLink{
+                    HeadToHeadView()
+                }label:{
+                    PrimeButton_(text:"Head 2 Head")}
+                .padding()
+                
+                NavigationLink{
+                    InfiniteTriviaView()
+                }label:{
+                    PrimeButton_(text:"Infinite Trivia")}
+                .padding()
+            }.navigationBarBackButtonHidden(true)
+        }
+        
+    }
+}
 
 
 //Question Scene and Round Play

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		13B912842B89901900F0CBF0 /* questions_resource in Resources */ = {isa = PBXBuildFile; fileRef = 13B912832B89901900F0CBF0 /* questions_resource */; };
+		13ECB12A2BBC6FA200963879 /* ThemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ECB1292BBC6FA200963879 /* ThemesView.swift */; };
+		13ECB12C2BBC700300963879 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ECB12B2BBC700300963879 /* InstructionsView.swift */; };
 		B015FD452B893B690031EA4E /* questionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015FD442B893B690031EA4E /* questionCreator.swift */; };
 		B015FD472B893B790031EA4E /* gamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015FD462B893B790031EA4E /* gamePlay.swift */; };
 		B015FD532B8C1E880031EA4E /* LinkViewToTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		13B912832B89901900F0CBF0 /* questions_resource */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions_resource; sourceTree = SOURCE_ROOT; };
+		13ECB1292BBC6FA200963879 /* ThemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesView.swift; sourceTree = "<group>"; };
+		13ECB12B2BBC700300963879 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		B015FD442B893B690031EA4E /* questionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questionCreator.swift; sourceTree = SOURCE_ROOT; };
 		B015FD462B893B790031EA4E /* gamePlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gamePlay.swift; sourceTree = SOURCE_ROOT; };
 		B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewToTree.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				E8041ED02B7AF462007D9750 /* ContentView.swift */,
 				B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */,
 				E880F24B2BB26385005C61F7 /* InfiniteTrivia.swift */,
+				13ECB1292BBC6FA200963879 /* ThemesView.swift */,
+				13ECB12B2BBC700300963879 /* InstructionsView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -319,9 +325,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E880F24C2BB26385005C61F7 /* InfiniteTrivia.swift in Sources */,
+				13ECB12C2BBC700300963879 /* InstructionsView.swift in Sources */,
 				E8A3F0412B72DE7D00ACA7C7 /* Item.swift in Sources */,
 				E8B77B5A2BAA16EA00CDFDFE /* H2H Trivia .swift in Sources */,
 				B015FD472B893B790031EA4E /* gamePlay.swift in Sources */,
+				13ECB12A2BBC6FA200963879 /* ThemesView.swift in Sources */,
 				E8041ED12B7AF462007D9750 /* ContentView.swift in Sources */,
 				B015FD452B893B690031EA4E /* questionCreator.swift in Sources */,
 				E8041EC32B76F2E6007D9750 /* AnswerModel.swift in Sources */,
