@@ -116,7 +116,7 @@ struct ContentView: View {
                     .padding()
                     
                     NavigationLink{
-                        ThemesView()
+                        CategoryView()
                     }label:{
                         PrimeButton_(text:"Daily Themes")}
                     .padding()
@@ -615,30 +615,38 @@ struct HeadToHeadView: View{
                 
                 VStack(spacing: 5) {
                     HStack {
-                       Text("Head to Head")
-                        .font(.system(size: 60))
-                        .fontWeight(.heavy)
-                        .foregroundColor(.skyTeal)
-                        .padding(.top, 5)
-                       Spacer()
+                        Text("Head to Head")
+                            .font(.system(size: 60))
+                            .fontWeight(.heavy)
+                            .foregroundColor(.skyTeal)
+                            .padding(.top, 5)
+                        Spacer()
+                        
                         Text("\(triviaManager.index + 1) out of \(triviaManager.length)")
                     }
                     ProgressBar(progress: triviaManager.progress)
                     
-                    VStack(alignment: .leading, spacing: 20){
+                    VStack(){
                         Text(triviaManager.question)
                             .font(.system(size: 20))
                             .fontWeight(.heavy)
-                            .padding()
                             .foregroundStyle(Color.skyYellow)
+                        
+                        Spacer()
                         
                         ForEach(triviaManager.answerChoices, id:\.id){ answer in AnswerRow_(answer: answer)
                                 .environmentObject(triviaManager)
                         }
-                       
                     }
+                    Button {
+                        triviaManager.goToNextQuestion()
+                    } label: {
+                        PrimeButton_(text: "Next", background: triviaManager.answerSelected ? Color("AccentColor") : Color(hue: 1.0, saturation: 0.00, brightness: 0.564, opacity: 0.327))
+                    }
+                    .disabled(!triviaManager.answerSelected)
                     
-                
+                    
+                    
                 }
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -648,8 +656,11 @@ struct HeadToHeadView: View{
     }
 }
 
+
+    
 struct ContentView_Previews: PreviewProvider{
     static var previews: some View{
         ContentView()
+        }
     }
-}
+
