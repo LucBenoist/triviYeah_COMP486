@@ -31,7 +31,7 @@ struct InstructionsView: View {
 
                 -If you get the final question right, you got a perfect game, a TriviYeah!.
 
-                -At the end, whether yout got a question wrong or got a TriviYeah!, a path will be displayed that reflects your gameplay that can be shared with friends.
+                -At the end, whether you got a question wrong or got a TriviYeah!, a path will be displayed that reflects your gameplay that can be shared with friends.
                 """).multilineTextAlignment(.center)
                     .font(Font.custom("Arial Rounded MT Bold", size: 20))
                     .fontWeight(.medium)
