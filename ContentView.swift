@@ -154,13 +154,11 @@ struct DailyGameView: View{
                         InstructionsView()
                     }label:{
                         PrimeButton_(text:"Instructions")}
-                    .padding()
                     
                     NavigationLink{
                         ThemesView()
                     }label:{
                         PrimeButton_(text:"Daily Themes")}
-                    .padding()
                 }
                 
                 NavigationLink{
