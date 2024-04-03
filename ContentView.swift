@@ -774,6 +774,8 @@ struct HHOver: View {
                             .padding(.top, 5)
                         Spacer()
                         
+                        Text("Your score: \(triviaManager.score) out of \(triviaManager.length)")
+                        
                     }
                     
                     VStack(){
