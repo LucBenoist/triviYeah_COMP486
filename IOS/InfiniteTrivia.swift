@@ -119,7 +119,7 @@ struct InfiniteTriviaView: View {
                             Text("CORRECT")
                                 .font(Font.custom("Arial Rounded MT Bold", size: 11))
                                 .fontWeight(.medium)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(.pathG)
                                 .multilineTextAlignment(.center)
                                 .padding()
                         }
