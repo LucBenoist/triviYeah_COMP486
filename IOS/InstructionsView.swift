@@ -12,6 +12,11 @@ struct InstructionsView: View {
         ZStack{
             Color("Navy")
                 .ignoresSafeArea()
+            Rectangle()
+                .stroke(Color.hotPink, lineWidth: 4)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.all)
+            
             VStack{
                 Text("TRIVIYEAH! GAMEPLAY")
                     .font(.system(size: 25))
