@@ -29,10 +29,10 @@ struct CustomButtonStyle: ButtonStyle {
             .padding()
             .frame(width: 145, height: 27)
             .background(configuration.isPressed ? Color(.hotPink) : Color(.skyTeal))
-            .cornerRadius(0)
+            .cornerRadius(13.5)
             .shadow(radius: 5)
             .overlay(
-                RoundedRectangle(cornerRadius: 0)
+                RoundedRectangle(cornerRadius: 13.5)
                     .stroke(Color(.hotPink), lineWidth: 2)
             )
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0) // Scale effect on press
