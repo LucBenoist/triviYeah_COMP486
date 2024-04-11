@@ -203,10 +203,10 @@ struct InfiniteTriviaView: View {
     
     func decodeHTMLEncodedString(_ htmlEncodedString: String) -> String {
         guard let data = htmlEncodedString.data(using: .utf8) else {
-            return htmlEncodedString // Return original string if conversion fails
+            return htmlEncodedString 
         }
         let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-        return attributedString?.string ?? htmlEncodedString // Return decoded string or original string if decoding fails
+        return attributedString?.string ?? htmlEncodedString
     }
 }
 
