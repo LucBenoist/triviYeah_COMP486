@@ -70,6 +70,11 @@ var pattern = """
 //var isButtonClicked = false // Track if the button is clicked
 
 struct ContentView: View {
+    
+    init(){
+           UINavigationBar.setAnimationsEnabled(false)
+       }
+    
     @StateObject var triviaManager = TriviaManager()
     var body: some View {
         NavigationView {
