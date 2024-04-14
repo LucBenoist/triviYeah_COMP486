@@ -50,6 +50,7 @@ var path = create_path()
 // Establish Startting at Path 0 and Round 1
 var path_node: Int = 0
 var round_num: Int = 1
+var game_played = false
 var final_answer = ""
 var row_1 = "⬜️"
 var row_2 = "⬜️⬜️"
@@ -149,7 +150,12 @@ struct DailyGameView: View{
                     .multilineTextAlignment(.center)
                 
                 NavigationLink{
-                    QuestionView()
+                    if game_played == false{
+                        QuestionView()
+                    }
+                    else {
+                        GameOverView()
+                    }
                 }label:{
                     PrimeButton_(text:"Start")}
                 .padding()
@@ -294,6 +300,7 @@ struct QuestionView: View{
                                     colorPath[path_node]?.color  = Color("PathR")
                                     colorPath[path_node]?.symbol = "🟥"
                                     isCorrect = false
+                                    game_played = true
                                 }
                             }
                             .padding()
@@ -371,6 +378,7 @@ struct QuestionView: View{
                                     colorPath[path_node]?.color  = Color("PathR")
                                     colorPath[path_node]?.symbol = "🟥"
                                     isCorrect = false
+                                    game_played = true
                                 }
                             }
                             .padding()
@@ -448,8 +456,10 @@ struct QuestionView: View{
                                     colorPath[10]?.symbol = "🟩"
                                     message = "I got a TriviYeah!"
                                     round_num = 6
+                                    game_played = true
                                 } else{
                                     colorPath[10]?.symbol = "🟥"
+                                    game_played = true
                                 }
                             }
                         if showSuggestions && !filteredSuggestions.isEmpty {
