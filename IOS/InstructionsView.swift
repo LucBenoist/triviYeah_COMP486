@@ -48,14 +48,14 @@ struct InstructionsView: View {
                         PrimeButton_(text: "Path Example")
                         
                     }.navigationBarBackButtonHidden(true)
-                        .padding()
+                        
                     
                     NavigationLink(destination: DailyGameView()) {
                         PrimeButton_(text: "Back")
                         
                     }.navigationBarBackButtonHidden(true)
-                        .padding()
-                }
+                        
+                }.padding()
             }
         }
     }
