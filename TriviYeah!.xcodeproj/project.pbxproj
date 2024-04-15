@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13265C4A2BCCCEA70091493C /* PathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13265C492BCCCEA70091493C /* PathView.swift */; };
 		13B912842B89901900F0CBF0 /* questions_resource in Resources */ = {isa = PBXBuildFile; fileRef = 13B912832B89901900F0CBF0 /* questions_resource */; };
 		13ECB12A2BBC6FA200963879 /* ThemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ECB1292BBC6FA200963879 /* ThemesView.swift */; };
 		13ECB12C2BBC700300963879 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ECB12B2BBC700300963879 /* InstructionsView.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13265C492BCCCEA70091493C /* PathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathView.swift; sourceTree = "<group>"; };
 		13B912832B89901900F0CBF0 /* questions_resource */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions_resource; sourceTree = SOURCE_ROOT; };
 		13ECB1292BBC6FA200963879 /* ThemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesView.swift; sourceTree = "<group>"; };
 		13ECB12B2BBC700300963879 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
@@ -116,10 +118,11 @@
 				B015FD442B893B690031EA4E /* questionCreator.swift */,
 				13B912832B89901900F0CBF0 /* questions_resource */,
 				E8041ED02B7AF462007D9750 /* ContentView.swift */,
-				B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */,
-				E880F24B2BB26385005C61F7 /* InfiniteTrivia.swift */,
 				13ECB1292BBC6FA200963879 /* ThemesView.swift */,
 				13ECB12B2BBC700300963879 /* InstructionsView.swift */,
+				13265C492BCCCEA70091493C /* PathView.swift */,
+				B015FD522B8C1E880031EA4E /* LinkViewToTree.swift */,
+				E880F24B2BB26385005C61F7 /* InfiniteTrivia.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E880F24C2BB26385005C61F7 /* InfiniteTrivia.swift in Sources */,
+				13265C4A2BCCCEA70091493C /* PathView.swift in Sources */,
 				13ECB12C2BBC700300963879 /* InstructionsView.swift in Sources */,
 				E8A3F0412B72DE7D00ACA7C7 /* Item.swift in Sources */,
 				E8B77B5A2BAA16EA00CDFDFE /* H2H Trivia .swift in Sources */,

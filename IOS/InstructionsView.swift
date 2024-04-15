@@ -38,16 +38,24 @@ struct InstructionsView: View {
 
                 -At the end, whether you got a question wrong or got a TriviYeah!, a path will be displayed that reflects your gameplay that can be shared with friends.
                 """).multilineTextAlignment(.center)
-                    .font(Font.custom("Arial Rounded MT Bold", size: 20))
+                    .font(Font.custom("Arial Rounded MT Bold", size: 15))
                     .fontWeight(.medium)
                     .foregroundColor(.hotPink)
                     .multilineTextAlignment(.center)
                 
-                NavigationLink(destination: DailyGameView()) {
-                    PrimeButton_(text: "Back")
+                HStack{
+                    NavigationLink(destination: PathView()) {
+                        PrimeButton_(text: "Path Example")
+                        
+                    }.navigationBarBackButtonHidden(true)
+                        .padding()
                     
-                }.navigationBarBackButtonHidden(true)
-                    .padding()
+                    NavigationLink(destination: DailyGameView()) {
+                        PrimeButton_(text: "Back")
+                        
+                    }.navigationBarBackButtonHidden(true)
+                        .padding()
+                }
             }
         }
     }
