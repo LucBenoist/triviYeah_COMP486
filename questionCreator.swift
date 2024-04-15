@@ -207,13 +207,13 @@ func getQuestions(theme: String) -> [Int: [String]] {
     
 }
 
-let filePath = "questions_resource"
+/*let filePath = "questions_resource"
 func question_caller()  -> [Int: [String]] {
     // Fix this
     let theme = getTheme(day:"Thursday")
     readFile(filePath: filePath)
     return getQuestions(theme: theme)
-}
+}*/
 
 
 

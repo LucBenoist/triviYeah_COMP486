@@ -5,8 +5,19 @@
 
 
 import SwiftUI
-var day = "Thursday"
+
+let filePath = "questions_resource"
 var theme = getTheme(day: day)
+func question_caller()  -> [Int: [String]] {
+    // Fix this
+    //let theme = getTheme(day:"Thursday")
+    readFile(filePath: filePath)
+    return getQuestions(theme: theme)
+}
+    
+    
+var day = "Thursday"
+//var theme = getTheme(day: day)
 
 var questions_dict = question_caller()
 var path_rectangle = Rectangle()
