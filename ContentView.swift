@@ -157,8 +157,13 @@ struct DailyGameView: View{
                         GameOverView()
                     }
                 }label:{
-                    PrimeButton_(text:"Start")}
-                .padding()
+                    if game_played == false{
+                        PrimeButton_(text:"Start").padding()
+                    } else{
+                        PrimeButton_(text:"Your Results").padding()
+                    }
+                }
+
                 
                 HStack{
                     NavigationLink{
