@@ -10,7 +10,7 @@ import SwiftUI
 struct ThemesView: View {
     var body: some View {
         ZStack{
-            Color("Navy")
+            Color(Color.black)
                 .ignoresSafeArea()
             
             Rectangle()
@@ -22,7 +22,7 @@ struct ThemesView: View {
                 Text("DAILY THEMES")
                     .font(.system(size: 40))
                     .fontWeight(.heavy)
-                    .foregroundColor(.skyTeal)
+                    .foregroundColor(.skyYellow)
                     .padding()
                     
                 
@@ -34,7 +34,7 @@ struct ThemesView: View {
                 Text("Tuesday Tunes")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))
                     .fontWeight(.medium)
-                    .foregroundColor(.lime)
+                    .foregroundColor(.skyYellow)
                     .multilineTextAlignment(.center)
                 Text("Wednesday Wild")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))
@@ -44,7 +44,7 @@ struct ThemesView: View {
                 Text("TV Thursday")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))
                     .fontWeight(.medium)
-                    .foregroundColor(.lime)
+                    .foregroundColor(.skyYellow)
                     .multilineTextAlignment(.center)
                 Text("Frantic Friday")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))
@@ -54,7 +54,7 @@ struct ThemesView: View {
                 Text("Sports Saturday")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))
                     .fontWeight(.medium)
-                    .foregroundColor(.lime)
+                    .foregroundColor(.skyYellow)
                     .multilineTextAlignment(.center)
                 Text("Hist{or}Science Sunday")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))

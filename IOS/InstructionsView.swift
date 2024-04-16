@@ -10,7 +10,7 @@ import SwiftUI
 struct InstructionsView: View {
     var body: some View {
         ZStack{
-            Color("Navy")
+            Color(Color.black)
                 .ignoresSafeArea()
             Rectangle()
                 .stroke(Color.hotPink, lineWidth: 4)
@@ -21,7 +21,7 @@ struct InstructionsView: View {
                 Text("TRIVIYEAH! GAMEPLAY")
                     .font(.system(size: 25))
                     .fontWeight(.heavy)
-                    .foregroundColor(.skyTeal)
+                    .foregroundColor(.hotPink)
                     .padding()
                     
                 
@@ -47,22 +47,26 @@ struct InstructionsView: View {
                 """).multilineTextAlignment(.center)
                     .font(Font.custom("Arial Rounded MT Bold", size: 15))
                     .fontWeight(.medium)
-                    .foregroundColor(.hotPink)
+                    .foregroundColor(.skyYellow)
                     .multilineTextAlignment(.center)
                 
                 HStack{
                     NavigationLink(destination: PathView()) {
-                        PrimeButton_(text: "Path Example")
+                        PrimeButton_(text: "Path?")
                         
                     }.navigationBarBackButtonHidden(true)
                         
                     
-                    NavigationLink(destination: DailyGameView()) {
-                        PrimeButton_(text: "Back")
+                    NavigationLink(destination: ThemesView()) {
+                        PrimeButton_(text: "Themes")
                         
                     }.navigationBarBackButtonHidden(true)
                         
                 }.padding()
+                NavigationLink(destination: DailyGameView()) {
+                    PrimeButton_(text: "Back")
+                    
+                }.navigationBarBackButtonHidden(true)
             }
         }
     }

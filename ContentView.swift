@@ -89,7 +89,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Navy")
+                Color(Color.black)
                     .ignoresSafeArea()
                 
                 // outline
@@ -99,17 +99,18 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack{
+                    Image("Logo")
                     Text("TriviYeah!")
                          .font(.system(size: 70))
                          .fontWeight(.heavy)
-                         .foregroundColor(.skyTeal)
-                         .padding(.top, 150)
+                         .foregroundColor(.skyYellow)
+                         //.padding(.top, 150)
                  
                     
                     Text("The Daily Trivia Game")
                         .font(Font.custom("Arial Rounded MT Bold", size: 20))
                         .fontWeight(.medium)
-                        .foregroundColor(.lime)
+                        .foregroundColor(.hotPink)
                         .multilineTextAlignment(.center)
                     
                     NavigationLink {
@@ -136,7 +137,7 @@ struct ContentView: View {
 struct DailyGameView: View{
     var body: some View {
         ZStack {
-            Color("Navy")
+            Color(Color.black)
                 .ignoresSafeArea()
             
             Rectangle()
@@ -145,17 +146,18 @@ struct DailyGameView: View{
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
+                Image("Logo")
                 Text("TriviYeah!")
                      .font(.system(size: 70))
                      .fontWeight(.heavy)
-                     .foregroundColor(.skyTeal)
-                     .padding(.top, 150)
+                     .foregroundColor(.skyYellow)
+                     //.padding(.top, 150)
              
                 
                 Text("The Daily Trivia Game")
                     .font(Font.custom("Arial Rounded MT Bold", size: 20))
                     .fontWeight(.medium)
-                    .foregroundColor(.lime)
+                    .foregroundColor(.hotPink)
                     .multilineTextAlignment(.center)
                 
                 NavigationLink{
@@ -174,17 +176,10 @@ struct DailyGameView: View{
                 }
 
                 
-                HStack{
                     NavigationLink{
                         InstructionsView()
                     }label:{
                         PrimeButton_(text:"Instructions")}
-                    
-                    NavigationLink{
-                        ThemesView()
-                    }label:{
-                        PrimeButton_(text:"Daily Themes")}
-                }
                 
                 NavigationLink{
                     ContentView()
@@ -205,7 +200,7 @@ struct DailyGameView: View{
 struct MiniGameView: View{
     var body: some View {
         ZStack {
-            Color("Navy")
+            Color(Color.black)
                 .ignoresSafeArea()
             
             Rectangle()
@@ -214,16 +209,17 @@ struct MiniGameView: View{
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
+                Image("Logo")
                 Text("TriviYeah!")
                      .font(.system(size: 70))
                      .fontWeight(.heavy)
-                     .foregroundColor(.skyTeal)
-                     .padding(.top, 150)
+                     .foregroundColor(.skyYellow)
+                     //.padding(.top, 150)
                 
                 Text("Trivia Minigames")
                     .font(Font.custom("Arial Rounded MT Bold", size: 20))
                     .fontWeight(.medium)
-                    .foregroundColor(.lime)
+                    .foregroundColor(.hotPink)
                     .multilineTextAlignment(.center)
                 
                 NavigationLink{
@@ -263,7 +259,7 @@ struct QuestionView: View{
     var body: some View {
         NavigationView{
             ZStack{
-                Color("Navy")
+                Color(Color.black)
                     .ignoresSafeArea()
                 
                 Rectangle()
@@ -278,9 +274,9 @@ struct QuestionView: View{
                             .padding()
                             .font(.system(size: 50))
                             .fontWeight(.heavy)
-                            .foregroundStyle(Color.skyTeal)
+                            .foregroundStyle(Color.skyYellow)
                         Text((path[0]![0])) //Q0
-                            .foregroundStyle(Color.lime)
+                            .foregroundStyle(Color.hotPink)
                             .padding()
                         TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
                                             self.showSuggestions = isEditing
@@ -350,10 +346,10 @@ struct QuestionView: View{
                             .font(.system(size: 50))
                             .fontWeight(.heavy)
                             .padding()
-                            .foregroundStyle(Color.skyTeal)
+                            .foregroundStyle(Color.skyYellow)
                         Text((path[path_node]![0])) //Question stored at path node
                             .padding()
-                            .foregroundStyle(Color.lime)
+                            .foregroundStyle(Color.hotPink)
                         TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
                                             self.showSuggestions = isEditing
                                         }) // Text Box for user answer
@@ -449,16 +445,15 @@ struct QuestionView: View{
                             }
                             
                         }
-                        //Jon Rahm
                     }
                     else{ // Final Round Branch
                         Text("FINAL ROUND")
                             .font(.system(size: 50))
                             .fontWeight(.heavy)
-                            .foregroundStyle(Color.skyTeal)
+                            .foregroundStyle(Color.skyYellow)
                         Text((path[10]![0])) // Final question
                             .padding()
-                            .foregroundStyle(Color.lime)
+                            .foregroundStyle(Color.hotPink)
                         TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
                                             self.showSuggestions = isEditing
                                         }) // Text Box for user answer
@@ -511,7 +506,7 @@ struct CategoryView: View{
     var body: some View {
             NavigationView {
                 ZStack{
-                    Color("Navy")
+                    Color(Color.black)
                         .ignoresSafeArea()
                     
                     Rectangle()
@@ -523,7 +518,7 @@ struct CategoryView: View{
                         Text("Pick Next Round's Category!")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
-                            .foregroundColor(Color.skyTeal)
+                            .foregroundColor(Color.skyYellow)
                             .multilineTextAlignment(.center)
                         
                         
@@ -625,7 +620,7 @@ struct GameOverView: View{
     var body: some View {
         NavigationView{
             ZStack{
-                Color("Navy")
+                Color(Color.black)
                     .ignoresSafeArea()
                 Rectangle()
                     .stroke(Color.hotPink, lineWidth: 4)
@@ -636,7 +631,7 @@ struct GameOverView: View{
                     Text("Game Over!")
                         .font(.system(size: 50))
                         .fontWeight(.heavy)
-                        .foregroundColor(Color.skyTeal)
+                        .foregroundColor(Color.skyYellow)
                     
                     if final_answer == path[10]![1] {
                         Text("Congratulations, \nYou got a TriviYeah!")
@@ -711,7 +706,7 @@ struct GameOverView: View{
                         .padding()
                     
                     NavigationLink(destination: ContentView()) {
-                        PrimeButton_(text: "Home Screen")
+                        PrimeButton_(text: "Home")
                         
                     }.navigationBarBackButtonHidden(true)
                 }
@@ -725,7 +720,7 @@ struct HeadToHeadView: View{
     var body: some View {
         NavigationView{
             ZStack{
-                Color("Navy")
+                Color(Color.black)
                     .ignoresSafeArea()
                 
                 Rectangle()
@@ -738,7 +733,7 @@ struct HeadToHeadView: View{
                         Text("Multi Mode")
                             .font(.system(size: 60))
                             .fontWeight(.heavy)
-                            .foregroundColor(.skyTeal)
+                            .foregroundColor(.skyYellow)
                             .padding(.top, 5)
                         Spacer()
                         
@@ -787,7 +782,7 @@ struct HHOver: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color("Navy")
+                Color(Color.black)
                     .ignoresSafeArea()
                 
                 Rectangle()
@@ -800,7 +795,7 @@ struct HHOver: View {
                         Text("Game Over")
                             .font(.system(size: 60))
                             .fontWeight(.heavy)
-                            .foregroundColor(.skyTeal)
+                            .foregroundColor(.skyYellow)
                             .padding(.top, 5)
                         Spacer()
                         

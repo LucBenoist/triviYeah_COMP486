@@ -28,7 +28,7 @@ struct CustomButtonStyle: ButtonStyle {
             .foregroundColor(.navy)
             .padding()
             .frame(width: 145, height: 27)
-            .background(configuration.isPressed ? Color(.hotPink) : Color(.skyTeal))
+            .background(configuration.isPressed ? Color(.hotPink) : Color(.skyYellow))
             .cornerRadius(13.5)
             .shadow(radius: 5)
             .overlay(
@@ -53,7 +53,7 @@ struct InfiniteTriviaView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Navy")
+                Color(Color.black)
                     .ignoresSafeArea()
                 
                 Rectangle()
@@ -66,7 +66,7 @@ struct InfiniteTriviaView: View {
                     Text("Welcome To Infinite TriviYeah!")
                         .font(.system(size: 40))
                         .fontWeight(.heavy)
-                        .foregroundColor(.skyTeal)
+                        .foregroundColor(.skyYellow)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 525)
                 }
@@ -76,12 +76,12 @@ struct InfiniteTriviaView: View {
                     Text("How many can you get??")
                         .font(Font.custom("Arial Rounded MT Bold", size: 11))
                         .fontWeight(.medium)
-                        .foregroundColor(.lime)
+                        .foregroundColor(.hotPink)
                         .multilineTextAlignment(.center)
                     Text("Your Streak: \(streakCount)")
                         .font(Font.custom("Arial Rounded MT Bold", size: 11))
                         .fontWeight(.medium)
-                        .foregroundColor(.lime)
+                        .foregroundColor(.hotPink)
                         .multilineTextAlignment(.center)
                 }
                 
