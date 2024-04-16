@@ -741,7 +741,7 @@ struct HeadToHeadView: View{
                             .font(Font.custom("Arial Rounded MT Bold", size: 20))
                             .fontWeight(.medium)
                             .foregroundColor(.hotPink)
-                            .multilineTextAlignment(.center)
+                            //.multilineTextAlignment(.center)
                     }
                     ProgressBar(progress: triviaManager.progress)
                     
