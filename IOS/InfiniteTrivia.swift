@@ -17,7 +17,7 @@ struct Question: Decodable{
     let difficulty: String
     let category: String
     var question: String
-    let correct_answer: String
+    var correct_answer: String
     let incorrect_answers: [String]
 }
 
@@ -46,6 +46,8 @@ struct InfiniteTriviaView: View {
     @State private var isCorrect: Bool? = nil
     @State private var useHint: Bool = false
     @State private var streakCount: Int = 0
+    @State private var answered_correctly: Set<Int> = []
+    @State private var hintUsed = false
     
     
     var body: some View {
@@ -104,6 +106,7 @@ struct InfiniteTriviaView: View {
                             .fill(Color.white)
                             .frame(height: 25)
                         TextField("Answer Here", text: $userAnswer)
+                            .foregroundColor(.skyPurple)
                             .padding()
                     }
                     
@@ -131,8 +134,27 @@ struct InfiniteTriviaView: View {
                                 .padding()
                         }
                         
+                        //Button(action: {
+                         //   ChecksHint()
+                         //   hintUsed = true
+                        //}) {
+                          //  if useHint{
+                            //    var joined_answers = joinAnswers(incorrectAnswers: questions[question_index!].incorrect_answers, correctAnswer: questions[question_index!].correct_answer)
+                                //Text(joined_answers).foregroundColor(.white).multilineTextAlignment(.center)
+                                  //  .padding()
+                            //}
+                            //Text("Click for Hint!")
+                             //   .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                              //  .fontWeight(.medium)
+                              //  .foregroundColor(.skyPurple)
+                              //  .multilineTextAlignment(.center)
+                              //  .padding()
+                        //}
+                        //.buttonStyle(CustomButtonStyle())
+                        
                         Button(action: {
                             ChecksHint()
+                            //userAnswer = " "
                         }) {
                             if useHint{
                                 Text(questions[question_index!].correct_answer)
@@ -146,6 +168,9 @@ struct InfiniteTriviaView: View {
                                 .padding()
                         }
                         .buttonStyle(CustomButtonStyle())
+                        //.disabled(!hintUsed)
+                    //} vstack
+                    //} scroll view
                     }
                 }
                 .padding()
@@ -170,7 +195,10 @@ struct InfiniteTriviaView: View {
         if let index = question_index {
             if userAnswer == questions[index].correct_answer {
                 isCorrect = true
-                streakCount += 1
+                if !answered_correctly.contains(index) {
+                    streakCount += 1
+                    answered_correctly.insert(index)
+                }
             }
             else {
                 isCorrect = false
@@ -196,6 +224,7 @@ struct InfiniteTriviaView: View {
         var decodedQuestions = decoded.results
         for index in 0..<decodedQuestions.count {
             decodedQuestions[index].question = decodeHTMLEncodedString(decodedQuestions[index].question)
+            decodedQuestions[index].correct_answer = decodeHTMLEncodedString(decodedQuestions[index].correct_answer)
             }
         return decodedQuestions
         
@@ -207,6 +236,12 @@ struct InfiniteTriviaView: View {
         }
         let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
         return attributedString?.string ?? htmlEncodedString
+    }
+    
+    func joinAnswers(incorrectAnswers: [String], correctAnswer: String) -> String {
+        var combinedAnswers = incorrectAnswers
+        combinedAnswers.append(correctAnswer)
+        return combinedAnswers.joined(separator: ", ")
     }
 }
 
