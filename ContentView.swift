@@ -7,18 +7,16 @@
 import SwiftUI
 
 let filePath = "questions_resource"
-var theme = getTheme(day: day)
-func question_caller()  -> [Int: [String]] {
-    // Fix this
-    //let theme = getTheme(day:"Thursday")
-    readFile(filePath: filePath)
-    return getQuestions(theme: theme)
-}
-    
-    
-var day = "Thursday"
-//var theme = getTheme(day: day)
+let day = getCurrentDay()
+let theme = getTheme(day: day)
+let days_passed = daysSinceDate()
+let week = get_week(days: days_passed)
 
+func question_caller()  -> [Int: [String]] {
+    let _ = print(launch_day)
+    readFile(filePath: filePath)
+    return getQuestions(theme: theme, week: week)
+}
 var questions_dict = question_caller()
 var path_rectangle = Rectangle()
 

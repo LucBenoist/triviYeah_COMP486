@@ -110,6 +110,34 @@ func readFile(filePath: String) {
     }
 }
 
+//April 16, 2024
+let launch_day = Calendar.current.date(from: DateComponents(year: 2024, month: 4, day: 15))!
+
+// Number of days since Launch Day
+//Helps get Week
+func daysSinceDate() -> Int {
+    let calendar = Calendar.current
+    let currentDate = Date()
+    let components = calendar.dateComponents([.day], from: launch_day, to: currentDate)
+    guard let days = components.day else { return 0 }
+    
+    return days
+}
+
+//Get Week
+func get_week(days: Int) -> Int {
+    let num = Double(days) / 7.0
+    let floored_num = floor(num)
+    return Int(floored_num)
+}
+
+//Get Day
+func getCurrentDay() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE"
+    return dateFormatter.string(from: Date())
+}
+
 // Assign Theme based on given day
 func getTheme(day: String) -> String {
     switch day {
@@ -128,55 +156,54 @@ func getTheme(day: String) -> String {
     }
 }
 
+
+func quesByWeek(week: Int) -> Int{
+    if week == 0{
+        return 0
+    }
+    else{
+        let first_ques = week * 11
+        return (first_ques)
+    }
+}
+
 // Obtain 11 questions from the Category of the theme
-func getQuestions(theme: String) -> [Int: [String]] {
+func getQuestions(theme: String, week: Int) -> [Int: [String]] {
     var questions = [Int: [String]]()
-    var i = 0
+    var i = quesByWeek(week: week)
+    let last_ques = i + 11
+    print(i)
     
     switch theme {
     case "Movies":
-        while i < 11 {
-            questions[i] = [moviesQuestions[0], moviesAnswers[0], moviesSub[0]]
-            moviesQuestions.removeFirst()
-            moviesAnswers.removeFirst()
-            moviesSub.removeFirst()
+        while i < last_ques {
+            questions[i] = [moviesQuestions[i], moviesAnswers[i], moviesSub[i]]
             i += 1
         }
+
     case "Music":
-        while i < 11 {
-            questions[i] = [musicQuestions[0], musicAnswers[0], musicSub[0]]
-            musicQuestions.removeFirst()
-            musicAnswers.removeFirst()
-            musicSub.removeFirst()
+        while i < last_ques {
+            questions[i] = [musicQuestions[i], musicAnswers[i], musicSub[i]]
             i += 1
         }
     case "TV":
-        while i < 11 {
-            questions[i] = [tvQuestions[0], tvAnswers[0], tvSub[0]]
-            tvQuestions.removeFirst()
-            tvAnswers.removeFirst()
-            tvSub.removeFirst()
+        while i < last_ques {
+            questions[i] = [tvQuestions[i], tvAnswers[i],tvSub[i]]
             i += 1
         }
     case "Sports":
-        while i < 11 {
-            questions[i] = [sportsQuestions[0], sportsAnswers[0], sportsSub[0]]
-            sportsQuestions.removeFirst()
-            sportsAnswers.removeFirst()
-            sportsSub.removeFirst()
+        while i < last_ques {
+            questions[i] = [sportsQuestions[i], sportsAnswers[i], sportsSub[i]]
             i += 1
         }
     case "Misc":
-        while i < 11 {
-            questions[i] = [miscQuestions[0], miscAnswers[0], miscSub[0]]
-            miscQuestions.removeFirst()
-            miscAnswers.removeFirst()
-            miscSub.removeFirst()
+        while i < last_ques {
+            questions[i] = [miscQuestions[i], miscAnswers[i], miscSub[i]]
             i += 1
         }
         //This is bug need to fix next demo
     case "History/Science":
-        while i < 11 {
+        while i < last_ques {
             if i == 0 || i == 4 || i == 10 {
                 questions[i] = [HoSQuestions[i], HoSAnswers[i], HoSsub[i]]
                 HoSQuestions.remove(at : i)
@@ -202,10 +229,9 @@ func getQuestions(theme: String) -> [Int: [String]] {
     default:
         break
     }
-    
     return questions
-    
 }
+
 
 /*let filePath = "questions_resource"
 func question_caller()  -> [Int: [String]] {
