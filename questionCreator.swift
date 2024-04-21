@@ -13,8 +13,8 @@ var moviesSub = [String]()
 var musicSub = [String]()
 var tvSub = [String]()
 var sportsSub = [String]()
-var historySub = [String]()
-var scienceSub = [String]()
+//var historySub = [String]()
+//var scienceSub = [String]()
 var HoSsub = [String]()
 var miscSub = [String]()
 
@@ -24,8 +24,8 @@ var moviesQuestions = [String]()
 var musicQuestions = [String]()
 var tvQuestions = [String]()
 var sportsQuestions = [String]()
-var historyQuestions = [String]()
-var scienceQuestions = [String]()
+//var historyQuestions = [String]()
+//var scienceQuestions = [String]()
 var HoSQuestions = [String]()
 var miscQuestions = [String]()
 
@@ -34,8 +34,8 @@ var moviesAnswers = [String]()
 var musicAnswers = [String]()
 var tvAnswers = [String]()
 var sportsAnswers = [String]()
-var historyAnswers = [String]()
-var scienceAnswers = [String]()
+//var historyAnswers = [String]()
+//var scienceAnswers = [String]()
 var HoSAnswers = [String]()
 var miscAnswers = [String]()
 
@@ -81,14 +81,20 @@ func readFile(filePath: String) {
                     sportsAnswers.append(answer)
                     guesses.append(answer)
                 case "History":
-                    historySub.append(subcategory)
-                    historyQuestions.append(question)
-                    historyAnswers.append(answer)
+                   // historySub.append(subcategory)
+                   // historyQuestions.append(question)
+                   // historyAnswers.append(answer)
+                    HoSsub.append(subcategory)
+                    HoSQuestions.append(question)
+                    HoSAnswers.append(answer)
                     guesses.append(answer)
                 case "Science":
-                    scienceSub.append(subcategory)
-                    scienceQuestions.append(question)
-                    scienceAnswers.append(answer)
+                    //scienceSub.append(subcategory)
+                    //scienceQuestions.append(question)
+                    //scienceAnswers.append(answer)
+                    HoSsub.append(subcategory)
+                    HoSQuestions.append(question)
+                    HoSAnswers.append(answer)
                     guesses.append(answer)
                 case "HoS":
                     HoSsub.append(subcategory)
@@ -171,6 +177,7 @@ func quesByWeek(week: Int) -> Int{
 func getQuestions(theme: String, week: Int) -> [Int: [String]] {
     var questions = [Int: [String]]()
     var i = quesByWeek(week: week)
+   // let dummy_i = i
     let last_ques = i + 11
     print(i)
     
@@ -204,27 +211,20 @@ func getQuestions(theme: String, week: Int) -> [Int: [String]] {
         //This is bug need to fix next demo
     case "History/Science":
         while i < last_ques {
-            if i == 0 || i == 4 || i == 10 {
+            /*if i == dummy_i || i == dummy_i + 4 || i == dummy_i + 10 {
                 questions[i] = [HoSQuestions[i], HoSAnswers[i], HoSsub[i]]
-                HoSQuestions.remove(at : i)
-                HoSAnswers.remove(at: i)
-                HoSsub.remove(at: i)
                 i += 1
             }
-            else if i == 1 || i == 3 || i == 6 || i == 7 {
+            else if i == dummy_i + 1 || i == dummy_i + 3 || i == dummy_i + 6 || i == dummy_i + 7 {
                 questions[i] = [historyQuestions[i], historyAnswers[i], historySub[i]]
-                historyQuestions.remove(at : i)
-                historyAnswers.remove(at: i)
-                historySub.remove(at: i)
                 i += 1
             }
             else {
                 questions[i] = [scienceQuestions[i], scienceAnswers[i], scienceSub[i]]
-                scienceQuestions.remove(at : i)
-                scienceAnswers.remove(at: i)
-                scienceSub.remove(at: i)
                 i += 1
-            }
+            }*/
+            questions[i] = [HoSQuestions[i], HoSAnswers[i], HoSsub[i]]
+            i += 1
         }
     default:
         break

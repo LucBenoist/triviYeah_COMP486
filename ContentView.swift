@@ -13,7 +13,6 @@ let days_passed = daysSinceDate()
 let week = get_week(days: days_passed)
 
 func question_caller()  -> [Int: [String]] {
-    let _ = print(launch_day)
     readFile(filePath: filePath)
     return getQuestions(theme: theme, week: week)
 }
