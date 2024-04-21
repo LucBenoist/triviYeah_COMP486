@@ -738,6 +738,10 @@ struct HeadToHeadView: View{
                         Spacer()
                         
                         Text("\(triviaManager.index + 1) out of \(triviaManager.length)")
+                            .font(Font.custom("Arial Rounded MT Bold", size: 20))
+                            .fontWeight(.medium)
+                            .foregroundColor(.hotPink)
+                            //.multilineTextAlignment(.center)
                     }
                     ProgressBar(progress: triviaManager.progress)
                     
@@ -773,8 +777,8 @@ struct HeadToHeadView: View{
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-            }
-        }
+            }.navigationBarBackButtonHidden(true)
+        }.navigationBarBackButtonHidden(true)
     }
 }
 struct HHOver: View {
@@ -799,7 +803,11 @@ struct HHOver: View {
                             .padding(.top, 5)
                         Spacer()
                         
-                        Text("Your score: \(triviaManager.score) out of \(triviaManager.length)")
+                        //Text("Your score: \(triviaManager.score) out of \(triviaManager.length)")
+                            //.font(Font.custom("Arial Rounded MT Bold", size: 20))
+                            //.fontWeight(.medium)
+                            //.foregroundColor(.hotPink)
+                            //.multilineTextAlignment(.center)
                         
                     }
                     
