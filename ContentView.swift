@@ -257,9 +257,16 @@ struct MiniGameView: View{
                     HeadToHeadView()
                 }label:{
                     PrimeButton_(text:"Multi Mode")}
+                
+                
+                NavigationLink{
+                    ContentView()
+                }label:{
+                    PrimeButton_(text:"Back")}
                 .padding()
                 
             }.navigationBarTitle("", displayMode: .inline)
+                .navigationBarBackButtonHidden(true)
         }
         
     }

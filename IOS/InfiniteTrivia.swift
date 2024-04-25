@@ -219,10 +219,15 @@ struct InfiniteTriviaView: View {
                     //} vstack
                     //} scroll view
                     }
+                    NavigationLink{
+                        MiniGameView()
+                    }label:{
+                        PrimeButton_(text:"Back")}
+                    .padding()
                 }
                 .padding()
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
     func Fetches(){
