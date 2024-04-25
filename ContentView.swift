@@ -7,7 +7,7 @@
 import SwiftUI
 
 let filePath = "questions_resource"
-let day = getCurrentDay()
+let day = "Friday" //getCurrentDay()
 var theme = getTheme(day: day)
 let days_passed = daysSinceDate()
 let week = get_week(days: days_passed)
@@ -284,7 +284,24 @@ struct QuestionView: View{
     var filteredSuggestions: [String] {
             if answer.isEmpty {
                 return []
-            } else {
+            } else if path[path_node]![2] == "Even or Odd?"{
+                return even_odd.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Adam Sandler" {
+                return adamSandlerMovies.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Presidents" {
+                return presidents.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "States" {
+                return states.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Continents" {
+                return continents.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Adult Cartoons" {
+                return adultCartoons.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Snack Food" {
+                return snackFoodCompanies.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Harry Potter" {
+                return harryPotterCharacters.filter { $0.localizedCaseInsensitiveContains(answer) }
+            }
+        else {
                 return guesses.filter { $0.localizedCaseInsensitiveContains(answer) }
             }
         }
