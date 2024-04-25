@@ -234,10 +234,10 @@ struct MiniGameView: View{
             VStack{
                 Image("Logo")
                 Text("TriviYeah!")
-                     .font(.system(size: 70))
-                     .fontWeight(.heavy)
-                     .foregroundColor(.skyYellow)
-                     //.padding(.top, 150)
+                    .font(.system(size: 70))
+                    .fontWeight(.heavy)
+                    .foregroundColor(.skyYellow)
+                //.padding(.top, 150)
                 
                 Text("Trivia Minigames")
                     .font(Font.custom("Arial Rounded MT Bold", size: 20))
@@ -246,18 +246,20 @@ struct MiniGameView: View{
                     .multilineTextAlignment(.center)
                 
                 NavigationLink{
+                    InfiniteTriviaView()
+                }label:{
+                    PrimeButton_(text:"Infinite Trivia")
+                        .font(Font.custom("Arial Rounded MT Bold", size: 20))
+                }
+                .padding()
+                
+                NavigationLink{
                     HeadToHeadView()
                 }label:{
                     PrimeButton_(text:"Multi Mode")}
                 .padding()
                 
-                NavigationLink{
-                    InfiniteTriviaView()
-                }label:{
-                    PrimeButton_(text:"Infinite Trivia")}
-                .padding()
-                
-            }
+            }.navigationBarTitle("", displayMode: .inline)
         }
         
     }
