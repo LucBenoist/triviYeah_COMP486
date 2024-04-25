@@ -836,7 +836,7 @@ struct HeadToHeadView: View{
                     Button {
                         triviaManager.goToNextQuestion()
                     } label: {
-                        PrimeButton_(text: "Next", background: triviaManager.answerSelected ? Color("AccentColor") : Color(hue: 1.0, saturation: 0.00, brightness: 0.564, opacity: 0.327))
+                        PrimeButton_(text: "Next", background: triviaManager.answerSelected ? Color(Color.skyTeal) : Color(hue: 1.0, saturation: 0.00, brightness: 0.564, opacity: 0.327))
                     }
                     .disabled(!triviaManager.answerSelected)
                     
