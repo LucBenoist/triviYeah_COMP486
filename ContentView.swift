@@ -282,10 +282,13 @@ struct QuestionView: View{
     @State private var selectedSuggestion: String?
     
     var filteredSuggestions: [String] {
+        if round_num == 5 {
+            path_node = 10
+        }
             if answer.isEmpty {
                 return []
             } else if path[path_node]![2] == "Even or Odd?"{
-                return even_odd.filter { $0.localizedCaseInsensitiveContains(answer) }
+                return even_odd//.filter { $0.localizedCaseInsensitiveContains(answer) }
             } else if path[path_node]![2] == "Adam Sandler" {
                 return adamSandlerMovies.filter { $0.localizedCaseInsensitiveContains(answer) }
             } else if path[path_node]![2] == "Presidents" {
