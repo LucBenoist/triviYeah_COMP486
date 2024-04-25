@@ -57,7 +57,7 @@ struct InfiniteTriviaView: View {
                     .ignoresSafeArea()
                 
                 Rectangle()
-                    .stroke(Color.hotPink, lineWidth: 4)
+                    .stroke(Color.skyYellow, lineWidth: 4)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.all)
                 

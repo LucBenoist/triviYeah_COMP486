@@ -24,6 +24,11 @@ struct ThemesView: View {
                     .fontWeight(.heavy)
                     .foregroundColor(.skyYellow)
                     .padding()
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.skyTeal, lineWidth: 3)
+                        )
+                    
                     
                 
                 Text("Movie Monday")
@@ -39,7 +44,7 @@ struct ThemesView: View {
                 Text("Wednesday Wild")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))
                     .fontWeight(.medium)
-                    .foregroundColor(.hotPink)
+                    .foregroundColor(.skyTeal)
                     .multilineTextAlignment(.center)
                 Text("TV Thursday")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))
@@ -59,10 +64,10 @@ struct ThemesView: View {
                 Text("Hist{or}Science Sunday")
                     .font(Font.custom("Arial Rounded MT Bold", size: 30))
                     .fontWeight(.medium)
-                    .foregroundColor(.hotPink)
+                    .foregroundColor(.skyTeal)
                     .multilineTextAlignment(.center)
                 
-                NavigationLink(destination: DailyGameView()) {
+                NavigationLink(destination: InstructionsView()) {
                     PrimeButton_(text: "Back")
                     
                 }.navigationBarBackButtonHidden(true)

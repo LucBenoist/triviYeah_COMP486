@@ -21,11 +21,16 @@ struct InstructionsView: View {
                 Text("TRIVIYEAH! GAMEPLAY")
                     .font(.system(size: 25))
                     .fontWeight(.heavy)
-                    .foregroundColor(.hotPink)
+                    .foregroundColor(.skyYellow)
                     .padding()
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.skyTeal, lineWidth: 3)
+                        )
                     
                 
                 Text("""
+                
                 -Every day has a theme: Movie Monday, Sports Saturday,etc
 
                 -You will progress through a 5 question gauntlet.
@@ -55,12 +60,14 @@ struct InstructionsView: View {
                         PrimeButton_(text: "Path?")
                         
                     }.navigationBarBackButtonHidden(true)
+                        .padding()
                         
                     
                     NavigationLink(destination: ThemesView()) {
                         PrimeButton_(text: "Themes")
                         
                     }.navigationBarBackButtonHidden(true)
+                        .padding()
                         
                 }.padding()
                 NavigationLink(destination: DailyGameView()) {

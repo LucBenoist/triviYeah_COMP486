@@ -117,7 +117,7 @@ struct ContentView: View {
                 
                 // outline
                 Rectangle()
-                    .stroke(Color.hotPink, lineWidth: 4)
+                    .stroke(Color.skyTeal, lineWidth: 4)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.all)
                 
@@ -227,7 +227,7 @@ struct MiniGameView: View{
                 .ignoresSafeArea()
             
             Rectangle()
-                .stroke(Color.hotPink, lineWidth: 4)
+                .stroke(Color.skyYellow, lineWidth: 4)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
             
@@ -299,8 +299,8 @@ struct QuestionView: View{
                         .textCase(.uppercase)
                         .foregroundStyle(Color.skyYellow)
                         .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.hotPink, lineWidth: 3)
+                                RoundedRectangle(cornerRadius: 2)
+                                    .stroke(Color.skyTeal, lineWidth: 3)
                             )
                     // Round 1
                     if round_num == 1{
@@ -308,15 +308,16 @@ struct QuestionView: View{
                             .padding()
                             .font(.system(size: 40))
                             .fontWeight(.semibold)
-                            .foregroundStyle(Color.skyYellow)
-                        Text((path[0]![0])) //Q0
+                            .textCase(.uppercase)
                             .foregroundStyle(Color.hotPink)
-                            .padding()
+                        Text((path[0]![0])) //Q0
+                            .foregroundStyle(Color.skyYellow)
+                            //.padding()
                         TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
                                             self.showSuggestions = isEditing
                                         }) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
+                           .padding()
                         if showSuggestions && !filteredSuggestions.isEmpty {
                             List(filteredSuggestions, id: \.self) { suggestion in
                                 Button(action: {
@@ -380,10 +381,11 @@ struct QuestionView: View{
                             .font(.system(size: 50))
                             .fontWeight(.heavy)
                             .padding()
-                            .foregroundStyle(Color.skyYellow)
+                            .textCase(.uppercase)
+                            .foregroundStyle(Color.hotPink)
                         Text((path[path_node]![0])) //Question stored at path node
                             .padding()
-                            .foregroundStyle(Color.hotPink)
+                            .foregroundStyle(Color.skyYellow)
                         TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
                                             self.showSuggestions = isEditing
                                         }) // Text Box for user answer
@@ -479,10 +481,10 @@ struct QuestionView: View{
                         Text("FINAL ROUND")
                             .font(.system(size: 50))
                             .fontWeight(.heavy)
-                            .foregroundStyle(Color.skyYellow)
+                            .foregroundStyle(Color.hotPink)
                         Text((path[10]![0])) // Final question
                             .padding()
-                            .foregroundStyle(Color.hotPink)
+                            .foregroundStyle(Color.skyYellow)
                         TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
                                             self.showSuggestions = isEditing
                                         }) // Text Box for user answer
@@ -553,7 +555,7 @@ struct CategoryView: View{
                             .foregroundStyle(Color.skyYellow)
                             .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.hotPink, lineWidth: 3)
+                                        .stroke(Color.skyTeal, lineWidth: 3)
                                 )
   
                                     
@@ -779,7 +781,7 @@ struct HeadToHeadView: View{
                     .ignoresSafeArea()
                 
                 Rectangle()
-                    .stroke(Color.hotPink, lineWidth: 4)
+                    .stroke(Color.skyYellow, lineWidth: 4)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.all)
                 
@@ -845,7 +847,7 @@ struct HHOver: View {
                     .ignoresSafeArea()
                 
                 Rectangle()
-                    .stroke(Color.hotPink, lineWidth: 4)
+                    .stroke(Color.skyYellow, lineWidth: 4)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.all)
                 
