@@ -348,8 +348,18 @@ struct QuestionView: View{
                                     game_played = true
                                 }
                             }
+                            .font(Font.custom("Arial Rounded MT Bold", size: 24))
+                            .foregroundColor(.skyYellow)
+                            .frame(width: 128, height: 24)
                             .padding()
-                            .foregroundColor(.blue)
+                            //.background(Color(.black))
+                            .cornerRadius(13)
+                            .shadow(radius: 5)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 13)
+                                    .stroke(Color(.hotPink), lineWidth: 8)
+                            )
+                            .controlSize(.regular)
                             .disabled(answer.isEmpty)
                         }
                         
