@@ -15,7 +15,7 @@ struct PrimeButton_: View {
 
     var body: some View {
         Text(text)
-            .font(text.count <= 10 ? Font.custom("Arial Rounded MT Bold", size: 23) : text.count <= 12 ? Font.custom("Arial Rounded MT Bold", size: 18) : text.count <= 16 ? Font.custom("Arial Rounded MT Bold", size : 16) : Font.custom("Arial Rounded MT Bold", size : 13))
+            .font(text.count <= 10 ? Font.custom("Arial Rounded MT Bold", size: 22) : text.count <= 12 ? Font.custom("Arial Rounded MT Bold", size: 18) : text.count <= 16 ? Font.custom("Arial Rounded MT Bold", size : 16) : Font.custom("Arial Rounded MT Bold", size : 13))
             .foregroundColor(.skyYellow)
             .frame(width: 128, height: 24)
             .padding()
@@ -43,9 +43,9 @@ struct PrimeButton_Previews: PreviewProvider{
             VStack{
                 HStack{
                     PrimeButton_(text: "Back").padding()
-                    PrimeButton_(text: "Daily Game Sux").padding() //10
+                    PrimeButton_(text: "Daily Game Suxx").padding() //10
                 }
-                PrimeButton_(text: "Better Call Saul").padding() //
+                PrimeButton_(text: "Celebrity Couples").padding() //
                 PrimeButton_(text: "Saturday Night Live").padding() // 16 +
                 
             }

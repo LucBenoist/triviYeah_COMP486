@@ -8,7 +8,7 @@ import SwiftUI
 
 let filePath = "questions_resource"
 let day = getCurrentDay()
-let theme = getTheme(day: day)
+var theme = getTheme(day: day)
 let days_passed = daysSinceDate()
 let week = get_week(days: days_passed)
 
@@ -58,22 +58,46 @@ var path = create_path()
 // Establish Startting at Path 0 and Round 1
 var path_node: Int = 0
 var round_num: Int = 1
+
+func theme_name(theme: String) -> String {
+    var theme = theme
+    if theme == "Misc" {
+        if day == "Wednesday" {
+            theme = "Wild"
+        }
+        else{
+            theme = "Frantic"
+        }
+    } else if day == "Sunday" {
+        theme = "Hist{OR}science"
+    } else if theme == "Music"{
+        theme = "Tunes"
+    }
+    else{
+        return theme
+    }
+    return theme
+}
+
+var theme_text = theme_name(theme: theme)
 var game_played = false
 var final_answer = ""
+let trivi_text = "TriviYeah! Game:"
+var day_num = String(format: "%03d", days_passed + 1)
 var row_1 = "⬜️"
 var row_2 = "⬜️⬜️"
 var row_3 = "⬜️⬜️⬜️"
 var row_4 = "⬜️⬜️⬜️⬜️"
 var row_5 = "⬜️"
-var message = "Try to beat my score!"
+var message = ""
 var pattern = """
-\(theme) \(day)
+\(theme_text) \(day)
         \(row_1)
      \(row_2)
   \(row_3)
 \(row_4)
         \(row_5)
-\(round_num)/5: \(message)
+\(round_num)/5
 """
 
 //var isButtonClicked = false // Track if the button is clicked
@@ -267,12 +291,23 @@ struct QuestionView: View{
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
+                    Text("\(theme_text) \(day)")
+                        //.padding()
+                        .font((theme_text.count + day.count) > 16 ? .system(size: 24) : .system(size: 35))
+                        .padding()
+                        .fontWeight(.heavy)
+                        .textCase(.uppercase)
+                        .foregroundStyle(Color.skyYellow)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.hotPink, lineWidth: 3)
+                            )
                     // Round 1
                     if round_num == 1{
                         Text("Round \(round_num)")
                             .padding()
-                            .font(.system(size: 50))
-                            .fontWeight(.heavy)
+                            .font(.system(size: 40))
+                            .fontWeight(.semibold)
                             .foregroundStyle(Color.skyYellow)
                         Text((path[0]![0])) //Q0
                             .foregroundStyle(Color.hotPink)
@@ -367,11 +402,6 @@ struct QuestionView: View{
                             .listStyle(PlainListStyle())
                             .frame(maxHeight: 200)
                         }
-
-                        // Is this needed?
-                        //.padding()
-                        //.foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/) //look into
-                        //.disabled(answer.isEmpty)
                         
                         if isButtonClicked != true {
                             // Show the "Submit" button only if it's not clicked
@@ -462,7 +492,7 @@ struct QuestionView: View{
                                 final_answer = answer
                                 if final_answer == path[10]![1]{
                                     colorPath[10]?.symbol = "🟩"
-                                    message = "I got a TriviYeah!"
+                                    message = "A Perfect TriviYeah!"
                                     round_num = 6
                                     game_played = true
                                 } else{
@@ -514,11 +544,25 @@ struct CategoryView: View{
                         .edgesIgnoringSafeArea(.all)
                     
                     VStack{
+                        Text("\(theme_text) \(day)")
+                            //.padding()
+                            .font((theme_text.count + day.count) > 16 ? .system(size: 24) : .system(size: 35))
+                            .padding()
+                            .fontWeight(.heavy)
+                            .textCase(.uppercase)
+                            .foregroundStyle(Color.skyYellow)
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.hotPink, lineWidth: 3)
+                                )
+  
+                                    
                         Text("Pick Next Round's Category!")
                             .font(.largeTitle)
-                            .fontWeight(.heavy)
+                            .fontWeight(.semibold)
                             .foregroundColor(Color.skyYellow)
                             .multilineTextAlignment(.center)
+                            .padding()
                         
                         
                         HStack{
@@ -529,13 +573,13 @@ struct CategoryView: View{
                                     PrimeButton_(text: path[1]![2])
                                     
                                     
-                                }
+                                }.padding()
                                 .simultaneousGesture(TapGesture().onEnded {
                                     path_node = 1
                                 })
                                 NavigationLink(destination: QuestionView()){
                                     PrimeButton_(text: path[2]![2])
-                                }
+                                }.padding()
                                 .simultaneousGesture(TapGesture().onEnded {
                                     path_node = 2
                                 })
@@ -544,24 +588,28 @@ struct CategoryView: View{
                                 if path_node == 1{
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[3]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 3
                                     })
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[4]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 4
                                     })
                                 }
                                 else{
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[4]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 4
                                     })
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[5]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 5
                                     })
                                 }
@@ -570,43 +618,49 @@ struct CategoryView: View{
                                 if path_node == 3{
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[6]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 6
                                     })
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[7]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 7
                                     })
                                 }
                                 else if path_node == 4{
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[7]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 7
                                     })
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[8]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 8
                                     })
                                 }
                                 else{
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[8]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 8
                                     })
                                     NavigationLink(destination: QuestionView()) {
                                         PrimeButton_(text: path[9]![2])
-                                    }.simultaneousGesture(TapGesture().onEnded {
+                                    }.padding()
+                                    .simultaneousGesture(TapGesture().onEnded {
                                         path_node = 9
                                     })
                                 }
                             }
                             
                         }
-                    }
+                        Spacer().frame(height: 10)}
                 }
             }.navigationBarBackButtonHidden(true)
         
@@ -640,9 +694,9 @@ struct GameOverView: View{
                             .multilineTextAlignment(.center)
                     }
                     else{
-                        Text("Maybe next time Sport!")
+                        Text("Oh no! Maybe next time!")
                             .font(.largeTitle)
-                            .fontWeight(.heavy)
+                            .fontWeight(.semibold)
                             .foregroundColor(Color("PathR"))
                     }
                     // Row 1 (Round 1)
@@ -693,13 +747,15 @@ struct GameOverView: View{
                             .foregroundColor(Color(.gray))
                     }
                     ShareLink(item: """
-\(theme) \(day)
-        \(colorPath[0]!.symbol)
-     \(colorPath[1]!.symbol)\(colorPath[2]!.symbol)
-  \(colorPath[3]!.symbol)\(colorPath[4]!.symbol)\(colorPath[5]!.symbol)
-\(colorPath[6]!.symbol)\(colorPath[7]!.symbol)\(colorPath[8]!.symbol)\(colorPath[9]!.symbol)
-        \(colorPath[10]!.symbol)
-\(round_num-1)/5: \(message)
+\(trivi_text) \(day_num)
+\(theme_text) \(day)
+                \(colorPath[0]!.symbol)
+             \(colorPath[1]!.symbol)\(colorPath[2]!.symbol)
+          \(colorPath[3]!.symbol)\(colorPath[4]!.symbol)\(colorPath[5]!.symbol)
+        \(colorPath[6]!.symbol)\(colorPath[7]!.symbol)\(colorPath[8]!.symbol)\(colorPath[9]!.symbol)
+                \(colorPath[10]!.symbol)
+                \(round_num-1)/5
+\(message)
 """)
                         .foregroundStyle(Color(.systemBlue))
                         .padding()

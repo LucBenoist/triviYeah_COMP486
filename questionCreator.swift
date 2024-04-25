@@ -117,7 +117,7 @@ func readFile(filePath: String) {
 }
 
 //April 16, 2024
-let launch_day = Calendar.current.date(from: DateComponents(year: 2024, month: 4, day: 15))!
+let launch_day = Calendar.current.date(from: DateComponents(year: 2024, month: 4, day: 24))!
 
 // Number of days since Launch Day
 //Helps get Week
@@ -211,18 +211,6 @@ func getQuestions(theme: String, week: Int) -> [Int: [String]] {
         //This is bug need to fix next demo
     case "History/Science":
         while i < last_ques {
-            /*if i == dummy_i || i == dummy_i + 4 || i == dummy_i + 10 {
-                questions[i] = [HoSQuestions[i], HoSAnswers[i], HoSsub[i]]
-                i += 1
-            }
-            else if i == dummy_i + 1 || i == dummy_i + 3 || i == dummy_i + 6 || i == dummy_i + 7 {
-                questions[i] = [historyQuestions[i], historyAnswers[i], historySub[i]]
-                i += 1
-            }
-            else {
-                questions[i] = [scienceQuestions[i], scienceAnswers[i], scienceSub[i]]
-                i += 1
-            }*/
             questions[i] = [HoSQuestions[i], HoSAnswers[i], HoSsub[i]]
             i += 1
         }
@@ -231,15 +219,6 @@ func getQuestions(theme: String, week: Int) -> [Int: [String]] {
     }
     return questions
 }
-
-
-/*let filePath = "questions_resource"
-func question_caller()  -> [Int: [String]] {
-    // Fix this
-    let theme = getTheme(day:"Thursday")
-    readFile(filePath: filePath)
-    return getQuestions(theme: theme)
-}*/
 
 
 
