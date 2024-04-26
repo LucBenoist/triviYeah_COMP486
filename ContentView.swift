@@ -303,6 +303,10 @@ struct QuestionView: View{
                 return snackFoodCompanies.filter { $0.localizedCaseInsensitiveContains(answer) }
             } else if path[path_node]![2] == "Harry Potter" {
                 return harryPotterCharacters.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Celebrity Couples" {
+                return nflQuarterbacks.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Boston" {
+                return crimeMovies.filter { $0.localizedCaseInsensitiveContains(answer) }
             }
         else {
                 return guesses.filter { $0.localizedCaseInsensitiveContains(answer) }
