@@ -564,7 +564,7 @@ struct QuestionView: View{
                                         colorPath[10]?.symbol = "🟩"
                                         colorPath[10]?.color  = Color("PathG")
                                         game_played = true
-                                        round_num += 1
+                                        //round_num += 1
                                         isCorrect = true
                                         message = "A Perfect TriviYeah!"
                                         nameIsFocused = false
@@ -602,7 +602,9 @@ struct QuestionView: View{
                                 .padding()
                             NavigationLink(destination: GameOverView()) {
                                 PrimeButton_(text: "Results")
-                            }
+                            }.simultaneousGesture(TapGesture().onEnded {
+                                round_num = 6
+                            })
                             
                         }
                         else if isCorrect == false{
@@ -790,6 +792,7 @@ struct GameOverView: View{
                             .fontWeight(.heavy)
                             .foregroundColor(Color("PathG"))
                             .multilineTextAlignment(.center)
+                    
                     }
                     else{
                         Text("Oh no! Maybe next time!")
