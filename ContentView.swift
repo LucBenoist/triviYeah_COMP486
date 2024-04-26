@@ -280,6 +280,7 @@ struct QuestionView: View{
     @State private var isButtonClicked: Bool?
     @State private var showSuggestions = false
     @State private var selectedSuggestion: String?
+    @FocusState private var nameIsFocused: Bool
     
     var filteredSuggestions: [String] {
         if round_num == 5 {
@@ -351,6 +352,7 @@ struct QuestionView: View{
                                         }) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                            .padding()
+                           .focused($nameIsFocused)
                         if showSuggestions && !filteredSuggestions.isEmpty {
                             List(filteredSuggestions, id: \.self) { suggestion in
                                 Button(action: {
@@ -362,12 +364,14 @@ struct QuestionView: View{
                                         colorPath[0]?.color  = Color("PathG")
                                         //round_num += 1
                                         isCorrect = true
+                                        nameIsFocused = false
                                     }
                                     else {
                                         isCorrect = false
                                         colorPath[0]?.symbol = "🟥"
                                         colorPath[0]?.color  = Color("PathR")
                                         game_played = true
+                                        nameIsFocused = false
                                     }
                                 }) {
                                     HStack {
@@ -428,6 +432,7 @@ struct QuestionView: View{
                                         }) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
+                            .focused($nameIsFocused)
                         if showSuggestions && !filteredSuggestions.isEmpty {
                             List(filteredSuggestions, id: \.self) { suggestion in
                                 Button(action: {
@@ -439,12 +444,14 @@ struct QuestionView: View{
                                         colorPath[path_node]?.color  = Color("PathG")
                                         //round_num += 1
                                         isCorrect = true
+                                        nameIsFocused = false
                                     }
                                     else {
                                         isCorrect = false
                                         colorPath[0]?.symbol = "🟥"
                                         colorPath[0]?.color  = Color("PathR")
                                         game_played = true
+                                        nameIsFocused = false
                                     }
                                 }) {
                                     HStack {
@@ -529,6 +536,7 @@ struct QuestionView: View{
                                         }) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
+                            .focused($nameIsFocused)
                         if showSuggestions && !filteredSuggestions.isEmpty {
                             List(filteredSuggestions, id: \.self) { suggestion in
                                 Button(action: {
@@ -543,12 +551,14 @@ struct QuestionView: View{
                                         //round_num += 1
                                         isCorrect = true
                                         message = "A Perfect TriviYeah!"
+                                        nameIsFocused = false
                                     }
                                     else {
                                         isCorrect = false
                                         colorPath[10]?.symbol = "🟥"
                                         colorPath[10]?.color  = Color("PathR")
                                         game_played = true
+                                        nameIsFocused = false
                                     }
                                 }) {
                                     HStack {
