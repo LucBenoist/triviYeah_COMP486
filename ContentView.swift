@@ -397,6 +397,8 @@ struct QuestionView: View{
                             Text("Correct!")
                                 .foregroundColor(.green)
                                 .fontWeight(.bold)
+                                .font(.system(size: 25))
+                                .padding()
                             NavigationLink(destination: CategoryView()) {
                                 PrimeButton_(text: "Continue")
                             }
@@ -408,9 +410,11 @@ struct QuestionView: View{
                         }
                         else if isCorrect == false{
                             // Their game is over and are taken to GameOverView
-                            Text("Oh no! It was \(path[path_node]![1]). See your results...")
+                            Text("Oh no! It was \(path[path_node]![1])! See your results.")
                                 .foregroundColor(.red)
                                 .fontWeight(.bold)
+                                .font(.system(size: 16))
+                                .padding()
                             NavigationLink(destination: GameOverView()){
                                 PrimeButton_(text: "Results")
                             }
@@ -449,8 +453,8 @@ struct QuestionView: View{
                                     }
                                     else {
                                         isCorrect = false
-                                        colorPath[0]?.symbol = "🟥"
-                                        colorPath[0]?.color  = Color("PathR")
+                                        colorPath[path_node]?.symbol = "🟥"
+                                        colorPath[path_node]?.color  = Color("PathR")
                                         game_played = true
                                         nameIsFocused = false
                                     }
@@ -478,6 +482,8 @@ struct QuestionView: View{
                                 Text("Correct!")
                                     .foregroundColor(.green)
                                     .fontWeight(.bold)
+                                    .font(.system(size: 25))
+                                    .padding()
                                 NavigationLink(destination: CategoryView()) {
                                     PrimeButton_(text: "Continue")
                                 }
@@ -489,9 +495,11 @@ struct QuestionView: View{
                             }
                             else if isCorrect == false{
                                 // Their game is over and are taken to GameOverView
-                                Text("Oh no! It was \(path[path_node]![1]). See your results...")
+                                Text("Oh no! It was \(path[path_node]![1])! See your results.")
                                     .foregroundColor(.red)
                                     .fontWeight(.bold)
+                                    .font(.system(size: 16))
+                                    .padding()
                                 NavigationLink(destination: GameOverView()){
                                     PrimeButton_(text: "Results")
                                 }
@@ -501,9 +509,12 @@ struct QuestionView: View{
                             if isCorrect == true {
                                 Text("Correct!")
                                     .foregroundColor(.green)
+                                    .font(.system(size: 25))
+                                    .fontWeight(.bold)
+                                    .padding()
                                 NavigationLink(destination: QuestionView()) {
 
-                                    PrimeButton_(text: "Final Round!")
+                                    PrimeButton_(text: "Final Round")
                                 }
                                 .simultaneousGesture(TapGesture().onEnded {
                                     path_node = 1
@@ -516,8 +527,11 @@ struct QuestionView: View{
                                 
                             }
                             else if isCorrect == false { // Incorrect, gameplay is over
-                                Text("Oh no! It was \(path[path_node]![1]). See your results...")
+                                Text("Oh no! It was \(path[path_node]![1])! See your results.")
                                     .foregroundColor(.red)
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 16))
+                                    .padding()
                                 NavigationLink(destination: GameOverView()){
                                     PrimeButton_(text: "Results")
                                 }
@@ -550,7 +564,7 @@ struct QuestionView: View{
                                         colorPath[10]?.symbol = "🟩"
                                         colorPath[10]?.color  = Color("PathG")
                                         game_played = true
-                                        //round_num += 1
+                                        round_num += 1
                                         isCorrect = true
                                         message = "A Perfect TriviYeah!"
                                         nameIsFocused = false
@@ -584,6 +598,8 @@ struct QuestionView: View{
                             Text("Congrats! See your results!")
                                 .fontWeight(.bold)
                                 .foregroundColor(.green)
+                                .font(.system(size: 20))
+                                .padding()
                             NavigationLink(destination: GameOverView()) {
                                 PrimeButton_(text: "Results")
                             }
@@ -591,9 +607,11 @@ struct QuestionView: View{
                         }
                         else if isCorrect == false{
                             // Their game is over and are taken to GameOverView
-                            Text("Oh no! It was \(path[10]![1]). See your results...")
+                            Text("Oh no! It was \(path[10]![1])! See your results...")
                                 .fontWeight(.bold)
                                 .foregroundColor(.red)
+                                .font(.system(size: 16))
+                                .padding()
                             NavigationLink(destination: GameOverView()){
                                 PrimeButton_(text: "Results")
                             }
@@ -834,7 +852,7 @@ struct GameOverView: View{
           \(colorPath[3]!.symbol)\(colorPath[4]!.symbol)\(colorPath[5]!.symbol)
         \(colorPath[6]!.symbol)\(colorPath[7]!.symbol)\(colorPath[8]!.symbol)\(colorPath[9]!.symbol)
                 \(colorPath[10]!.symbol)
-                \(round_num)/5
+                \(round_num-1)/5
 \(message)
 """)
                         .foregroundStyle(Color(.systemBlue))
