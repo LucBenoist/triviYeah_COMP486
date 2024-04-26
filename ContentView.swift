@@ -389,6 +389,7 @@ struct QuestionView: View{
                             }
                             .listStyle(PlainListStyle())
                             .frame(maxHeight: 200)
+                            .frame(maxWidth: 350)
                         }
                         
                         
@@ -469,6 +470,7 @@ struct QuestionView: View{
                             }
                             .listStyle(PlainListStyle())
                             .frame(maxHeight: 200)
+                            .frame(maxWidth: 350)
                         }
                 
                         if round_num != 4{ // Not Round 4, then if correct answer go to CategoryView
@@ -576,6 +578,7 @@ struct QuestionView: View{
                             }
                             .listStyle(PlainListStyle())
                             .frame(maxHeight: 200)
+                            .frame(maxWidth: 350)
                         }
                         if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
                             Text("Congrats! See your results!")
