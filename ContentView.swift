@@ -357,48 +357,41 @@ struct QuestionView: View{
                                     self.selectedSuggestion = suggestion
                                     self.answer = suggestion
                                     self.showSuggestions = false
+                                    if answer == (path[path_node]![1]){
+                                        colorPath[0]?.symbol = "🟩"
+                                        colorPath[0]?.color  = Color("PathG")
+                                        //round_num += 1
+                                        isCorrect = true
+                                    }
+                                    else {
+                                        isCorrect = false
+                                        colorPath[0]?.symbol = "🟥"
+                                        colorPath[0]?.color  = Color("PathR")
+                                        game_played = true
+                                    }
                                 }) {
-                                    Text(suggestion)
+                                    HStack {
+                                                    Text(suggestion)
+                                                    Spacer()
+                                        Text("SELECT").foregroundStyle(Color.skyYellow)
+                                            .padding(4)
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 2)
+                                                        .stroke(Color.hotPink, lineWidth: 2))
+                                            .background(Color.black)
+                                            
+                                                }
                                 }
                             }
                             .listStyle(PlainListStyle())
                             .frame(maxHeight: 200)
                         }
                         
-                        if isButtonClicked != true {
-                            // Show the "Submit" button only if it's not clicked
-                            Button("Submit") {
-                                // Your submit logic here
-                                isButtonClicked = true // Set the flag to true when clicked
-                                if answer == "\(path[path_node]![1])" {
-                                    colorPath[path_node]?.color  = Color("PathG")
-                                    colorPath[path_node]?.symbol = "🟩"
-                                    isCorrect = true
-                                } else {
-                                    colorPath[path_node]?.color  = Color("PathR")
-                                    colorPath[path_node]?.symbol = "🟥"
-                                    isCorrect = false
-                                    game_played = true
-                                }
-                            }
-                            .font(Font.custom("Arial Rounded MT Bold", size: 24))
-                            .foregroundColor(.skyYellow)
-                            .frame(width: 128, height: 24)
-                            .padding()
-                            //.background(Color(.black))
-                            .cornerRadius(13)
-                            .shadow(radius: 5)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 13)
-                                    .stroke(Color(.hotPink), lineWidth: 8)
-                            )
-                            .controlSize(.regular)
-                            .disabled(answer.isEmpty)
-                        }
                         
                         if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
                             Text("Correct!")
                                 .foregroundColor(.green)
+                                .fontWeight(.bold)
                             NavigationLink(destination: CategoryView()) {
                                 PrimeButton_(text: "Continue")
                             }
@@ -410,10 +403,11 @@ struct QuestionView: View{
                         }
                         else if isCorrect == false{
                             // Their game is over and are taken to GameOverView
-                            Text("Incorrect!")
+                            Text("Oh no! It was \(path[path_node]![1]). See your results...")
                                 .foregroundColor(.red)
+                                .fontWeight(.bold)
                             NavigationLink(destination: GameOverView()){
-                                PrimeButton_(text: "Continue")
+                                PrimeButton_(text: "Results")
                             }
                         }
                         
@@ -440,40 +434,41 @@ struct QuestionView: View{
                                     self.selectedSuggestion = suggestion
                                     self.answer = suggestion
                                     self.showSuggestions = false
+                                    if answer == (path[path_node]![1]){
+                                        colorPath[path_node]?.symbol = "🟩"
+                                        colorPath[path_node]?.color  = Color("PathG")
+                                        //round_num += 1
+                                        isCorrect = true
+                                    }
+                                    else {
+                                        isCorrect = false
+                                        colorPath[0]?.symbol = "🟥"
+                                        colorPath[0]?.color  = Color("PathR")
+                                        game_played = true
+                                    }
                                 }) {
-                                    Text(suggestion)
+                                    HStack {
+                                                    Text(suggestion)
+                                                    Spacer()
+                                        Text("SELECT").foregroundStyle(Color.skyYellow)
+                                            .padding(4)
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 2)
+                                                        .stroke(Color.hotPink, lineWidth: 2))
+                                            .background(Color.black)
+                                            
+                                                }
                                 }
                             }
                             .listStyle(PlainListStyle())
                             .frame(maxHeight: 200)
-                        }
-                        
-                        if isButtonClicked != true {
-                            // Show the "Submit" button only if it's not clicked
-                            Button("Submit") {
-                                // Your submit logic here
-                                isButtonClicked = true // Set the flag to true when clicked
-                                if answer == "\(path[path_node]![1])" {
-                                    colorPath[path_node]?.color = Color("PathG")
-                                    colorPath[path_node]?.symbol = "🟩"
-                                    
-                                    isCorrect = true
-                                } else {
-                                    colorPath[path_node]?.color  = Color("PathR")
-                                    colorPath[path_node]?.symbol = "🟥"
-                                    isCorrect = false
-                                    game_played = true
-                                }
-                            }
-                            .padding()
-                            .foregroundColor(.blue)
-                            .disabled(answer.isEmpty)
                         }
                 
                         if round_num != 4{ // Not Round 4, then if correct answer go to CategoryView
                             if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
                                 Text("Correct!")
                                     .foregroundColor(.green)
+                                    .fontWeight(.bold)
                                 NavigationLink(destination: CategoryView()) {
                                     PrimeButton_(text: "Continue")
                                 }
@@ -485,10 +480,11 @@ struct QuestionView: View{
                             }
                             else if isCorrect == false{
                                 // Their game is over and are taken to GameOverView
-                                Text("Incorrect!")
+                                Text("Oh no! It was \(path[path_node]![1]). See your results...")
                                     .foregroundColor(.red)
+                                    .fontWeight(.bold)
                                 NavigationLink(destination: GameOverView()){
-                                    PrimeButton_(text: "Continue")
+                                    PrimeButton_(text: "Results")
                                 }
                             }
                         }
@@ -511,10 +507,10 @@ struct QuestionView: View{
                                 
                             }
                             else if isCorrect == false { // Incorrect, gameplay is over
-                                Text("Incorrect!")
+                                Text("Oh no! It was \(path[path_node]![1]). See your results...")
                                     .foregroundColor(.red)
                                 NavigationLink(destination: GameOverView()){
-                                    PrimeButton_(text: "Continue")
+                                    PrimeButton_(text: "Results")
                                 }
                             }
                             
@@ -533,37 +529,62 @@ struct QuestionView: View{
                                         }) // Text Box for user answer
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
-                            .onChange(of:answer) {
-                                final_answer = answer
-                                if final_answer == path[10]![1]{
-                                    colorPath[10]?.symbol = "🟩"
-                                    message = "A Perfect TriviYeah!"
-                                    round_num = 6
-                                    game_played = true
-                                } else{
-                                    colorPath[10]?.symbol = "🟥"
-                                    game_played = true
-                                }
-                            }
                         if showSuggestions && !filteredSuggestions.isEmpty {
                             List(filteredSuggestions, id: \.self) { suggestion in
                                 Button(action: {
                                     self.selectedSuggestion = suggestion
                                     self.answer = suggestion
                                     self.showSuggestions = false
+                                    if answer == (path[path_node]![1]){
+                                        final_answer = answer
+                                        colorPath[10]?.symbol = "🟩"
+                                        colorPath[10]?.color  = Color("PathG")
+                                        game_played = true
+                                        //round_num += 1
+                                        isCorrect = true
+                                    }
+                                    else {
+                                        isCorrect = false
+                                        colorPath[10]?.symbol = "🟥"
+                                        colorPath[10]?.color  = Color("PathR")
+                                        game_played = true
+                                    }
                                 }) {
-                                    Text(suggestion)
+                                    HStack {
+                                                    Text(suggestion)
+                                                    Spacer()
+                                        Text("SELECT").foregroundStyle(Color.skyYellow)
+                                            .padding(4)
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 2)
+                                                        .stroke(Color.hotPink, lineWidth: 2))
+                                            .background(Color.black)
+                                            
+                                                }
                                 }
                             }
                             .listStyle(PlainListStyle())
                             .frame(maxHeight: 200)
                         }
-                        
-                        NavigationLink(destination: GameOverView()){
-                            PrimeButton_(text: "Results")
+                        if isCorrect == true { //Tells user they are correct and moves to the sub cat selection screen
+                            Text("Congrats! See your results!")
+                                .fontWeight(.bold)
+                                .foregroundColor(.green)
+                            NavigationLink(destination: GameOverView()) {
+                                PrimeButton_(text: "Results")
+                            }
+                            
                         }
-                        .padding()
-                        .foregroundColor(.blue)
+                        else if isCorrect == false{
+                            // Their game is over and are taken to GameOverView
+                            Text("Oh no! It was \(path[10]![1]). See your results...")
+                                .fontWeight(.bold)
+                                .foregroundColor(.red)
+                            NavigationLink(destination: GameOverView()){
+                                PrimeButton_(text: "Results")
+                            }
+                        }
+                        
                         
                     }
 
