@@ -874,8 +874,9 @@ struct HeadToHeadView: View{
                         
                         Spacer()
                         
-                        ForEach(triviaManager.answerChoices, id:\.id){ answer in AnswerRow_(answer: answer)
+                        ForEach(triviaManager.answerChoices, id:\.text){ answer in AnswerRow_(answer: answer)
                                 .environmentObject(triviaManager)
+                            
                         }
                     }
                     Button {

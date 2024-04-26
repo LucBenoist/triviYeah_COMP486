@@ -28,7 +28,7 @@ class TriviaManager: ObservableObject{
     }
     
     func fetchTrivia() async {
-        guard let url = URL(string: "https://opentdb.com/api.php?amount=10") else { fatalError("Missing URL")}
+        guard let url = URL(string: "https://opentdb.com/api.php?amount=10&category=9&difficulty=hard") else { fatalError("Missing URL")}
         
         
         
@@ -37,7 +37,7 @@ class TriviaManager: ObservableObject{
         do{
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
             
-            //guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data")
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data. \(response)")}
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
