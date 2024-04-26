@@ -542,6 +542,7 @@ struct QuestionView: View{
                                         game_played = true
                                         //round_num += 1
                                         isCorrect = true
+                                        message = "A Perfect TriviYeah!"
                                     }
                                     else {
                                         isCorrect = false
@@ -820,7 +821,7 @@ struct GameOverView: View{
           \(colorPath[3]!.symbol)\(colorPath[4]!.symbol)\(colorPath[5]!.symbol)
         \(colorPath[6]!.symbol)\(colorPath[7]!.symbol)\(colorPath[8]!.symbol)\(colorPath[9]!.symbol)
                 \(colorPath[10]!.symbol)
-                \(round_num-1)/5
+                \(round_num)/5
 \(message)
 """)
                         .foregroundStyle(Color(.systemBlue))
