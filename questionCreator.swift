@@ -117,7 +117,7 @@ func readFile(filePath: String) {
 }
 
 //April 16, 2024
-let launch_day = Calendar.current.date(from: DateComponents(year: 2024, month: 4, day: 24))!
+let launch_day = Calendar.current.date(from: DateComponents(year: 2024, month: 4, day: 26))!
 
 // Number of days since Launch Day
 //Helps get Week

@@ -7,7 +7,7 @@
 import SwiftUI
 
 let filePath = "questions_resource"
-let day = "Friday" //getCurrentDay()
+let day = getCurrentDay()
 var theme = getTheme(day: day)
 let days_passed = daysSinceDate()
 let week = get_week(days: days_passed)
