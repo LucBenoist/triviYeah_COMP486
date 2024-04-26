@@ -96,12 +96,12 @@ struct InfiniteTriviaView: View {
                         .multilineTextAlignment(.center)
                         
                     Text("How many can you get??")
-                        .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                        .font(Font.custom("Arial Rounded MT Bold", size: 14))
                         .fontWeight(.medium)
                         .foregroundColor(.hotPink)
                         .multilineTextAlignment(.center)
                     Text("Your Streak: \(streakCount)")
-                        .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                        .font(Font.custom("Arial Rounded MT Bold", size: 14))
                         .fontWeight(.medium)
                         .foregroundColor(.hotPink)
                         .multilineTextAlignment(.center)
@@ -145,14 +145,14 @@ struct InfiniteTriviaView: View {
                     if let isCorrect = isCorrect{
                         if isCorrect {
                             Text("CORRECT")
-                                .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                .font(Font.custom("Arial Rounded MT Bold", size: 14))
                                 .fontWeight(.medium)
                                 .foregroundColor(.pathG)
                                 .multilineTextAlignment(.center)
                                 .padding()
                         }
                         else {
-                            Text("INCORRECT").font(Font.custom("Arial Rounded MT Bold", size: 11))
+                            Text("INCORRECT").font(Font.custom("Arial Rounded MT Bold", size: 14))
                                 .fontWeight(.medium)
                                 .foregroundColor(.accentColor)
                                 .multilineTextAlignment(.center)
@@ -174,17 +174,17 @@ struct InfiniteTriviaView: View {
                             if useHint{
                                 
                                 Text(joined_answers[0]).foregroundColor(.black)
-                                    .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                    .font(Font.custom("Arial Rounded MT Bold", size: 10))
                                 Text(joined_answers[1]).foregroundColor(.black)
-                                    .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                    .font(Font.custom("Arial Rounded MT Bold", size: 10))
                                 Text(joined_answers[2]).foregroundColor(.black)
-                                    .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                    .font(Font.custom("Arial Rounded MT Bold", size: 10))
                                 Text(joined_answers[3]).foregroundColor(.black)
-                                    .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                    .font(Font.custom("Arial Rounded MT Bold", size: 10))
                                 
                             }
                             Text("Click for Hint!")
-                                .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                                .font(Font.custom("Arial Rounded MT Bold", size: 10))
                                 .fontWeight(.medium)
                                 .foregroundColor(.purple)
                                 .multilineTextAlignment(.center)
@@ -203,10 +203,10 @@ struct InfiniteTriviaView: View {
                         }) {
                             if seeAnswer{
                                 Text(questions[question_index!].correct_answer)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.black).font(Font.custom("Arial Rounded MT Bold", size: 10))
                             }
-                            Text("Click for Answer!")
-                                .font(Font.custom("Arial Rounded MT Bold", size: 11))
+                            Text("Answer!")
+                                .font(Font.custom("Arial Rounded MT Bold", size: 10))
                                 .fontWeight(.medium)
                                 .foregroundColor(.purple)
                                 .multilineTextAlignment(.center)

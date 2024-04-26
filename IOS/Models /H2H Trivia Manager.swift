@@ -37,7 +37,7 @@ class TriviaManager: ObservableObject{
         do{
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
             
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data. \(response)")}
+            //guard (response as? HTTPURLResponse)?.statusCode == 200 else { print("Error while fetching data. \(response)")}
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
