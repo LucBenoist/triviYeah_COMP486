@@ -325,17 +325,26 @@ struct QuestionView: View{
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Text("\(theme_text) \(day)")
+                    if day == "Thursday"{
+                        Image("TV Thursday")
+                            .resizable()
+                            .frame(width: 300, height: 140)
+                            .offset(y: -50)
+
+                    }else{
+                        Text("\(theme_text) \(day)")
                         //.padding()
-                        .font((theme_text.count + day.count) > 16 ? .system(size: 24) : .system(size: 35))
-                        .padding()
-                        .fontWeight(.heavy)
-                        .textCase(.uppercase)
-                        .foregroundStyle(Color.skyYellow)
-                        .overlay(
+                            .font((theme_text.count + day.count) > 16 ? .system(size: 24) : .system(size: 35))
+                            .padding()
+                            .fontWeight(.heavy)
+                            .textCase(.uppercase)
+                            .foregroundStyle(Color.skyYellow)
+                            .overlay(
                                 RoundedRectangle(cornerRadius: 2)
                                     .stroke(Color.skyTeal, lineWidth: 3)
                             )
+                    }
+                    
                     // Round 1
                     if round_num == 1{
                         Text("Round \(round_num)")
@@ -345,6 +354,7 @@ struct QuestionView: View{
                             .textCase(.uppercase)
                             .foregroundStyle(Color.hotPink)
                         Text((path[0]![0])) //Q0
+                            .padding()
                             .foregroundStyle(Color.skyYellow)
                             //.padding()
                         TextField("Enter your answer...", text: $answer, onEditingChanged: { isEditing in
@@ -623,7 +633,7 @@ struct QuestionView: View{
                     }
 
                 }
-            }
+            } //here
         }.navigationBarBackButtonHidden(true)
     }
 }
@@ -644,17 +654,24 @@ struct CategoryView: View{
                         .edgesIgnoringSafeArea(.all)
                     
                     VStack{
-                        Text("\(theme_text) \(day)")
+                        if day == "Thursday"{
+                            Image("TV Thursday")
+                                .resizable()
+                                .frame(width: 300, height: 150)
+
+                        }else{
+                            Text("\(theme_text) \(day)")
                             //.padding()
-                            .font((theme_text.count + day.count) > 16 ? .system(size: 24) : .system(size: 35))
-                            .padding()
-                            .fontWeight(.heavy)
-                            .textCase(.uppercase)
-                            .foregroundStyle(Color.skyYellow)
-                            .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
+                                .font((theme_text.count + day.count) > 16 ? .system(size: 24) : .system(size: 35))
+                                .padding()
+                                .fontWeight(.heavy)
+                                .textCase(.uppercase)
+                                .foregroundStyle(Color.skyYellow)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 2)
                                         .stroke(Color.skyTeal, lineWidth: 3)
                                 )
+                        }
   
                                     
                         Text("Pick Next Round's Category!")
@@ -781,12 +798,13 @@ struct GameOverView: View{
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                    Text("Game Over!")
-                        .font(.system(size: 50))
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.skyYellow)
+                    
                     
                     if final_answer == path[10]![1] {
+                        Text("Game Over!")
+                            .font(.system(size: 50))
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color("PathG"))
                         Text("Congratulations, \nYou got a TriviYeah!")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
@@ -795,6 +813,10 @@ struct GameOverView: View{
                     
                     }
                     else{
+                        Text("Game Over!")
+                            .font(.system(size: 50))
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color("PathR"))
                         Text("Oh no! Maybe next time!")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
@@ -993,7 +1015,6 @@ struct HHOver: View {
 }
 
 
-    
 struct ContentView_Previews: PreviewProvider{
     static var previews: some View{
         ContentView()
