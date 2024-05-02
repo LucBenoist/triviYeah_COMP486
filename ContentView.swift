@@ -308,6 +308,26 @@ struct QuestionView: View{
                 return nflQuarterbacks.filter { $0.localizedCaseInsensitiveContains(answer) }
             } else if path[path_node]![2] == "Boston" {
                 return crimeMovies.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Sopranos" {
+                return sopranosCharacters.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "New Girl" {
+                return newGirlCharacters.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "HBO" {
+                return hboShows.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Netflix" {
+                return netflixShows.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Emmy Awards" {
+                return americanDramaShows.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Simpsons" {
+                return simpsonsCharacters.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Sitcoms" {
+                return modernSitcoms.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Better Call Saul" {
+                return betterCallSaulCharacters.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Saturday Night Live" {
+                return snlCastMembers.filter { $0.localizedCaseInsensitiveContains(answer) }
+            } else if path[path_node]![2] == "Friends" {
+                return friendsCharacters.filter { $0.localizedCaseInsensitiveContains(answer) }
             }
         else {
                 return guesses.filter { $0.localizedCaseInsensitiveContains(answer) }
@@ -517,9 +537,10 @@ struct QuestionView: View{
                         }
                         else{ // If correct at Round 4, go to final round
                             if isCorrect == true {
-                                Text("Correct!")
+                                Text("Correct! The final question's theme is \(path[10]![2])!")
                                     .foregroundColor(.green)
-                                    .font(.system(size: 25))
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(size: 20))
                                     .fontWeight(.bold)
                                     .padding()
                                 NavigationLink(destination: QuestionView()) {
